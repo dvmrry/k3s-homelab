@@ -3,39 +3,39 @@
 ## To Do:
 
 ## Management
-homer
-rancher
-snipe-it
+- homer
+- rancher
+- snipe-it
 
 ### Development
-gitea
-wiki.js
+- gitea
+- wiki.js
 
 ### Monitoring
-grafana
-prometheus
-prometheus-blackbox-exporter
-prometheus-snmp-exporter
-netdata
-zabbix
+- grafana
+- prometheus
+- prometheus-blackbox-exporter
+- prometheus-snmp-exporter
+- netdata
+- zabbix
 
 ### Services
-authelia
-firefly-iii
-flood
-grocy
-polr
-rtorrent
-snapdrop
-vaultwarden
+- authelia
+- firefly-iii
+- flood
+- grocy
+- polr
+- rtorrent
+- snapdrop
+- vaultwarden
 
 ### Media
-bazarr
-jackett
-jellyfin
-overseerr
-radarr
-sonarr
+- bazarr
+- jackett
+- jellyfin
+- overseerr
+- radarr
+- sonarr
 
 
 
