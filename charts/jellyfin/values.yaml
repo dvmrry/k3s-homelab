@@ -1,0 +1,100 @@
+#
+# IMPORTANT NOTE
+#
+# This chart inherits from our common library chart. You can check the default values/options here:
+# https://github.com/k8s-at-home/library-charts/tree/main/charts/stable/common/values.yaml
+#
+
+image:
+  repository: jellyfin/jellyfin
+  pullPolicy: IfNotPresent
+  tag: 10.7.0
+
+strategy:
+  type: Recreate
+
+service:
+  port:
+    port: 8096
+
+ingress:
+  enabled: false
+
+volumes:
+  - name: nfs
+    nfs:
+      server: 172.19.0.1
+      path: /mnt/shares
+
+persistence:
+  config:
+    enabled: true
+    emptyDir:
+      enabled: false
+
+  # Cache does NOT contain temporary transcoding data.
+  cache:
+    enabled: false
+    emptyDir:
+      enabled: false
+    mountPath: /cache
+    ## Persistent Volume Storage Class
+    ## If defined, storageClassName: <storageClass>
+    ## If set to "-", storageClassName: "", which disables dynamic provisioning
+    ## If undefined (the default) or set to null, no storageClassName spec is
+    ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
+    ##   GKE, AWS & OpenStack)
+    # storageClass: "-"
+    # accessMode: ReadWriteOnce
+    # size: 1Gi
+    ## Do not delete the pvc upon helm uninstall
+    # skipuninstall: false
+    # existingClaim: ""
+
+  media:
+    enabled: true
+    mountPath: /media
+    existingClaim: jellyfin-media
+    accessMode: ReadWriteOnce
+    size: 10000Gi
+    skipuninstall: true
+
+    ## Persistent Volume Storage Class
+    ## If defined, storageClassName: <storageClass>
+    ## If set to "-", storageClassName: "", which disables dynamic provisioning
+    ## If undefined (the default) or set to null, no storageClassName spec is
+    ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
+    ##   GKE, AWS & OpenStack)
+    #storageClass: "-k"
+    # accessMode: ReadWriteOnce
+    # size: 1Gi
+    ## Do not delete the pvc upon helm uninstall
+    # skipuninstall: false
+    # existingClaim: ""
+
+# podSecurityContext:
+#   runAsUser: 568
+#   runAsGroup: 568
+#   fsGroup: 568
+#   # Hardware acceleration using an Intel iGPU w/ QuickSync
+#   # These IDs below should be matched to your `video` and `render` group on the host
+#   # To obtain those IDs run the following grep statement on the host:
+#   # $ cat /etc/group | grep "video\|render"
+#   # video:x:44:
+#   # render:x:109:
+#   supplementalGroups:
+#   - 44
+#   - 109
+
+#resources:
+#  requests:
+#     # Hardware acceleration using an Intel iGPU w/ QuickSync and
+#     # using intel-gpu-plugin (https://github.com/intel/intel-device-plugins-for-kubernetes)
+#gpu.intel.com/i915: 1
+#cpu: 200m
+#memory: 256Mi
+#  limits:
+#     # Hardware acceleration using an Intel iGPU w/ QuickSync and
+#     # using intel-gpu-plugin (https://github.com/intel/intel-device-plugins-for-kubernetes)
+#gpu.intel.com/i915: 1
+#memory: 1024Mi
