@@ -28,9 +28,9 @@
 | k3s-m1   | 2vCPU - Host  | 4G     | Debian 10 | 32G     | N/A       | control-pane/etcd/master | 
 | k3s-m2   | 2vCPU - Host  | 4G     | Debian 10 | 32G     | N/A       | control-pane/etcd/master | 
 | k3s-m3   | 2vCPU - Host  | 4G     | Debian 10 | 32G     | N/A       | control-pane/etcd/master | 
-| k3s-w1   | 10vCPU - Host | 26G    | Debian 10 | 64G     | 256G      | control-pane/etcd/master | 
-| k3s-w2   | 10vCPU - Host | 26G    | Debian 10 | 64G     | 256G      | control-pane/etcd/master | 
-| k3s-w3   | 10vCPU - Host | 26G    | Debian 10 | 64G     | 256G      | control-pane/etcd/master | 
+| k3s-w1   | 10vCPU - Host | 26G    | Debian 10 | 64G     | 256G      | worker/longhorn          | 
+| k3s-w2   | 10vCPU - Host | 26G    | Debian 10 | 64G     | 256G      | worker/longhorn          | 
+| k3s-w3   | 10vCPU - Host | 26G    | Debian 10 | 64G     | 256G      | worker/longhorn          | 
 
 ## Management
 - [ ] homer
