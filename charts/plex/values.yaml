@@ -13,136 +13,85 @@ image:
 strategy:
   type: Recreate
 
-env: {}
+env: 
   # TZ:
   # ADVERTISE_IP: 
+  PLEX_CLAIM: "claim-DupUJah9RNDmz3p2eqCx"
   # ALLOWED_NETWORKS: 172.16.0.0/12,10.0.0.0/8,192.168.0.0/16
-PLEX_CLAIM: claim-cC6UxXYUgdMaDZGJ_qyx
-claim: claim-cC6UxXYUgdMaDZGJ_qyx
-# # NOTE: Plex preference options are camelCase and CASE SENSITIVE!
-# # You can do horrible things to your Plex configuration if you are not careful
-# # See a full list at https://support.plex.tv/articles/201105343-advanced-hidden-server-settings/
-PLEX_PREFERENCE_0: "allowedNetworks=172.16.0.0/12,10.0.0.8/8,192.168.0.0/16"
-PLEX_PREFERENCE_1: "FriendlyName=Plex k3s"
-PLEX_PREFERENCE_2: "EnableIPv6=0"
-PLEX_PREFERENCE_3: "logDebug=0"
-# PLEX_PREFERENCE_4: "DisableTLSv1_0=1"
-# PLEX_PREFERENCE_5: "LanNetworksBandwidth=xxx.xxx.xxx.0/18\,xxx.xxx.xxx.0/24\,xxx.xxx.xxx.0/24"
-PLEX_PREFERENCE_6: "TranscoderQuality=2"
-PLEX_PREFERENCE_7: "TreatWanIpAsLocal=0"
-PLEX_PREFERENCE_8: "TranscoderH264BackgroundPreset=veryfast"
+  # # NOTE: Plex preference options are camelCase and CASE SENSITIVE!
+  # # You can do horrible things to your Plex configuration if you are not careful
+  # # See a full list at https://support.plex.tv/articles/201105343-advanced-hidden-server-settings/
+  PLEX_PREFERENCE_0: "allowedNetworks=172.16.0.0/12,10.0.0.8/8,192.168.0.0/16"
+  PLEX_PREFERENCE_1: "FriendlyName=k3s"
+  PLEX_PREFERENCE_2: "EnableIPv6=0"
+  PLEX_PREFERENCE_3: "logDebug=0"
+  # PLEX_PREFERENCE_4: "DisableTLSv1_0=1"
+  # PLEX_PREFERENCE_5: "LanNetworksBandwidth=xxx.xxx.xxx.0/18\,xxx.xxx.xxx.0/24\,xxx.xxx.xxx.0/24"
+  PLEX_PREFERENCE_6: "TranscoderQuality=2"
+  PLEX_PREFERENCE_7: "TreatWanIpAsLocal=1"
+  PLEX_PREFERENCE_8: "TranscoderH264BackgroundPreset=veryfast"
+  PLEX_PREFERENCE_9: "ScheduledLibraryUpdatesEnabled=1"
+  PLEX_PREFERENCE_10: "DlnaEnabled=0"
+  PLEX_PREFERENCE_11: "TranscoderCanOnlyRemuxVideo=0"
+  PLEX_PREFERENCE_12: "autoEmptyTrash=1"
+  PLEX_PREFERENCE_13: "TranscoderToneMapping=0"
 
 service:
   port:
     port: 32400
-  # additionalServices:
-  # - enabled: true
-  #   nameSuffix: dnla-tcp
-  #   type: NodePort
-  #   port:
-  #     port: 32469
-  #     name: dnla-tcp
-  #     protocol: TCP
-  #     targetPort: 32469
-  #   externalTrafficPolicy: Local
-  # - enabled: true
-  #   nameSuffix: dnla-udp
-  #   type: NodePort
-  #   port:
-  #     port: 1900
-  #     name: dnla-udp
-  #     protocol: UDP
-  #     targetPort: 1900
-  #   externalTrafficPolicy: Local
 
 ingress:
-  enabled: false
+  enabled: true
+  hosts:
+    - host: plex.mrry.io
+      paths:
+        - path: /
+          pathType: Prefix
 
 # -- Enable devices to be discoverable
 hostNetwork: true
 
 persistence:
   config:
-    enabled: false
-    emptyDir:
-      enabled: false
+    enabled: true
     mountPath: /config
-    ## Persistent Volume Storage Class
-    ## If defined, storageClassName: <storageClass>
-    ## If set to "-", storageClassName: "", which disables dynamic provisioning
-    ## If undefined (the default) or set to null, no storageClassName spec is
-    ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
-    ##   GKE, AWS & OpenStack)
-    # storageClass: "-"
-    # accessMode: ReadWriteOnce
-    # size: 1Gi
-    ## Do not delete the pvc upon helm uninstall
-    # skipuninstall: false
-    # existingClaim: ""
+    storageClass: longhorn
+    accessMode: ReadWriteOnce
+    size: 8Gi
+    skipuninstall: false
 
   transcode:
-    enabled: false
+    enabled: true
     emptyDir:
-      enabled: false
+      enabled: true
     mountPath: /transcode
-    ## Persistent Volume Storage Class
-    ## If defined, storageClassName: <storageClass>
-    ## If set to "-", storageClassName: "", which disables dynamic provisioning
-    ## If undefined (the default) or set to null, no storageClassName spec is
-    ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
-    ##   GKE, AWS & OpenStack)
-    # storageClass: "-"
-    # accessMode: ReadWriteOnce
-    # size: 1Gi
-    ## Do not delete the pvc upon helm uninstall
-    # skipuninstall: false
-    # existingClaim: ""
+    medium: "Memory"
   
   media:
     enabled: true 
     emptyDir:
       enabled: false
     mountPath: /media
-    existingClaim: nas-media
-    accessMode: ReadWreiteOnce
-    size: 10000Gi
+    existingClaim: nfs-media-ro
+    accessMode: ReadOnlyMany
+    size: 8000Gi
     skipuninstall: true
-    ## Persistent Volume Storage Class
-    ## If defined, storageClassName: <storageClass>
-    ## If set to "-", storageClassName: "", which disables dynamic provisioning
-    ## If undefined (the default) or set to null, no storageClassName spec is
-    ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
-    ##   GKE, AWS & OpenStack)
-    # storageClass: "-"
-    # accessMode: ReadWriteOnce
-    # size: 1Gi
-    ## Do not delete the pvc upon helm uninstall
-    # skipuninstall: false
-    # existingClaim: ""
 
-# podSecurityContext:
-#   runAsUser: 568
-#   runAsGroup: 568
-#   fsGroup: 568
-#   # Hardware acceleration using an Intel iGPU w/ QuickSync
-#   # These IDs below should be matched to your `video` and `render` group on the host
-#   # To obtain those IDs run the following grep statement on the host:
-#   # $ cat /etc/group | grep "video\|render"
-#   # video:x:44:
-#   # render:x:109:
-#   supplementalGroups:
-#   - 44
-#   - 109
+podSecurityContext:
+  runAsUser: 568
+  runAsGroup: 568
+  fsGroup: 568
+  supplementalGroups:
+  - 44
+  - 107
 
 resources:
   requests:
-    # Hardware acceleration using an Intel iGPU w/ QuickSync and
-    # using intel-gpu-plugin (https://github.com/intel/intel-device-plugins-for-kubernetes)
     gpu.intel.com/i915: 1
-    cpu: 200m
-    memory: 256Mi
+    cpu: 1000m
+    memory: 2048Mi
   limits:
-    # Hardware acceleration using an Intel iGPU w/ QuickSync and
-    # using intel-gpu-plugin (https://github.com/intel/intel-device-plugins-for-kubernetes)
     gpu.intel.com/i915: 1
-    memory: 4096Mi
+    cpu: 8000m
+    memory: 16384Mi
+
