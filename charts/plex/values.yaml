@@ -14,10 +14,10 @@ strategy:
   type: Recreate
 
 env: 
-  # TZ:
+  TZ: "America/New_York"
   # ADVERTISE_IP: 
   PLEX_CLAIM: "claim-DupUJah9RNDmz3p2eqCx"
-  # ALLOWED_NETWORKS: 172.16.0.0/12,10.0.0.0/8,192.168.0.0/16
+  ALLOWED_NETWORKS: "172.16.0.0/12,10.0.0.0/8,192.168.0.0/16"
   # # NOTE: Plex preference options are camelCase and CASE SENSITIVE!
   # # You can do horrible things to your Plex configuration if you are not careful
   # # See a full list at https://support.plex.tv/articles/201105343-advanced-hidden-server-settings/
@@ -34,7 +34,7 @@ env:
   PLEX_PREFERENCE_10: "DlnaEnabled=0"
   PLEX_PREFERENCE_11: "TranscoderCanOnlyRemuxVideo=0"
   PLEX_PREFERENCE_12: "autoEmptyTrash=1"
-  PLEX_PREFERENCE_13: "TranscoderToneMapping=0"
+  PLEX_PREFERENCE_13: "TranscoderToneMapping=1"
 
 service:
   port:
@@ -61,7 +61,7 @@ persistence:
     skipuninstall: false
 
   transcode:
-    enabled: true
+    enabled: false
     emptyDir:
       enabled: true
     mountPath: /transcode

@@ -3,8 +3,8 @@
 ## To Do:
 - [x] Set up new physical nodes
 - [ ] Install Mellanox CX311A-XCAT's
-- [ ] Migrate services 
-- [ ] Configure all service value.yaml files
+- [ ] Migrate services
+- [ ] 
 - [ ] Read up on Flux v2 & gitops
 - [ ] ???
 - [ ] Profit
@@ -13,14 +13,19 @@
 - [ ] Separate Longhorn to dedicated VMs
 
 ## Hardware
-| Device            | Proccessor            | Memory       | OS         | OS Disk   | Data Disk          | NIC             | Roles                                 |
-|-------------------|-----------------------|--------------|------------|-----------|--------------------|-----------------|---------------------------------------|
-| Lenovo m920x Tiny | Intel Core i7-8700    | 32G DDR4     | Proxmox VE | 256G NVMe | 256G NVMe          | Mellanox CX311A | 1x k3s master / 1x k3s worker         | 
-| Lenovo m920x Tiny | Intel Core i7-8700    | 32G DDR4     | Proxmox VE | 256G NVMe | 256G NVMe          | Mellanox CX311A | 1x k3s master / 1x k3s worker         |
-| Lenovo m920x Tiny | Intel Core i7-8700    | 32G DDR4     | Proxmox VE | 256G NVMe | 256G NVMe          | Mellanox CX311A | 1x k3s master / 1x k3s worker         |  
-| HPE ML30 Gen9     | Intel Xeon E3-1230 v5 | 32G DDR4 ECC | Proxmox VE | 500G SSD  | 4x 12T Exos RAIDZ2 | Mellanox CX322A | VyOS primary / LB / NFS / SMB / ZFS / |
-| Aruba S3500-24P   | Broadcom XLS 208      | 1G           | ArubaOS    | N/A       | N/A                | N/A             | L3 core                               |
-| Kettop Mi18C      | Intel Celeron J1800   | 2G DDR3      | VyOS       | 32G SSD   | N/A                | Realtek RTL8111 | VyOS secondary                        |
+| Device            | Proccessor            | Memory       | OS         | OS Disk   | Data Disk          | NIC             | Roles                                              |
+|-------------------|-----------------------|--------------|------------|-----------|--------------------|-----------------|----------------------------------------------------|
+| Lenovo m920x Tiny | Intel Core i7-8700    | 32G DDR4     | Proxmox VE | 256G NVMe | 256G NVMe          | Mellanox CX311A | 1x k3s master / 1x k3s worker / 1x longhorn worker | 
+| Lenovo m920x Tiny | Intel Core i7-8700    | 32G DDR4     | Proxmox VE | 256G NVMe | 256G NVMe          | Mellanox CX311A | 1x k3s master / 1x k3s worker / 1x longhorn worker |
+| Lenovo m920x Tiny | Intel Core i7-8700    | 32G DDR4     | Proxmox VE | 256G NVMe | 256G NVMe          | Mellanox CX311A | 1x k3s master / 1x k3s worker / 1x longhorn worker |  
+| HPE ML30 Gen9     | Intel Xeon E3-1230 v5 | 32G DDR4 ECC | Proxmox VE | 500G SSD  | 4x 12T Exos RAIDZ2 | Mellanox CX322A | VyOS / webproxy / NFS / SMB / ZFS                  |
+| Aruba S3500-24P   | Broadcom XLS 208      | 1G           | ArubaOS    | N/A       | N/A                | N/A             | L3 core                                            |
+
+## Extras
+| Device            | Proccessor            | Memory       | OS         | OS Disk   | Data Disk          | NIC             | Roles                                              |
+|-------------------|-----------------------|--------------|------------|-----------|--------------------|-----------------|----------------------------------------------------|
+| Whitebox PC       | Intel Core i7-6700k   | 16G DDR4     | Proxmox VE | 256G SSD  | 1T SSD             | Intel I219-V    | Parsec / Steam                                     |
+| Kettop Mi18C      | Intel Celeron J1800   | 2G DDR3      | VyOS       | 32G SSD   | N/A                | Realtek RTL8111 | TBD                                                |
 
 ## Nodes
 | Hostname | CPU           | Memory | OS        | OS Disk | Data Disk | Roles                    |
@@ -28,9 +33,12 @@
 | k3s-m1   | 2vCPU - Host  | 4G     | Debian 10 | 32G     | N/A       | control-pane/etcd/master | 
 | k3s-m2   | 2vCPU - Host  | 4G     | Debian 10 | 32G     | N/A       | control-pane/etcd/master | 
 | k3s-m3   | 2vCPU - Host  | 4G     | Debian 10 | 32G     | N/A       | control-pane/etcd/master | 
-| k3s-w1   | 10vCPU - Host | 26G    | Debian 10 | 64G     | 256G      | worker/longhorn          | 
-| k3s-w2   | 10vCPU - Host | 26G    | Debian 10 | 64G     | 256G      | worker/longhorn          | 
-| k3s-w3   | 10vCPU - Host | 26G    | Debian 10 | 64G     | 256G      | worker/longhorn          | 
+| k3s-w1   | 8vCPU - Host  | 24G    | Debian 10 | 64G     | N/A       | worker                   | 
+| k3s-w2   | 8vCPU - Host  | 24G    | Debian 10 | 64G     | N/A       | worker                   | 
+| k3s-w3   | 8vCPU - Host  | 24G    | Debian 10 | 64G     | N/A       | worker                   | 
+| k3s-s1   | 2vCPU - Host  | 2G     | Debian 10 | 32G     | 256G      | longhorn                 | 
+| k3s-s2   | 2vCPU - Host  | 2G     | Debian 10 | 32G     | 256G      | longhorn                 | 
+| k3s-s3   | 2vCPU - Host  | 2G     | Debian 10 | 32G     | 256G      | longhorn                 | 
 
 ## Management
 - [ ] homer
@@ -54,17 +62,15 @@
 - [x] flood
 - [ ] grocy
 - [ ] polr
-- [x] rtorrent
+- [x] qBitorrent 
 - [ ] snapdrop
 - [ ] vaultwarden
 
 ### Media
 - [ ] bazarr
 - [x] jackett
+- [ ] tautulli
 - [ ] ombi
-- [ ] plex
+- [x] plex
 - [x] radarr
 - [x] sonarr
-
-
-
