@@ -1,4 +1,4 @@
-# Template machine
+# Template machine config
 Following settings should be adjusted to your needs.
 Eg. I have my k3s machines utilizing vmbr0 on the hosts and VLAN22 with images on local-lvm
 
