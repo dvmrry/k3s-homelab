@@ -1,0 +1,33 @@
+---
+# localhost
+- name: Label k3s worker and storage nodes
+  hosts: localhost
+  tasks:
+
+  - name: w1 - kubernetes.io/role
+    shell: kubectl label nodes k3s-w1 kubernetes.io/role=worker --overwrite
+  - name: w2 - kubernetes.io/role
+    shell: kubectl label nodes k3s-w2 kubernetes.io/role=worker --overwrite
+  - name: w3 - kubernetes.io/role
+    shell: kubectl label nodes k3s-w3 kubernetes.io/role=worker --overwrite
+
+  - name: w1 - node-type
+    shell: kubectl label nodes k3s-w1 node-type=worker --overwrite
+  - name: w2 - node-type
+    shell: kubectl label nodes k3s-w2 node-type=worker --overwrite
+  - name: w3 - node-type
+    shell: kubectl label nodes k3s-w3 node-type=worker --overwrite
+    
+  - name: s1 - kubernetes.io/role
+    shell: kubectl label nodes k3s-s1 kubernetes.io/role=longhorn --overwrite
+  - name: s2 - kubernetes.io/role
+    shell: kubectl label nodes k3s-s2 kubernetes.io/role=longhorn --overwrite
+  - name: s3 - kubernetes.io/role
+    shell: kubectl label nodes k3s-s3 kubernetes.io/role=longhorn --overwrite
+  
+  - name: s1 - node-type
+    shell: kubectl label nodes k3s-s1 node-type=longhorn --overwrite
+  - name: s2 - node-type
+    shell: kubectl label nodes k3s-s2 node-type=longhorn --overwrite
+  - name: s3 - node-type
+    shell: kubectl label nodes k3s-s3 node-type=longhorn --overwrite

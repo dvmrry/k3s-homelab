@@ -1,16 +1,13 @@
 # k3s-homelab
 
 ## To Do:
-- [x] Set up new physical nodes
-- [ ] Install Mellanox CX311A-XCAT's
-- [ ] Migrate services
-- [ ] 
-- [ ] Read up on Flux v2 & gitops
-- [ ] ???
-- [ ] Profit
-
-## Considerations:
-- [ ] Separate Longhorn to dedicated VMs
+- [ ] Create Ansible playbook for Proxmox hosts
+- [x] Create initial cloud-init Debian 10 template
+- [x] Create Terraform playbook for node creation
+- [x] Create Ansible playbook for node configuration
+- [ ] Configure kube-vip & metallb for BGP routing 
+- [ ] Implement Flux/Kustomize
+- [ ] Install Mellanox CX311A-XCAT's [Awaiting PCIe risers]
 
 ## Hardware
 | Device            | Proccessor            | Memory       | OS         | OS Disk   | Data Disk          | NIC             | Roles                                              |
@@ -22,28 +19,34 @@
 | Aruba S3500-24P   | Broadcom XLS 208      | 1G           | ArubaOS    | N/A       | N/A                | N/A             | L3 core                                            |
 
 ## Extras
-| Device            | Proccessor            | Memory       | OS         | OS Disk   | Data Disk          | NIC             | Roles                                              |
-|-------------------|-----------------------|--------------|------------|-----------|--------------------|-----------------|----------------------------------------------------|
-| Whitebox PC       | Intel Core i7-6700k   | 16G DDR4     | Proxmox VE | 256G SSD  | 1T SSD             | Intel I219-V    | Parsec / Steam                                     |
-| Kettop Mi18C      | Intel Celeron J1800   | 2G DDR3      | VyOS       | 32G SSD   | N/A                | Realtek RTL8111 | TBD                                                |
+| Device       | Proccessor          | Memory   | OS         | OS Disk  | Data Disk | NIC             | Roles          |
+|--------------|---------------------|----------|------------|----------|-----------|-----------------|----------------|
+| Whitebox PC  | Intel Core i7-6700k | 16G DDR4 | Proxmox VE | 256G SSD | 1T SSD    | Intel I219-V    | Parsec / Steam |
+| Kettop Mi18C | Intel Celeron J1800 | 2G DDR3  | VyOS       | 32G SSD  | N/A       | Realtek RTL8111 | TBD            |
 
 ## Nodes
-| Hostname | CPU           | Memory | OS        | OS Disk | Data Disk | Roles                    |
-|----------|---------------|--------|-----------|---------|-----------|--------------------------|
-| k3s-m1   | 2vCPU - Host  | 4G     | Debian 10 | 32G     | N/A       | control-pane/etcd/master | 
-| k3s-m2   | 2vCPU - Host  | 4G     | Debian 10 | 32G     | N/A       | control-pane/etcd/master | 
-| k3s-m3   | 2vCPU - Host  | 4G     | Debian 10 | 32G     | N/A       | control-pane/etcd/master | 
-| k3s-w1   | 8vCPU - Host  | 24G    | Debian 10 | 64G     | N/A       | worker                   | 
-| k3s-w2   | 8vCPU - Host  | 24G    | Debian 10 | 64G     | N/A       | worker                   | 
-| k3s-w3   | 8vCPU - Host  | 24G    | Debian 10 | 64G     | N/A       | worker                   | 
-| k3s-s1   | 2vCPU - Host  | 2G     | Debian 10 | 32G     | 256G      | longhorn                 | 
-| k3s-s2   | 2vCPU - Host  | 2G     | Debian 10 | 32G     | 256G      | longhorn                 | 
-| k3s-s3   | 2vCPU - Host  | 2G     | Debian 10 | 32G     | 256G      | longhorn                 | 
+| Hostname | CPU          | Memory | OS        | OS Disk | Data Disk | Roles                    |
+|----------|--------------|--------|-----------|---------|-----------|--------------------------|
+| k3s-m1   | 2vCPU - Host | 4G     | Debian 10 | 32G     | N/A       | control-pane/etcd/master | 
+| k3s-m2   | 2vCPU - Host | 4G     | Debian 10 | 32G     | N/A       | control-pane/etcd/master | 
+| k3s-m3   | 2vCPU - Host | 4G     | Debian 10 | 32G     | N/A       | control-pane/etcd/master | 
+| k3s-w1   | 8vCPU - Host | 22G    | Debian 10 | 64G     | N/A       | worker                   | 
+| k3s-w2   | 8vCPU - Host | 22G    | Debian 10 | 64G     | N/A       | worker                   | 
+| k3s-w3   | 8vCPU - Host | 22G    | Debian 10 | 64G     | N/A       | worker                   | 
+| k3s-s1   | 2vCPU - Host | 4G     | Debian 10 | 32G     | 256G      | longhorn                 | 
+| k3s-s2   | 2vCPU - Host | 4G     | Debian 10 | 32G     | 256G      | longhorn                 | 
+| k3s-s3   | 2vCPU - Host | 4G     | Debian 10 | 32G     | 256G      | longhorn                 | 
 
 ## Management
 - [ ] homer
 - [x] rancher
 - [ ] snipe-it
+
+## Network
+- [ ] external-dns
+- [ ] kube-vip
+- [ ] metallb
+- [ ] traefik
 
 ### Development
 - [ ] gitea

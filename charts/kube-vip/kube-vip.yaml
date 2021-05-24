@@ -36,10 +36,20 @@ spec:
           value: "5"
         - name: vip_renewdeadline
           value: "3"
-        - name: vip_retryperiod
+        - name: vip_retryper0od
           value: "1"
+        - name: bgp_enable
+          value: "true"
+        - name: bgp_routerid
+          value: "172.16.0.254"
+        - name: bgp_as
+          value: "65000"
+        - name: bgp_peeraddress
+          value: "172.22.0.200"
+        - name: bgp_peeras
+          value: "65100"
         - name: address
-          value: 172.19.0.5
+          value: 172.22.0.200
         image: plndr/kube-vip:0.3.4
         imagePullPolicy: Always
         name: kube-vip
