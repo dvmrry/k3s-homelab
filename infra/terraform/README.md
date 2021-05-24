@@ -53,3 +53,5 @@ Set local user (no password - SSH key will be used for login)
 Convert to template
     
     qm template 9000
+
+Clone this image to relevant nodes and prepend with Proxmox hostname so that Terraform uses the local template copy when creating k3s nodes. 
