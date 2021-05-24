@@ -1,7 +1,7 @@
 <div align="center">
   
 ### My WIP homelab running on:
-[![Ansible](https://img.shields.io/badge/Ansible-V2.10.8-black?style=for-the-badge)](https://ansible.com)
+[![Ansible](https://img.shields.io/badge/terrafAnsible-V2.10.8-black?style=for-the-badge)](https://ansible.com)
 [![Debian](https://img.shields.io/badge/Debian-V10.9-red?style=for-the-badge)](https://debian.com)
 [![k3s](https://img.shields.io/badge/k3s-v1.21.0-yellow?style=for-the-badge)](https://k3s.io/)
 [![Proxmox](https://img.shields.io/badge/PVE-V6.4-orange?style=for-the-badge)](https://proxmox.com)
@@ -9,19 +9,22 @@
  
 </div>
 
-# Overview
-</div>
+### Overview
+----
 
-## To Do:
+### To Do:
 - [ ] Create Ansible playbook for Proxmox hosts
 - [x] Create initial cloud-init Debian 10 template
 - [x] Create Terraform playbook for node creation
-- [x] Create Ansible playbook for node configuration
+- [x] Create Ansible playbook for node configurationterraf
 - [ ] Configure kube-vip & metallb for BGP routing 
 - [ ] Implement Flux/Kustomize
 - [ ] Install Mellanox CX311A-XCAT's [Awaiting PCIe risers]
 
-## Hardware
+----
+### Hardware
+<div align="center">
+  
 | Device            | Proccessor            | Memory       | OS         | OS Disk   | Data Disk          | NIC             | Roles                                              |
 |-------------------|-----------------------|--------------|------------|-----------|--------------------|-----------------|----------------------------------------------------|
 | Lenovo m920x Tiny | Intel Core i7-8700    | 32G DDR4     | Proxmox VE | 256G NVMe | 256G NVMe          | Mellanox CX311A | 1x k3s master / 1x k3s worker / 1x longhorn worker | 
@@ -29,14 +32,25 @@
 | Lenovo m920x Tiny | Intel Core i7-8700    | 32G DDR4     | Proxmox VE | 256G NVMe | 256G NVMe          | Mellanox CX311A | 1x k3s master / 1x k3s worker / 1x longhorn worker |  
 | HPE ML30 Gen9     | Intel Xeon E3-1230 v5 | 32G DDR4 ECC | Proxmox VE | 500G SSD  | 4x 12T Exos RAIDZ2 | Mellanox CX322A | VyOS / webproxy / NFS / SMB / ZFS                  |
 | Aruba S3500-24P   | Broadcom XLS 208      | 1G           | ArubaOS    | N/A       | N/A                | N/A             | L3 core                                            |
+  
+</div>
+  
+----
+### Extras
 
-## Extras
+<div align="center">
+
 | Device       | Proccessor          | Memory   | OS         | OS Disk  | Data Disk | NIC             | Roles          |
 |--------------|---------------------|----------|------------|----------|-----------|-----------------|----------------|
 | Whitebox PC  | Intel Core i7-6700k | 16G DDR4 | Proxmox VE | 256G SSD | 1T SSD    | Intel I219-V    | Parsec / Steam |
 | Kettop Mi18C | Intel Celeron J1800 | 2G DDR3  | VyOS       | 32G SSD  | N/A       | Realtek RTL8111 | TBD            |
+  
+</div>
 
-## Nodes
+### Nodes
+
+<div align="center">
+
 | Hostname | CPU          | Memory | OS        | OS Disk | Data Disk | Roles                    |
 |----------|--------------|--------|-----------|---------|-----------|--------------------------|
 | k3s-m1   | 2vCPU - Host | 4G     | Debian 10 | 32G     | N/A       | control-pane/etcd/master | 
@@ -48,6 +62,10 @@
 | k3s-s1   | 2vCPU - Host | 4G     | Debian 10 | 32G     | 256G      | longhorn                 | 
 | k3s-s2   | 2vCPU - Host | 4G     | Debian 10 | 32G     | 256G      | longhorn                 | 
 | k3s-s3   | 2vCPU - Host | 4G     | Debian 10 | 32G     | 256G      | longhorn                 | 
+
+</div>
+
+---
 
 ## Management
 - [ ] homer
@@ -89,3 +107,7 @@
 - [x] plex
 - [x] radarr
 - [x] sonarr
+
+--- 
+
+### Special thanks to:
