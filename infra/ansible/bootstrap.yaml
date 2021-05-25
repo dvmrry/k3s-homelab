@@ -1,7 +1,0 @@
----
-- import_playbook: node-init.yaml
-- import_playbook: storage-init.yaml
-- import_playbook: master-init.yaml
-- import_playbook: kube-vip.yaml
-- import_playbook: join-nodes.yaml
-- import_playbook: labels.yaml
