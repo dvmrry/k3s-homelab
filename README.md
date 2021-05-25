@@ -1,11 +1,11 @@
 <div align="center">
   
 ### My WIP homelab running on:
-[![Ansible](https://img.shields.io/badge/terrafAnsible-V2.10.8-black?style=for-the-badge)](https://ansible.com)
-[![Debian](https://img.shields.io/badge/Debian-V10.9-red?style=for-the-badge)](https://debian.com)
+[![Ansible](https://img.shields.io/badge/Ansible-V2.10.8-red?style=for-the-badge)](https://ansible.com)
+[![Debian](https://img.shields.io/badge/Debian-V10.9-orange?style=for-the-badge)](https://debian.com)
 [![k3s](https://img.shields.io/badge/k3s-v1.21.0-yellow?style=for-the-badge)](https://k3s.io/)
-[![Proxmox](https://img.shields.io/badge/PVE-V6.4-orange?style=for-the-badge)](https://proxmox.com)
-[![Terraform](https://img.shields.io/badge/Terraform-V0.15.4-purple?style=for-the-badge)](https://terraform.io)
+[![Proxmox](https://img.shields.io/badge/Proxmox-V6.4-green?style=for-the-badge)](https://proxmox.com)
+[![Terraform](https://img.shields.io/badge/Terraform-V0.15.4-bluegreen?style=for-the-badge)](https://terraform.io)
  
 </div>
 
@@ -110,4 +110,6 @@
 
 --- 
 
-### Special thanks to:
+### Special thanks
+
+[taboshi](https://github.com/toboshii)
