@@ -53,15 +53,15 @@
 
 | Hostname | CPU          | Memory | OS        | OS Disk | Data Disk | Roles                    |
 |----------|--------------|--------|-----------|---------|-----------|--------------------------|
-| k3s-m1   | 2vCPU - Host | 4G     | Debian 10 | 32G     | N/A       | control-pane/etcd/master | 
-| k3s-m2   | 2vCPU - Host | 4G     | Debian 10 | 32G     | N/A       | control-pane/etcd/master | 
-| k3s-m3   | 2vCPU - Host | 4G     | Debian 10 | 32G     | N/A       | control-pane/etcd/master | 
-| k3s-w1   | 8vCPU - Host | 22G    | Debian 10 | 64G     | N/A       | worker                   | 
-| k3s-w2   | 8vCPU - Host | 22G    | Debian 10 | 64G     | N/A       | worker                   | 
-| k3s-w3   | 8vCPU - Host | 22G    | Debian 10 | 64G     | N/A       | worker                   | 
-| k3s-s1   | 2vCPU - Host | 4G     | Debian 10 | 32G     | 256G      | longhorn                 | 
-| k3s-s2   | 2vCPU - Host | 4G     | Debian 10 | 32G     | 256G      | longhorn                 | 
-| k3s-s3   | 2vCPU - Host | 4G     | Debian 10 | 32G     | 256G      | longhorn                 | 
+| m1       | 2vCPU - Host | 4G     | Debian 10 | 32G     | N/A       | control-pane/etcd/master | 
+| m2       | 2vCPU - Host | 4G     | Debian 10 | 32G     | N/A       | control-pane/etcd/master | 
+| m3       | 2vCPU - Host | 4G     | Debian 10 | 32G     | N/A       | control-pane/etcd/master | 
+| w1       | 8vCPU - Host | 22G    | Debian 10 | 64G     | N/A       | worker                   | 
+| w2       | 8vCPU - Host | 22G    | Debian 10 | 64G     | N/A       | worker                   | 
+| w3       | 8vCPU - Host | 22G    | Debian 10 | 64G     | N/A       | worker                   | 
+| s1       | 2vCPU - Host | 4G     | Debian 10 | 32G     | 256G      | longhorn                 | 
+| s2       | 2vCPU - Host | 4G     | Debian 10 | 32G     | 256G      | longhorn                 | 
+| s3       | 2vCPU - Host | 4G     | Debian 10 | 32G     | 256G      | longhorn                 | 
 
 </div>
 
