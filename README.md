@@ -56,12 +56,12 @@
 | m1.k3s.mrry.io | 2vCPU - Host | 4G     | Debian 10 | 32G     | N/A       | control-pane/etcd/master | 
 | m2.k3s.mrry.io | 2vCPU - Host | 4G     | Debian 10 | 32G     | N/A       | control-pane/etcd/master | 
 | m3.k3s.mrry.io | 2vCPU - Host | 4G     | Debian 10 | 32G     | N/A       | control-pane/etcd/master | 
-| w1.k3s.mrry.io | 8vCPU - Host | 22G    | Debian 10 | 64G     | N/A       | worker                   | 
-| w2.k3s.mrry.io | 8vCPU - Host | 22G    | Debian 10 | 64G     | N/A       | worker                   | 
-| w3.k3s.mrry.io | 8vCPU - Host | 22G    | Debian 10 | 64G     | N/A       | worker                   | 
 | s1.k3s.mrry.io | 2vCPU - Host | 4G     | Debian 10 | 32G     | 256G      | longhorn                 | 
 | s2.k3s.mrry.io | 2vCPU - Host | 4G     | Debian 10 | 32G     | 256G      | longhorn                 | 
 | s3.k3s.mrry.io | 2vCPU - Host | 4G     | Debian 10 | 32G     | 256G      | longhorn                 | 
+| w1.k3s.mrry.io | 8vCPU - Host | 22G    | Debian 10 | 64G     | N/A       | worker                   | 
+| w2.k3s.mrry.io | 8vCPU - Host | 22G    | Debian 10 | 64G     | N/A       | worker                   | 
+| w3.k3s.mrry.io | 8vCPU - Host | 22G    | Debian 10 | 64G     | N/A       | worker                   | 
 
 </div>
 
