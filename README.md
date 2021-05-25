@@ -113,6 +113,12 @@
 ### Special thanks
 
 [taboshi](https://github.com/toboshii)
-[techno-tim](https://github.com/techno-tim)
+
 [k8s-at-home](https://github.com/k8s-at-home)
+
 [onedr0p](https://github.com/onedr0p)
+
+[monachus](https://gitlab.com/monachus)
+
+[techno-tim](https://github.com/techno-tim)
+
