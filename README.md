@@ -26,7 +26,7 @@
 <div align="center">
   
 | Device            | Proccessor            | Memory       | OS         | OS Disk   | Data Disk          | NIC             | Roles                                              |
-|-------------------|-----------------------|--------------|------------|-----------|--------------------|-----------------|----------------------------------------------------|
+|-------------------|-----------------------|--------------|------------|-----------|--------------------|-----------------|-------------------------------------|
 | Lenovo m920x Tiny | Intel Core i7-8700    | 32G DDR4     | Proxmox VE | 256G NVMe | 256G NVMe          | Mellanox CX311A | 1x master / 1x worker / 1x longhorn | 
 | Lenovo m920x Tiny | Intel Core i7-8700    | 32G DDR4     | Proxmox VE | 256G NVMe | 256G NVMe          | Mellanox CX311A | 1x master / 1x worker / 1x longhorn |
 | Lenovo m920x Tiny | Intel Core i7-8700    | 32G DDR4     | Proxmox VE | 256G NVMe | 256G NVMe          | Mellanox CX311A | 1x master / 1x worker / 1x longhorn |  
