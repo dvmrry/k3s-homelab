@@ -34,13 +34,10 @@
     lineinfile:
       dest: /etc/hosts
       regexp: '.*{{ item }}$'
-      line: "{{ hostvars[item].ansible_host }} {{item}}"
+      line: "{{ hostvars[item].ansible_ipv4 }} {{item}}"
       state: present
-    when: hostvars[item].ansible_host is defined
+    when: hostvars[item].ansible_ipv4 is defined
     with_items: "{{ groups.all }}"
-
-    
-
 
 # Storage nodes
 - name: Update storage nodes

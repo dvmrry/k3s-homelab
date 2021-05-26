@@ -15,7 +15,7 @@ resource "proxmox_vm_qemu" "kube-storage" {
     model    = "virtio"
     macaddr  = each.value.macaddr
     bridge   = "vmbr0"
-    tag      = 22
+    tag      = 24
     firewall = true
   }
   disk {

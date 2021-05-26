@@ -4,15 +4,16 @@
   hosts: localhost
   vars: 
     sshUser: root
-    vip: 172.22.0.200
-    clusterCidr: 172.23.0.0/16
+    clusterFqdn: c1.k3s.mrry.io
+    clusterIp: c1.k3s.mrry.io
+    clusterCidr: 172.25.0.0/16
     clusterDns: 172.23.0.10
-    serviceCidr: 172.24.0.0/16
+    serviceCidr: 172.26.0.0/16
     clusterDomain: k3s.mrry.io
   
   tasks:
   - name: install k3s on m1
-    shell: k3sup install --host k3s-m1 --user {{ sshUser }} --k3s-channel latest --cluster --tls-san {{ vip }} --k3s-extra-args="--disable servicelb --disable traefik --node-taint node-role.kubernetes.io/master=true:NoSchedule --cluster-cidr {{ clusterCidr }} --service-cidr {{ serviceCidr }} --cluster-dns {{ clusterDns }} --cluster-domain {{ clusterDomain }}"
+    shell: k3sup install --host m1 --user {{ sshUser }} --k3s-channel latest --cluster --tls-san {{ clusterIp }} --k3s-extra-args="--disable servicelb --disable traefik --node-taint node-role.kubernetes.io/master=true:NoSchedule --cluster-cidr {{ clusterCidr }} --service-cidr {{ serviceCidr }} --cluster-dns {{ clusterDns }} --cluster-domain {{ clusterDomain }}"
 
   - name: move kubeconfig
     shell: mv kubeconfig ~/.kube/config
