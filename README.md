@@ -26,12 +26,12 @@
 <div align="center">
   
 | Device            | Proccessor            | Memory       | OS         | OS Disk   | Data Disk          | NIC             | Roles                                              |
-|-------------------|-----------------------|--------------|------------|-----------|--------------------|-----------------|----------------------------------------------------|
-| Lenovo m920x Tiny | Intel Core i7-8700    | 32G DDR4     | Proxmox VE | 256G NVMe | 256G NVMe          | Mellanox CX311A | 1x k3s master / 1x k3s worker / 1x longhorn worker | 
-| Lenovo m920x Tiny | Intel Core i7-8700    | 32G DDR4     | Proxmox VE | 256G NVMe | 256G NVMe          | Mellanox CX311A | 1x k3s master / 1x k3s worker / 1x longhorn worker |
-| Lenovo m920x Tiny | Intel Core i7-8700    | 32G DDR4     | Proxmox VE | 256G NVMe | 256G NVMe          | Mellanox CX311A | 1x k3s master / 1x k3s worker / 1x longhorn worker |  
-| HPE ML30 Gen9     | Intel Xeon E3-1230 v5 | 32G DDR4 ECC | Proxmox VE | 500G SSD  | 4x 12T Exos RAIDZ2 | Mellanox CX322A | VyOS / webproxy / NFS / SMB / ZFS                  |
-| Aruba S3500-24P   | Broadcom XLS 208      | 1G           | ArubaOS    | N/A       | N/A                | N/A             | L3 core                                            |
+|-------------------|-----------------------|--------------|------------|-----------|--------------------|-----------------|-------------------------------------|
+| Lenovo m920x Tiny | Intel Core i7-8700    | 32G DDR4     | Proxmox VE | 256G NVMe | 256G NVMe          | Mellanox CX311A | 1x master / 1x worker / 1x longhorn | 
+| Lenovo m920x Tiny | Intel Core i7-8700    | 32G DDR4     | Proxmox VE | 256G NVMe | 256G NVMe          | Mellanox CX311A | 1x master / 1x worker / 1x longhorn |
+| Lenovo m920x Tiny | Intel Core i7-8700    | 32G DDR4     | Proxmox VE | 256G NVMe | 256G NVMe          | Mellanox CX311A | 1x master / 1x worker / 1x longhorn |  
+| HPE ML30 Gen9     | Intel Xeon E3-1230 v5 | 32G DDR4 ECC | Proxmox VE | 500G SSD  | 4x 12T Exos RAIDZ2 | Mellanox CX322A | VyOS / webproxy / NFS / SMB / ZFS   |
+| Aruba S3500-24P   | Broadcom XLS 208      | 1G           | ArubaOS    | N/A       | N/A                | N/A             | L3 core                             |
   
 </div>
   
@@ -51,17 +51,17 @@
 
 <div align="center">
 
-| Hostname | CPU          | Memory | OS        | OS Disk | Data Disk | Roles                    |
-|----------|--------------|--------|-----------|---------|-----------|--------------------------|
-| k3s-m1   | 2vCPU - Host | 4G     | Debian 10 | 32G     | N/A       | control-pane/etcd/master | 
-| k3s-m2   | 2vCPU - Host | 4G     | Debian 10 | 32G     | N/A       | control-pane/etcd/master | 
-| k3s-m3   | 2vCPU - Host | 4G     | Debian 10 | 32G     | N/A       | control-pane/etcd/master | 
-| k3s-w1   | 8vCPU - Host | 22G    | Debian 10 | 64G     | N/A       | worker                   | 
-| k3s-w2   | 8vCPU - Host | 22G    | Debian 10 | 64G     | N/A       | worker                   | 
-| k3s-w3   | 8vCPU - Host | 22G    | Debian 10 | 64G     | N/A       | worker                   | 
-| k3s-s1   | 2vCPU - Host | 4G     | Debian 10 | 32G     | 256G      | longhorn                 | 
-| k3s-s2   | 2vCPU - Host | 4G     | Debian 10 | 32G     | 256G      | longhorn                 | 
-| k3s-s3   | 2vCPU - Host | 4G     | Debian 10 | 32G     | 256G      | longhorn                 | 
+| Hostname       | CPU          | Memory | OS        | OS Disk | Data Disk | Roles                    |
+|----------------|--------------|--------|-----------|---------|-----------|--------------------------|
+| m1.k3s.mrry.io | 2vCPU - Host | 4G     | Debian 10 | 32G     | N/A       | control-pane/etcd/master | 
+| m2.k3s.mrry.io | 2vCPU - Host | 4G     | Debian 10 | 32G     | N/A       | control-pane/etcd/master | 
+| m3.k3s.mrry.io | 2vCPU - Host | 4G     | Debian 10 | 32G     | N/A       | control-pane/etcd/master | 
+| s1.k3s.mrry.io | 2vCPU - Host | 4G     | Debian 10 | 32G     | 256G      | longhorn                 | 
+| s2.k3s.mrry.io | 2vCPU - Host | 4G     | Debian 10 | 32G     | 256G      | longhorn                 | 
+| s3.k3s.mrry.io | 2vCPU - Host | 4G     | Debian 10 | 32G     | 256G      | longhorn                 | 
+| w1.k3s.mrry.io | 8vCPU - Host | 22G    | Debian 10 | 64G     | N/A       | worker                   | 
+| w2.k3s.mrry.io | 8vCPU - Host | 22G    | Debian 10 | 64G     | N/A       | worker                   | 
+| w3.k3s.mrry.io | 8vCPU - Host | 22G    | Debian 10 | 64G     | N/A       | worker                   | 
 
 </div>
 
