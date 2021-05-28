@@ -17,7 +17,7 @@
 - [x] Create initial cloud-init Debian 10 template
 - [x] Create Terraform playbook for node creation
 - [x] Create Ansible playbook for node configurationterraf
-- [ ] Configure kube-vip & metallb for BGP routing 
+- [x] Configure kube-vip & callico for BGP routing 
 - [ ] Implement Flux/Kustomize
 - [ ] Install Mellanox CX311A-XCAT's [Awaiting PCIe risers]
 
