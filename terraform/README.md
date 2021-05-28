@@ -1,18 +1,14 @@
 # Template machine config
 Following settings should be adjusted to your needs.
-Eg. I have my k3s machines utilizing vmbr0 on the hosts and VLAN22 with images on local-lvm
+Eg. I have my k3s machines utilizing vmbr0 on the hosts and VLAN24 with images on local-lvm
 
 Pull down latest Debian 10 cloud-init image
 
     wget https://cdimage.debian.org/cdimage/openstack/current/debian-10-openstack-amd64.qcow2
-
-Install qemu-guest-agent to VM template
-
-    virt-customize -a focal-server-cloudimg-amd64.img --install qemu-guest-agent
     
 Create proxmox VM
 
-    qm create 9000 --name debian10-cloudinit --memory 2048 -net0 virtio,bridge=vmbr0,tag=22
+    qm create 9000 --name debian10-cloudinit --memory 2048 -net0 virtio,bridge=vmbr0,tag=24
     
 Import Debian cloud-init image
 
