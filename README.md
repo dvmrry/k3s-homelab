@@ -38,15 +38,15 @@
 </div>
   
 ----
-### Extras
+### Networking
 
 <div align="center">
 
-| Device               | Proccessor          | Memory   | OS         | OS Disk  | Data Disk | NIC             | Roles          |
-|----------------------|---------------------|----------|------------|----------|-----------|-----------------|----------------|
-| Aruba S3500-24P      | Broadcom XLS 208    | 1G       | ArubaOS    | N/A      | N/A       | N/A             | N/A            |
-| Extreme x250e        |                     |          | ExtremeOS  | N/A      | N/A       | N/A             | N/A            |
-| Brocade ICX 6610-48P |                     |          |            |          |           |                 |                |
+| Device               | Proccessor          | Memory   | OS          | Roles          |
+|----------------------|---------------------|----------|-------------|----------------|
+| Aruba S3500-24P      | Broadcom XLS 208    | 1G       | ArubaOS     | N/A            |
+| Extreme x250e-24P    | ?                   | ?        | ExtremeOS   | N/A            |
+| Brocade ICX 6610-48P | ?                   | ?        | FastIron OS | L3 core        |
 
   
 </div>
