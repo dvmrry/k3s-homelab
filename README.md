@@ -26,14 +26,15 @@
 ### Hardware
 <div align="center">
   
-| Device            | Proccessor            | Memory       | OS         | OS Disk   | Data Disk          | NIC             | Roles                                              |
+| Device            | Proccessor            | Memory       | OS         | OS Disk   | Data Disk          | NIC             | Roles                               |
 |-------------------|-----------------------|--------------|------------|-----------|--------------------|-----------------|-------------------------------------|
 | Lenovo m920x Tiny | Intel Core i7-8700    | 32G DDR4     | Proxmox VE | 256G NVMe | 256G NVMe          | Mellanox CX311A | 1x master / 1x worker / 1x longhorn | 
 | Lenovo m920x Tiny | Intel Core i7-8700    | 32G DDR4     | Proxmox VE | 256G NVMe | 256G NVMe          | Mellanox CX311A | 1x master / 1x worker / 1x longhorn |
 | Lenovo m920x Tiny | Intel Core i7-8700    | 32G DDR4     | Proxmox VE | 256G NVMe | 256G NVMe          | Mellanox CX311A | 1x master / 1x worker / 1x longhorn |  
 | HPE ML30 Gen9     | Intel Xeon E3-1230 v5 | 32G DDR4 ECC | Proxmox VE | 500G SSD  | 4x 12T Exos RAIDZ2 | Mellanox CX322A | VyOS / webproxy / NFS / SMB / ZFS   |
-| Aruba S3500-24P   | Broadcom XLS 208      | 1G           | ArubaOS    | N/A       | N/A                | N/A             | L3 core                             |
-  
+| Kettop Mi18C      | Intel Celeron J1800   | 2G DDR3      | Proxmox BS | 32G SSD   | 1TB HDD            | Realtek RTL8111 | Proxmox backup server               |
+| Whitebox PC       | Intel Core i7-6700k   | 16G DDR4     | Proxmox VE | 256G SSD  | 1T SSD             | Intel I219-V    | Parsec / Steam                      |
+
 </div>
   
 ----
@@ -41,10 +42,12 @@
 
 <div align="center">
 
-| Device       | Proccessor          | Memory   | OS         | OS Disk  | Data Disk | NIC             | Roles          |
-|--------------|---------------------|----------|------------|----------|-----------|-----------------|----------------|
-| Whitebox PC  | Intel Core i7-6700k | 16G DDR4 | Proxmox VE | 256G SSD | 1T SSD    | Intel I219-V    | Parsec / Steam |
-| Kettop Mi18C | Intel Celeron J1800 | 2G DDR3  | VyOS       | 32G SSD  | N/A       | Realtek RTL8111 | TBD            |
+| Device               | Proccessor          | Memory   | OS         | OS Disk  | Data Disk | NIC             | Roles          |
+|----------------------|---------------------|----------|------------|----------|-----------|-----------------|----------------|
+| Aruba S3500-24P      | Broadcom XLS 208    | 1G       | ArubaOS    | N/A      | N/A       | N/A             | N/A            |
+| Extreme x250e        |                     |          | ExtremeOS  | N/A      | N/A       | N/A             | N/A            |
+| Brocade ICX 6610-48P |                     |          |            |          |           |                 |                |
+
   
 </div>
 
