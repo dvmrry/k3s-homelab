@@ -18,16 +18,16 @@
   - name: w3 - node-type
     shell: kubectl label nodes w3 node-type=worker --overwrite
     
-  - name: s1 - kubernetes.io/role
-    shell: kubectl label nodes s1 kubernetes.io/role=longhorn --overwrite
-  - name: s2 - kubernetes.io/role
-    shell: kubectl label nodes s2 kubernetes.io/role=longhorn --overwrite
-  - name: s3 - kubernetes.io/role
-    shell: kubectl label nodes s3 kubernetes.io/role=longhorn --overwrite
-  
-  - name: s1 - node-type
-    shell: kubectl label nodes s1 node-type=longhorn --overwrite
-  - name: s2 - node-type
-    shell: kubectl label nodes s2 node-type=longhorn --overwrite
-  - name: s3 - node-type
-    shell: kubectl label nodes s3 node-type=longhorn --overwrite
+    #  - name: s1 - kubernetes.io/role
+    #    shell: kubectl label nodes s1 kubernetes.io/role=longhorn --overwrite
+    #  - name: s2 - kubernetes.io/role
+    #    shell: kubectl label nodes s2 kubernetes.io/role=longhorn --overwrite
+    #  - name: s3 - kubernetes.io/role
+    #    shell: kubectl label nodes s3 kubernetes.io/role=longhorn --overwrite
+
+    #  - name: s1 - node-type
+    #    shell: kubectl label nodes s1 node-type=longhorn --overwrite
+    #  - name: s2 - node-type
+    #    shell: kubectl label nodes s2 node-type=longhorn --overwrite
+    #  - name: s3 - node-type
+    #    shell: kubectl label nodes s3 node-type=longhorn --overwrite

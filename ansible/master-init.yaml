@@ -4,8 +4,8 @@
   hosts: localhost
   vars: 
     sshUser: root
-    clusterFqdn: c1.k3s.mrry.io
-    clusterIp: c1.k3s.mrry.io
+    clusterFqdn: cl.k3s.mrry.io
+    clusterIp: 172.23.0.1
     clusterCidr: 172.25.0.0/16
     clusterDns: 172.23.0.10
     serviceCidr: 172.26.0.0/16

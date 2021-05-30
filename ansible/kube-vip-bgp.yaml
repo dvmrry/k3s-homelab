@@ -7,12 +7,5 @@
   - name: Pull RBAC to manifests
     shell: curl -s https://kube-vip.io/manifests/rbac.yaml > /var/lib/rancher/k3s/server/manifests/kube-vip-rbac.yaml
 
-  - name: Fetch container
-    shell: crictl pull docker.io/plndr/kube-vip:0.3.4
-
-  - name: Create alias
-    shell: alias kube-vip="ctr run --rm --net-host docker.io/plndr/kube-vip:0.3.4 vip /kube-vip"
-
-  - name: Generate manifest
-    shell: ctr run --rm --net-host docker.io/plndr/kube-vip:0.3.4 vip /kube-vip manifest daemonset --bgp  --interface lo --interface eth0 --address 172.22.0.200 --controlplane --leaderElection --taint --inCluster | tee /var/lib/rancher/k3s/server/manifests/kube-vip.yaml
-
+  - name: Pull kube-vip manifest
+    shell: https://raw.githubusercontent.com/dvmrry/k3s-gitops/main/cluster/kube-vip/kube-vip-bgp.yaml > /var/lib/rancher/k3s/server/manifests/kube-vip-bgp.yaml

@@ -24,11 +24,6 @@
     apt:
       name: sudo
       state: present
-  
-  - name: install nfs
-    apt:
-      name: nfs-common
-      state: present
 
   - name: Add IP address of all hosts to all hosts
     lineinfile:
@@ -39,12 +34,13 @@
     when: hostvars[item].ansible_ipv4 is defined
     with_items: "{{ groups.all }}"
 
-# Storage nodes
-- name: Update storage nodes
-  hosts: storage
+# Workers
+- name: Update all nodes
+  hosts: workers
   remote_user: root
-  tasks: 
-  - name: install open-iscsi
+  tasks:
+  - name: install nfs
     apt:
-      name: open-iscsi
-      state: present
+      name: nfs-common
+
+
