@@ -2,8 +2,8 @@
 Following settings should be adjusted to your needs.
 Eg. I have my k3s machines utilizing vmbr0 on the hosts and VLAN24 with images on Ceph storage
 
-Export ENV variables
-    
+**Export ENV variables**
+
     export MEMORY="2048"
     export NIC="vmbr0"
     export SSH_KEY="~/.ssh/id_ed25519.pub"
@@ -13,51 +13,51 @@ Export ENV variables
     export VM_ID="9000"
     export VM_NAME="debian10-cloudimg"
 
-Pull down latest Debian 10 cloud-init image
+**Pull down latest Debian 10 cloud-init image**
 
     wget https://cdimage.debian.org/cdimage/openstack/current/debian-10-openstack-amd64.qcow2
     
-Create proxmox VM
+**Create proxmox VM**
 
     qm create $VM_ID --name $VM_NAME --memory $MEMORY -net0 virtio,bridge=$NIC,tag=$VLAN
     
-Import Debian cloud-init image
+**Import Debian cloud-init image**
 
     qm importdisk $VM_ID debian-10-openstack-amd64.qcow2 $STORAGE
  
-Set imported image as scsi0
+**Set imported image as scsi0**
 
     qm set $VM_ID --scsihw virtio-scsi-pci --scsi0 $STORAGE:vm-$VM_ID-disk-0
     
-Add cloud-init disk
+**Add cloud-init disk**
 
     qm set $VM_ID --ide2 $STORAGE:cloudinit
     
-Set scsi0 as boot disk
+**Set scsi0 as boot disk**
 
     qm set $VM_ID --boot c --bootdisk scsi0
 
-Set host CPU type and add AES hardware acceleration flag
+**Set host CPU type and add AES hardware acceleration flag**
 
     qm set $VM_ID --cpu host,flags=+aes
 
-Add serial device for cloud-init
+**Add serial device for cloud-init**
 
     qm set $VM_ID --serial0 socket
 
-Enable qemu-guest-agent (to be installed via Ansible)
+**Enable qemu-guest-agent (to be installed via Ansible)**
 
     qm set $VM_ID --agent enabled=1
 
-Copy SSH key
+**Copy SSH key**
 
     qm set $VM_ID --sshkey $SSH_KEY
 
-Set local user (no password - SSH key will be used for login)
+**Set local user (no password - SSH key will be used for login)**
 
     qm set $VM_ID --ciuser $USER
     
-Convert to template
+**Convert to template**
     
     qm template $VM_ID
 
