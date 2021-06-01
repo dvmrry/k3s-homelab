@@ -1,6 +1,6 @@
 # Template machine config
 Following settings should be adjusted to your needs.
-Eg. I have my k3s machines utilizing vmbr0 on the hosts and VLAN24 with images on ceph storage
+Eg. I have my k3s machines utilizing vmbr0 on the hosts and VLAN24 with images on Ceph storage
 
 Export ENV variables
     
