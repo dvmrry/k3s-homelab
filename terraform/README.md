@@ -6,7 +6,7 @@ Eg. I have my k3s machines utilizing vmbr0 on the hosts and VLAN24 with images o
 
     export MEMORY="2048"
     export NIC="vmbr0"
-    export SSH_KEY="~/.ssh/id_ed25519.pub"
+    export SSH_KEY="/root/.ssh/id_ed25519.pub"
     export STORAGE="ceph"
     export USER="dvmrry"
     export VLAN="24"
