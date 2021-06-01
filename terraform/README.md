@@ -4,8 +4,12 @@ Eg. I have my k3s machines utilizing vmbr0 on the hosts and VLAN24 with images o
 
 Export ENV variables
     
+    export MEMORY="2048"
+    export NIC="vmbr0"
+    export SSH_KEY="~/.ssh/id_ed25519.pub"
     export STORAGE="ceph"
     export USER="dvmrry"
+    export VLAN="24"
     export VM_ID="9000"
     export VM_NAME="debian10-cloudimg"
 
@@ -15,7 +19,7 @@ Pull down latest Debian 10 cloud-init image
     
 Create proxmox VM
 
-    qm create $VM_ID --name $VM_NAME --memory 2048 -net0 virtio,bridge=vmbr0,tag=24
+    qm create $VM_ID --name $VM_NAME --memory $MEMORY -net0 virtio,bridge=$NIC,tag=$VLAN
     
 Import Debian cloud-init image
 
@@ -41,13 +45,13 @@ Add serial device for cloud-init
 
     qm set $VM_ID --serial0 socket
 
-Enable qemu-guest-agent
+Enable qemu-guest-agent (to be installed via Ansible)
 
     qm set $VM_ID --agent enabled=1
 
 Copy SSH key
 
-    qm set $VM_ID --sshkey ~/.ssh/id_ed25519.pub
+    qm set $VM_ID --sshkey $SSH_KEY
 
 Set local user (no password - SSH key will be used for login)
 
