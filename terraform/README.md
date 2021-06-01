@@ -8,7 +8,7 @@ Pull down latest Debian 10 cloud-init image
     
 Create proxmox VM
 
-    qm create 9000 --name debian10-cloudinit --memory 2048 -net0 virtio,bridge=vmbr0,tag=24
+    qm create 9000 --name debian10-cloudimg --memory 2048 -net0 virtio,bridge=vmbr0,tag=24
     
 Import Debian cloud-init image
 
