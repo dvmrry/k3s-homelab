@@ -23,7 +23,7 @@ Eg. I have my k3s machines utilizing vmbr0 on the hosts and VLAN24 with images o
     
 **Import Debian cloud-init image**
 
-    qm importdisk $VM_ID debian-10-openstack-amd64.qcow2 $STORAGE
+    qm importdisk --format qcow2 $VM_ID debian-10-openstack-amd64.qcow2 $STORAGE 
  
 **Set imported image as scsi0**
 
