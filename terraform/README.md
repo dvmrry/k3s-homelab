@@ -6,7 +6,7 @@ Eg. I have my k3s machines utilizing vmbr0 on the hosts and VLAN24 with images o
 
     export MEMORY="2048"
     export NIC="vmbr0"
-    export SSH_KEY="/root/.ssh/id_ed25519.pub"
+    export SSH_KEY="id_ed25519.pub"
     export STORAGE="ceph"
     export USER="dvmrry"
     export VLAN="24"
@@ -56,7 +56,7 @@ Eg. I have my k3s machines utilizing vmbr0 on the hosts and VLAN24 with images o
 
 **Copy SSH key**
 
-    qm set $VM_ID --sshkey $SSH_KEY
+    qm set $VM_ID --sshkey ~/.ssh/$SSH_KEY
 
 **Set local user (no password - SSH key will be used for login)**
 
