@@ -1,0 +1,50 @@
+---
+# Configure passthroughs
+- name: Passthrough k3s-h1
+  hosts: k3s-h1
+  remote_user: root
+  tasks: 
+  - name: Provision k3s-s1 
+    shell: qm set 120 --scsi1 /dev/disk/by-id/nvme-Inland_NVMe_SSD_256GB_IBMC210325601699
+
+- name: Passthrough k3s-h2
+  hosts: k3s-h2
+  remote_user: root
+  tasks: 
+  - name: Provision k3s-s2 
+    shell: qm set 220 --scsi1 /dev/disk/by-id/nvme-Inland_NVMe_SSD_256GB_IBMC210325601625
+
+- name: Passthrough k3s-h3
+  hosts: k3s-h3
+  remote_user: root
+  tasks: 
+  - name: Provision k3s-s3 
+    shell: qm set 320 --scsi1 /dev/disk/by-id/nvme-Inland_NVMe_SSD_256GB_IBMC210325600524
+
+- name: Update storage nodes
+  hosts: storage
+  remote_user: root
+  tasks: 
+  - name: Purge /dev/sdb
+    shell: echo -e "d\nw" | fdisk /dev/sdb
+    args:
+      executable: /bin/bash
+  - name: Create new /dev/sdb1
+    shell: echo -e "n\np\n1\n\n\nw" | fdisk /dev/sdb
+    args:
+      executable: /bin/bash
+  - name: Create new ext4
+    filesystem: 
+      dev: /dev/sdb1
+      fstype: ext4
+  - name: Create longhorn dir
+    file: 
+      path: /var/lib/longhorn
+      state: directory
+  - name: Mount longhorn 
+    mount:
+      path: /var/lib/longhorn
+      src: /dev/sdb1
+      fstype: ext4
+      opts: defaults
+      state: mounted

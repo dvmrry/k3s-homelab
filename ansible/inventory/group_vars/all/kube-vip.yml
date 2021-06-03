@@ -1,0 +1,4 @@
+---
+
+# kube-vip host interface
+kubevip_interface: eth0

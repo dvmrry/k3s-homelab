@@ -1,0 +1,13 @@
+---
+
+- name: remove pve-enterprise 
+  lineinfile: 
+    dest: /etc/apt/sources.list.d/pve-enterprise.list    
+    regex: '^deb https://enterprise.proxmox.com/debian/pve buster pve-enterprise'
+    state: absent
+  
+- name: add pve-no-subscription
+  lineinfile: 
+    dest: /etc/apt/sources.list.d/pve-enterprise.list      
+    line: deb http://download.proxmox.com/debian buster pve-no-subscription
+    state: present
