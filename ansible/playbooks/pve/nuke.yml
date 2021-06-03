@@ -1,12 +1,21 @@
 ---
-# hosts
-- name: Destroy all nodes on k3s-h1
-  hosts: pve03
+
+- name: Stop all k3s VMs
+  hosts:
+    - pve03
+    - pve04
+    - pve05
   user: root
   ignore_errors: yes
   tasks:
   - name: stop all vms
     shell: pvesh create /nodes/localhost/stopall
+
+- name: Destroy all nodes on k3s-h2
+  hosts: pve04
+  user: root
+  ignore_errors: yes
+  tasks:
   - name: destroy k3s-m1
     shell: qm destroy 100
   - name: destroy k3s-w1
@@ -17,9 +26,6 @@
   user: root
   ignore_errors: yes
   tasks:
-  tasks:
-  - name: stop all vms
-    shell: pvesh create /nodes/localhost/stopall
   - name: destroy k3s-m2
     shell: qm destroy 200
   - name: destroy k3s-w2
@@ -30,9 +36,6 @@
   user: root
   ignore_errors: yes
   tasks:
-  tasks:
-  - name: stop all vms
-    shell: pvesh create /nodes/localhost/stopall
   - name: destroy k3s-m3
     shell: qm destroy 300
   - name: destroy k3s-w3
