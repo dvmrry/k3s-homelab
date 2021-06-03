@@ -41,11 +41,13 @@ spec:
         - name: bgp_routerinterface
           value: "eth0"
         - name: bgp_as
-          value: "65000"
+          value: "65100"
         - name: bgp_peers
-          value: "172.16.0.254:65000::false"
+          value: "172.24.0.254:65100::false"
         - name: vip_address
-          value: "172.24.0.200"
+          value: "172.25.0.1"
+        - name: vip_configmap
+          value: "plndr"
         image: plndr/kube-vip:0.3.4
         imagePullPolicy: Always
         name: kube-vip

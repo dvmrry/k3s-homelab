@@ -13,7 +13,7 @@ variable "masters" {
   default = {
     "m1.k3s.mrry.io" = {
       id          = 100
-      cidr        = "172.24.0.210/24"
+      cidr        = "172.24.0.1/24"
       cores       = 4
       gw          = "172.24.0.254"
       macaddr     = "02:DE:4D:48:28:01"
@@ -23,7 +23,7 @@ variable "masters" {
     },
     "m2.k3s.mrry.io" = {
       id          = 200
-      cidr        = "172.24.0.211/24"
+      cidr        = "172.24.0.2/24"
       cores       = 4
       gw          = "172.24.0.254"
       macaddr     = "02:DE:4D:48:28:02"
@@ -33,7 +33,7 @@ variable "masters" {
     },
     "m3.k3s.mrry.io" = {
       id          = 300
-      cidr        = "172.24.0.212/24"
+      cidr        = "172.24.0.3/24"
       cores       = 4
       gw          = "172.24.0.254"
       macaddr     = "02:DE:4D:48:28:03"
@@ -49,7 +49,7 @@ variable "workers" {
   default = {
     "w1.k3s.mrry.io" = {
       id          = 110
-      cidr        = "172.24.0.220/24"
+      cidr        = "172.24.0.4/24"
       cores       = 8
       gw          = "172.24.0.254"
       macaddr     = "02:DE:4D:48:28:10"
@@ -59,7 +59,7 @@ variable "workers" {
     },
     "w2.k3s.mrry.io" = {
       id          = 210
-      cidr        = "172.24.0.221/24"
+      cidr        = "172.24.0.5/24"
       cores       = 8
       gw          = "172.24.0.254"
       macaddr     = "02:DE:4D:48:28:11"
@@ -69,7 +69,7 @@ variable "workers" {
     },
     "w3.k3s.mrry.io" = {
       id          = 310
-      cidr        = "172.24.0.222/24"
+      cidr        = "172.24.0.6/24"
       cores       = 8
       gw          = "172.24.0.254"
       macaddr     = "02:DE:4D:48:28:12"
@@ -80,38 +80,3 @@ variable "workers" {
   }
 }
 
-variable "storage" {
-  type = map(map(string))
-  default = {
-    "s1.k3s.mrry.io" = {
-      id          = 120
-      cidr        = "172.24.0.230/24"
-      cores       = 4
-      gw          = "172.24.0.254"
-      macaddr     = "02:DE:4D:48:28:20"
-      memory      = 4096
-      disk        = "16G"
-      target_node = "k3s-h1"
-    },
-    "s2.k3s.mrry.io" = {
-      id          = 220
-      cidr        = "172.24.0.231/24"
-      cores       = 4
-      gw          = "172.24.0.254"
-      macaddr     = "02:DE:4D:48:28:21"
-      memory      = 4096
-      disk        = "16G"
-      target_node = "k3s-h2"
-    },
-    "s3.k3s.mrry.io" = {
-      id          = 320
-      cidr        = "172.24.0.232/24"
-      cores       = 4
-      gw          = "172.24.0.254"
-      macaddr     = "02:DE:4D:48:28:22"
-      memory      = 4096
-      disk        = "16G"
-      target_node = "k3s-h3"
-    }
-  }
-}
