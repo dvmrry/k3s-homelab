@@ -1,4 +1,7 @@
 ---
 
-# kube-vip host interface
-kubevip_interface: eth0
+kube-vip:
+  router_interface: eth0
+  bgp_as: 65100
+  bgp_peer_as: 65100
+  bgp_peer_address: 172.24.0.254

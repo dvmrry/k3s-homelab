@@ -1,10 +1,6 @@
 --- 
 
-- include: hostfile.yml 
+- include: hosts.yml 
   tags:
   - hostfile
-
-- include: packages.yml
-  tags:
-  - packages
 

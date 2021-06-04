@@ -1,19 +1,34 @@
 --- 
 
-- include: hostfile.yml 
-  tags:
-  - hostfile
-
 - include: packages.yml
   tags:
   - packages
 
-- include: etcd-secret.yml
+- include: kubeconfig.yml
+  tags:
+  - kubeconfig
+  
+- include: calico.yml
   when:
+  - k3s_control_node is defined
+  - k3s_control_node
+  - calico.enabled is defined
+  - calico.enabled
+  tags:
+  - calico
+
+- include: registry.yml
+  when: mirror_registry is defined
+        or (private_registries is defined
+          and private_registries|length > 0)
+  tags:
+  - registry
+
+- include: secrets.yml
   - k3s_control_node is defined
   - k3s_control_node
   - k3s_etcd_datastore is defined
   - k3s_etcd_datastore
   tags:
-  - etcd-secret
+  - secrets
 

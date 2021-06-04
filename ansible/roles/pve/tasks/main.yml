@@ -11,10 +11,6 @@
   tags:
   - grub
 
-- include: hostfile.yml 
-  tags:
-  - hostfile
-
 - include: modules.yml
   loop:
     - "vfio"

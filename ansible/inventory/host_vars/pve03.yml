@@ -3,5 +3,8 @@
 # IP address of node
 ansible_host: "172.18.0.3"
 
+# Subdomain of node
+ansible_subdomain: "mgmt.mrry.io"
+
 # Ansible user to ssh into servers with
 ansible_user: "root"
