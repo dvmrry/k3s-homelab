@@ -32,7 +32,6 @@ Eg. I have my k3s machines utilizing vmbr0 on the hosts and VLAN24 with images o
    *NFS storage may require:*
 
     qm set $VM_ID --scsihw virtio-scsi-pci --scsi0 $STORAGE:$VM_ID/vm-$VM_ID-disk-0.qcow2
-
     
 **Add cloud-init disk**
 
