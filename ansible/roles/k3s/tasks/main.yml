@@ -1,5 +1,13 @@
 --- 
 
+- include: hostfile.yml 
+  tags:
+  - hostfile
+
+- include: packages.yml
+  tags:
+  - packages
+
 - include: etcd-secret.yml
   when:
   - k3s_control_node is defined
@@ -8,3 +16,4 @@
   - k3s_etcd_datastore
   tags:
   - etcd-secret
+

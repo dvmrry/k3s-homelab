@@ -1,8 +1,2 @@
 ---
 
-packages:
-  apt:
-  - curl
-  - git
-  - nfs-common
-  - sudo
