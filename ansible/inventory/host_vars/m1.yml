@@ -1,7 +1,7 @@
 ---
 
 # IP address of node
-ansible_host: "172.24.0.1"
+ansible_host: "172.24.0.10"
 
 # Subdomain of node
 ansible_subdomain: "k3s.mrry.io"
