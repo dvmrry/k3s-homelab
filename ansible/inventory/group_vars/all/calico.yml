@@ -14,3 +14,24 @@ calico:
   node:
     cidrs:
     - 172.24.0.0/24
+  vip:
+    fqdn:
+    - cl.k3s.mrry.io
+    ip:
+    - 172.25.0.1
+  cluster:
+    cidr:
+    - 172.26.0.0/16
+  service:
+    cidr:
+    - 172.27.0.0/16
+    
+    
+
+registration_fqdn: cl.k3s.mrry.io      
+registration_ip: 17.25.0.1
+cluster_cidr: 172.26.0.0/16
+service_cidr: 172.27.0.0/16
+
+
+

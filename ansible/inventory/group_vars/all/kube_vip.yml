@@ -1,6 +1,6 @@
 ---
 
-kube-vip:
+kube_vip:
   router_interface: eth0
   bgp_as: 65100
   bgp_peer_as: 65100

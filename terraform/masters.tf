@@ -5,6 +5,7 @@ resource "proxmox_vm_qemu" "kube-master" {
   target_node = each.value.target_node
   agent       = 1
   clone       = "${each.value.target_node}-${var.common.clone}"
+  clone_wait  = 0
   vmid        = each.value.id
   memory      = each.value.memory
   cores       = each.value.cores
@@ -34,7 +35,7 @@ resource "proxmox_vm_qemu" "kube-master" {
   scsihw       = "virtio-scsi-pci"
   os_type      = "cloud-init"
   ipconfig0    = "ip=${each.value.cidr},gw=${each.value.gw}"
-  ciuser       = "root"
+  ciuser       = "dvmrry"
   searchdomain = var.common.search_domain
   nameserver   = var.common.nameserver
   sshkeys      = data.sops_file.secrets.data["k3s.ssh_key"]

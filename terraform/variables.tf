@@ -12,34 +12,34 @@ variable "masters" {
   type = map(map(string))
   default = {
     "m1.k3s.mrry.io" = {
-      id          = 100
-      cidr        = "172.24.0.1/24"
+      id          = 300
+      cidr        = "172.24.0.10/24"
       cores       = 4
       gw          = "172.24.0.254"
-      macaddr     = "02:DE:4D:48:28:01"
+      macaddr     = "02:DE:4D:48:24:10"
       memory      = 4096
       disk        = "16G"
-      target_node = "k3s-h1"
+      target_node = "pve03"
     },
     "m2.k3s.mrry.io" = {
-      id          = 200
-      cidr        = "172.24.0.2/24"
+      id          = 301
+      cidr        = "172.24.0.11/24"
       cores       = 4
       gw          = "172.24.0.254"
-      macaddr     = "02:DE:4D:48:28:02"
+      macaddr     = "02:DE:4D:48:24:11"
       memory      = 4096
       disk        = "16G"
-      target_node = "k3s-h2"
+      target_node = "pve04"
     },
     "m3.k3s.mrry.io" = {
-      id          = 300
-      cidr        = "172.24.0.3/24"
+      id          = 302
+      cidr        = "172.24.0.12/24"
       cores       = 4
       gw          = "172.24.0.254"
-      macaddr     = "02:DE:4D:48:28:03"
+      macaddr     = "02:DE:4D:48:24:12"
       memory      = 4096
       disk        = "16G"
-      target_node = "k3s-h3"
+      target_node = "pve05"
     }
   }
 }
@@ -48,34 +48,34 @@ variable "workers" {
   type = map(map(string))
   default = {
     "w1.k3s.mrry.io" = {
-      id          = 110
-      cidr        = "172.24.0.4/24"
+      id          = 303
+      cidr        = "172.24.0.20/24"
       cores       = 8
       gw          = "172.24.0.254"
-      macaddr     = "02:DE:4D:48:28:10"
+      macaddr     = "02:DE:4D:48:24:20"
       memory      = 22528
       disk        = "16G"
-      target_node = "k3s-h1"
+      target_node = "pve03"
     },
     "w2.k3s.mrry.io" = {
-      id          = 210
-      cidr        = "172.24.0.5/24"
+      id          = 304
+      cidr        = "172.24.0.21/24"
       cores       = 8
       gw          = "172.24.0.254"
-      macaddr     = "02:DE:4D:48:28:11"
+      macaddr     = "02:DE:4D:48:24:21"
       memory      = 22528
       disk        = "16G"
-      target_node = "k3s-h2"
+      target_node = "pve04"
     },
     "w3.k3s.mrry.io" = {
-      id          = 310
-      cidr        = "172.24.0.6/24"
+      id          = 305
+      cidr        = "172.24.0.22/24"
       cores       = 8
       gw          = "172.24.0.254"
-      macaddr     = "02:DE:4D:48:28:12"
+      macaddr     = "02:DE:4D:48:24:22"
       memory      = 22528
       disk        = "16G"
-      target_node = "k3s-h3"
+      target_node = "pve05"
     }
   }
 }

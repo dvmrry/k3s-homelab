@@ -9,7 +9,7 @@ spec:
     # Note: The ipPools section cannot be modified post-install.
     ipPools:
     - blockSize: 26
-      cidr: "{{ k3s_server["k3s-cluster-cidr"] }}"
+      cidr: "{{ k3s_server["cluster-cidr"] }}"
       {% if calico.bgp.enabled is defined and calico.bgp.enabled %}
       encapsulation: None
       {% else %}
