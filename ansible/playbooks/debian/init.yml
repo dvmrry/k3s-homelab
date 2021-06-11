@@ -2,6 +2,8 @@
 
 - hosts:
   - pve-nodes
+  - master-nodes
+  - worker-nodes
   - storage
   become: true
   gather_facts: true

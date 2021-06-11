@@ -8,4 +8,4 @@ ansible_subdomain: "k3s.mrry.io"
 
 
 # Ansible user to ssh into servers with
-ansible_user: "root"
+ansible_user: "dvmrry"

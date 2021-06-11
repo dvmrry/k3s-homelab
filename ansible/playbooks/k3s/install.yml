@@ -11,6 +11,5 @@
     ansible.builtin.pause:
       seconds: 3
   roles:
-  - kube_vip
   - xanmanning.k3s
   - k3s

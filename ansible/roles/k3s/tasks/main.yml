@@ -25,6 +25,7 @@
   - registry
 
 - include: secrets.yml
+  when:
   - k3s_control_node is defined
   - k3s_control_node
   - k3s_etcd_datastore is defined
