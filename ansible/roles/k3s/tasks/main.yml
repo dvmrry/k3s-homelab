@@ -7,7 +7,7 @@
 - include: kubeconfig.yml
   tags:
   - kubeconfig
-
+  
 - include: calico.yml
   when:
   - k3s_control_node is defined
@@ -33,4 +33,3 @@
   tags:
   - secrets
 
-  

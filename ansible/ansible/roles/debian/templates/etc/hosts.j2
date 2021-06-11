@@ -1,3 +1,0 @@
-{% for item in ansible_play_batch %}
-{{ hostvars[item].ansible_host }}	{{ hostvars[item].ansible_fqdn }}	{{ item }}
-{% endfor %}

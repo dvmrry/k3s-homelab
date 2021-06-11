@@ -1,6 +1,0 @@
---- 
-
-- include: hosts.yml 
-  tags:
-  - hostfile
-

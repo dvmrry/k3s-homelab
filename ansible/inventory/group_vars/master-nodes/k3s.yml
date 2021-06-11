@@ -10,8 +10,8 @@ k3s_control_node: true
 k3s_server:
   node-ip: "{{ ansible_host }}"
   tls-san:
-  - "cl.k3s.mrry.io"
-  - "172.25.0.1"
+  - "{{ k3s_registration_fqdn }}"
+  - "{{ k3s_registration_ip }}"
   docker: false
   flannel-backend: 'none' # This needs to be in quotes
   disable:
