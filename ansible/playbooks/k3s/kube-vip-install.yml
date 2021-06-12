@@ -2,7 +2,6 @@
 
 - hosts:
   - master-nodes
-  - worker-nodes
   become: true
   gather_facts: true
   any_errors_fatal: true
@@ -11,6 +10,4 @@
     pause:
       seconds: 3
   roles:
-  - xanmanning.k3s
-  - k3s
   - kube-vip

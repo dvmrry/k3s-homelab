@@ -9,8 +9,7 @@
   ignore_errors: yes
   tasks:
   - name: stop all vms
-    ansible.builtin.shell: 
-      cmd: pvesh create /nodes/localhost/stopall
+    shell: pvesh create /nodes/localhost/stopall
 
 - name: Destroy all nodes on k3s-h2
   hosts: pve04
@@ -18,11 +17,9 @@
   ignore_errors: yes
   tasks:
   - name: destroy k3s-m1
-    ansible.builtin.shell: 
-      cmd: qm destroy 100
+    shell: qm destroy 100
   - name: destroy k3s-w1
-    ansible.builtin.shell: 
-      cmd: qm destroy 110
+    shell: qm destroy 110
 
 - name: Destroy all nodes on k3s-h2
   hosts: pve04
@@ -30,11 +27,9 @@
   ignore_errors: yes
   tasks:
   - name: destroy k3s-m2
-    ansible.builtin.shell: 
-      cmd: qm destroy 200
+    shell: qm destroy 200
   - name: destroy k3s-w2
-    ansible.builtin.shell: 
-      cmd: qm destroy 210
+    shell: qm destroy 210
   
 - name: Destroy all nodes on k3s-h3
   hosts: pve05
@@ -42,9 +37,7 @@
   ignore_errors: yes
   tasks:
   - name: destroy k3s-m3
-    ansible.builtin.shell: 
-      cmd: qm destroy 300
+    shell: qm destroy 300
   - name: destroy k3s-w3
-    ansible.builtin.shell: 
-      cmd: qm destroy 310
+    shell: qm destroy 310
   
