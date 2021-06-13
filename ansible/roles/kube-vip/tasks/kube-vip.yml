@@ -1,7 +1,7 @@
 ---
 
 - name: kube_vip | deploy manifest
-  template:
+  ansible.builtin.template:
     src: "kube-vip-ds.yaml.j2"
     dest: "{{ kube_vip.manifests_dir }}/kube-vip.yaml"
     mode: 0644
@@ -10,7 +10,7 @@
   - k3s_control_node
 
 - name: kube_vip | deploy manifest
-  template:
+  ansible.builtin.template:
     src: "kube-vip-rbac.yaml.j2"
     dest: "{{ kube_vip.manifests_dir }}/kube-vip-rbac.yaml"
     mode: 0644

@@ -1,13 +1,14 @@
 ---
 
 - name: Check for existence of grub
-  stat:
+  ansible.builtin.stat:
     path: /etc/default/grub
   register: grub_result
 
 - name: Check if Grub Arg is missing
   become: true
-  shell: "grep '{{ item }}' /etc/default/grub"
+  ansible.builtin.shell: 
+    cmd: "grep '{{ item }}' /etc/default/grub"
   register: lineinfile_check
   failed_when: "lineinfile_check.rc == 2"
   changed_when: "lineinfile_check.rc == 1"
@@ -15,7 +16,7 @@
 
 - name: Add Grub Arg
   become: true
-  lineinfile:
+  ansible.builtin.lineinfile:
     backrefs: yes
     path: /etc/default/grub
     regexp: "^(GRUB_CMDLINE_LINUX_DEFAULT=\".*)\"$"
@@ -24,5 +25,6 @@
 
 - name: Update grub
   become: true
-  shell: update-grub
+  ansible.builtin.shell: 
+    cmd: update-grub
 
