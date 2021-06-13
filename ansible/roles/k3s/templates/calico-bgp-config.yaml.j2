@@ -6,3 +6,5 @@ metadata:
 spec:
   serviceExternalIPs:
   - cidr: {{ calico.bgp.externalIPs }}
+  serviceExternalIPs:
+  - cidr: {{ calico.bgp.clusterIPs }}

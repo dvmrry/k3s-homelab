@@ -3,10 +3,6 @@
 - include: packages.yml
   tags:
   - packages
-
-- include: kubeconfig.yml
-  tags:
-  - kubeconfig
   
 - include: registry.yml
   when: mirror_registry is defined
@@ -33,3 +29,6 @@
   tags:
   - secrets
 
+- include: kubeconfig.yml
+  tags:
+  - kubeconfig
