@@ -18,7 +18,7 @@
 - [x] Create Terraform playbook for node creation
 - [x] Create Ansible playbook for node configurationterraf
 - [x] Replace Aruba S3500 with Brocade 6610
-- [ ] Configure kube-vip [x] & calico for BGP routing 
+- [x] Configure kube-vip & calico for BGP routing 
 - [ ] Implement Flux/Kustomize
 - [ ] Install Mellanox CX311A-XCAT's [Awaiting PCIe risers]
 
