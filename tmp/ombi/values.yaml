@@ -32,7 +32,7 @@ ingress:
 
 persistence:
   config:
-    enabled: true
+    enabled: false
     mountPath: /config  
     storageClass: longhorn
     accessMode: ReadWriteOnce
