@@ -7,4 +7,4 @@ ansible_host: "172.18.0.15"
 ansible_subdomain: "mgmt.mrry.io"
 
 # Ansible user to ssh into VM with
-ansible_user: "dvmrry"
+ansible_user: "root"
