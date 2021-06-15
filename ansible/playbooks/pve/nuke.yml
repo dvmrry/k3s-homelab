@@ -16,28 +16,28 @@
   user: root
   ignore_errors: yes
   tasks:
-  - name: destroy k3s-m1
-    shell: qm destroy 100
-  - name: destroy k3s-w1
-    shell: qm destroy 110
+  - name: destroy m1
+    shell: qm destroy 300
+  - name: destroy w1
+    shell: qm destroy 303
 
 - name: Destroy all nodes on k3s-h2
   hosts: pve04
   user: root
   ignore_errors: yes
   tasks:
-  - name: destroy k3s-m2
-    shell: qm destroy 200
-  - name: destroy k3s-w2
-    shell: qm destroy 210
+  - name: destroy m2
+    shell: qm destroy 301
+  - name: destroy w2
+    shell: qm destroy 304
   
-- name: Destroy all nodes on k3s-h3
+- name: Destroy all nodes on pve05
   hosts: pve05
   user: root
   ignore_errors: yes
   tasks:
-  - name: destroy k3s-m3
-    shell: qm destroy 300
-  - name: destroy k3s-w3
-    shell: qm destroy 310
+  - name: destroy m3
+    shell: qm destroy 302
+  - name: destroy w3
+    shell: qm destroy 305
   
