@@ -7,4 +7,4 @@ resources:
 - flux-system.yaml
 - kube-system.yaml
 - rook-ceph.yaml
-- monitoring
+- monitoring.yaml
