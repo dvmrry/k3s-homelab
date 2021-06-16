@@ -29,7 +29,6 @@ metadata:
 spec:
   accessModes:
   - ReadWriteMany
-  storageClassName: media-nas
   resources:
     requests:
       storage: 10000 Mi
