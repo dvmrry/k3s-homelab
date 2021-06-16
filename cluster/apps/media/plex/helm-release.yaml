@@ -75,12 +75,6 @@ spec:
               operator: In
               values:
               - "true"
-          - matchExpressions:
-            - key: kubernetes.io/hostname
-              operator: In
-              values:
-              - k8s-worker-d
-              - k8s-worker-e
     resources:
       requests:
         gpu.intel.com/i915: 1
