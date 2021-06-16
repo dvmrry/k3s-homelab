@@ -6,4 +6,3 @@ resources:
 - redirect-path.yaml
 - secret.enc.yaml
 - basic-auth.yaml
-~
