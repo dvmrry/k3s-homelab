@@ -1,21 +1,115 @@
----
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
-  name: auth
-  namespace: traefik-system
-spec:
-  basicAuth:
+    name: auth
     namespace: traefik-system
-    secret: traefik-auth
+spec:
+    basicAuth:
+        namespace: traefik-system
+        secret: traefik-auth
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2021-06-16T13:58:47Z"
+    mac: ENC[AES256_GCM,data:Cm7Y3obX4ftmkgtdv0IeLfNZeKNo2U0YDPjSKRhLQW5XefqP6jacr0SDl5pVVc7E9wcPPRF5ouJZbqV1nZS2Xz4f2LLfdkjJfx8ihQ9pIB6xFtlFgwXesUc6Oa1x/37a1x4b7x5Ufk7zuUCfOaNnwyUlXuB86Fggdugebr5wy6Q=,iv:aPZpXNV2o7n65JWI7hiBpdgCW9EFfIBQNHUgDRC8jqw=,tag:5ymFcPGlMUd5E2B8WPIaMw==,type:str]
+    pgp:
+        - created_at: "2021-06-16T13:58:46Z"
+          enc: |
+            -----BEGIN PGP MESSAGE-----
 
+            hQGMA8mUYP7vXQBBAQv8CUXqP2L4WsqR+ws9KVytNL09YcV4SPo5Cf1dp7r9pF2a
+            HevG3wtFMbIagVOJ1d4VBCs6YAL9uhWaZlMz8k9M61THZT8T+8/5NRGgBBE93UWQ
+            jzV+o9qHIlXaucQJ2+2TgutdLQUelYjausDrwwvxxu3uOcmP34nburqmof2XN3N1
+            p75ESfbeykdWD+o0Zw3mq9e1oS4ttnP2u5s4G3w2i0IVgE1GCaKUTvyAxBs+RDFr
+            JTDHFbK0TcyA/86xQQIZSaF8kAeDNJHnDyR3HFmWs2ozyXhaiqQyonWRf+dOgUFe
+            tZoVKO/v4GFnePthFoj2mx/lnSCo+oLRvSb9HnhzMYPDEBFreGEo2iTxezkBXemG
+            vUmREY7SYF0lrt32q7b0NxZebMhjbkxZlVB/vbUTBjvBF3Db3WSGoEa2smwdz9iD
+            9SJoVuB85nw3C8zowbzpk8jfxwvn199IL5PakpeQdfyiBZrtDIilr3wCIaCVk1l0
+            Qt1DKZgxT+uIdeGA1ixQ0lwBaLogGXwQHhCj2xFtKOMc/sTUodLkFL8hNS+fZN7E
+            8/6vfB4/wy7AYdMQ9UJV0F8E4cgitnmi1Ei90OGaUIHRbOv96xpQoNCg0sDvPbph
+            VEBfgLXZInNRu50mSQ==
+            =6tg7
+            -----END PGP MESSAGE-----
+          fp: 1797E88B0B0CE9D2514A1C841F4200D33179FA67
+        - created_at: "2021-06-16T13:58:46Z"
+          enc: |
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMA27ETZ4qli6oARAAtEhSkcEJxqWe6OpxlB9x4TxzjwwFTTVVkNPmllXmf96A
+            /yV25U4aRp6IbXezMIpwXPZS43DkLfEM/FkqFQCYsaN6M22sc/g8F8FMuzewbVar
+            2myPdalMMTTONV+dwQxtQCFtJM8qMImYdr3+fHaM4yZSTgs9vAqKkc0zPD4Zf6RY
+            5Nm2wunZ5VELxOqaAVVkbndaRWuJvIsirbKXdQKPYvyOGe9l5m88i7Jjgi6Ub1Vl
+            zO1W7QbBJMgqMOa9soKGoCH0BFzTQ7Yn/s96eyPF1riPeaKlFNeqpBEK53TLHels
+            phow+ZLtiMZ0n1/I2z6LCJXukYDiOnJxYw+DX1pVitouLCF9TeZxyfhtI/1aWJaS
+            xwSWg/hzaidNu5D/Zkc5ccDm85kid/KH0gd6zMgTWk4cY/yfKc8ZeQ1Ga3Co2TeC
+            3wmYaghcJB3mHMLLgDxKamVmL+bmw/B+OETUoVWbVq/1uY+EMVXkhTblrEgVmB0U
+            6wQhU/kFJxeYYZOrbOnNNmjs41spDLl3ncRBzK7hEA17G/V0jwiz3RgtXsZ2GZl0
+            25w9ZNlkGC+A9l9DGqe1rKO2si0sNLHI6xPKolpPQgEkr+LKy0JeCoRhrDcpr6wj
+            xZtDpqoq8XwBtNe8gROyPNruj5RE9X2uWZj/7T3wDPBBiTVnG6x9Bg+jHHkSrvXS
+            XAHOgZwfoxwh+gMipg7zC+QDf/8nf2DK9+841E0E4lrSDZFtoDc7hu4YQeIH8tLf
+            0vwVyczrp8JfRu7l0M8roDw5nl/aRRxjDITYUUtrz5kg0QIeMG2i63bSIuFS
+            =OOF8
+            -----END PGP MESSAGE-----
+          fp: 5375D143C4FEC43EBED1D1294823D5B58339B759
+    encrypted_regex: ^(data|stringData)$
+    version: 3.7.1
 ---
 apiVersion: v1
 kind: Secret
 metadata:
-  name: traefik-auth
-  namespace: traefik-system
+    name: traefik-auth
+    namespace: traefik-system
 data:
-  users: |1
-   ZHZtcnJ5OiRhcHIxJEFFM3ZWMjNNJHhQb2FXNGUxNUZnT1J1bFBBNVpyRDAKCg==
+    users: ENC[AES256_GCM,data:Q+8UH0TyE9hBNK+DopCV/eDoN4eF3+52vDCUgUy719dDNj7GFKL3hFbMMvfJBHsw18GKFXxWb4xFNYD4upaZJ68=,iv:RkgbLYzH5OU8NJEacspOjR02n9YJNEFtJlGpes/XaIk=,tag:EHzS1yBnlwJakQMQOH2IMA==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2021-06-16T13:58:47Z"
+    mac: ENC[AES256_GCM,data:Cm7Y3obX4ftmkgtdv0IeLfNZeKNo2U0YDPjSKRhLQW5XefqP6jacr0SDl5pVVc7E9wcPPRF5ouJZbqV1nZS2Xz4f2LLfdkjJfx8ihQ9pIB6xFtlFgwXesUc6Oa1x/37a1x4b7x5Ufk7zuUCfOaNnwyUlXuB86Fggdugebr5wy6Q=,iv:aPZpXNV2o7n65JWI7hiBpdgCW9EFfIBQNHUgDRC8jqw=,tag:5ymFcPGlMUd5E2B8WPIaMw==,type:str]
+    pgp:
+        - created_at: "2021-06-16T13:58:46Z"
+          enc: |
+            -----BEGIN PGP MESSAGE-----
 
+            hQGMA8mUYP7vXQBBAQv8CUXqP2L4WsqR+ws9KVytNL09YcV4SPo5Cf1dp7r9pF2a
+            HevG3wtFMbIagVOJ1d4VBCs6YAL9uhWaZlMz8k9M61THZT8T+8/5NRGgBBE93UWQ
+            jzV+o9qHIlXaucQJ2+2TgutdLQUelYjausDrwwvxxu3uOcmP34nburqmof2XN3N1
+            p75ESfbeykdWD+o0Zw3mq9e1oS4ttnP2u5s4G3w2i0IVgE1GCaKUTvyAxBs+RDFr
+            JTDHFbK0TcyA/86xQQIZSaF8kAeDNJHnDyR3HFmWs2ozyXhaiqQyonWRf+dOgUFe
+            tZoVKO/v4GFnePthFoj2mx/lnSCo+oLRvSb9HnhzMYPDEBFreGEo2iTxezkBXemG
+            vUmREY7SYF0lrt32q7b0NxZebMhjbkxZlVB/vbUTBjvBF3Db3WSGoEa2smwdz9iD
+            9SJoVuB85nw3C8zowbzpk8jfxwvn199IL5PakpeQdfyiBZrtDIilr3wCIaCVk1l0
+            Qt1DKZgxT+uIdeGA1ixQ0lwBaLogGXwQHhCj2xFtKOMc/sTUodLkFL8hNS+fZN7E
+            8/6vfB4/wy7AYdMQ9UJV0F8E4cgitnmi1Ei90OGaUIHRbOv96xpQoNCg0sDvPbph
+            VEBfgLXZInNRu50mSQ==
+            =6tg7
+            -----END PGP MESSAGE-----
+          fp: 1797E88B0B0CE9D2514A1C841F4200D33179FA67
+        - created_at: "2021-06-16T13:58:46Z"
+          enc: |
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMA27ETZ4qli6oARAAtEhSkcEJxqWe6OpxlB9x4TxzjwwFTTVVkNPmllXmf96A
+            /yV25U4aRp6IbXezMIpwXPZS43DkLfEM/FkqFQCYsaN6M22sc/g8F8FMuzewbVar
+            2myPdalMMTTONV+dwQxtQCFtJM8qMImYdr3+fHaM4yZSTgs9vAqKkc0zPD4Zf6RY
+            5Nm2wunZ5VELxOqaAVVkbndaRWuJvIsirbKXdQKPYvyOGe9l5m88i7Jjgi6Ub1Vl
+            zO1W7QbBJMgqMOa9soKGoCH0BFzTQ7Yn/s96eyPF1riPeaKlFNeqpBEK53TLHels
+            phow+ZLtiMZ0n1/I2z6LCJXukYDiOnJxYw+DX1pVitouLCF9TeZxyfhtI/1aWJaS
+            xwSWg/hzaidNu5D/Zkc5ccDm85kid/KH0gd6zMgTWk4cY/yfKc8ZeQ1Ga3Co2TeC
+            3wmYaghcJB3mHMLLgDxKamVmL+bmw/B+OETUoVWbVq/1uY+EMVXkhTblrEgVmB0U
+            6wQhU/kFJxeYYZOrbOnNNmjs41spDLl3ncRBzK7hEA17G/V0jwiz3RgtXsZ2GZl0
+            25w9ZNlkGC+A9l9DGqe1rKO2si0sNLHI6xPKolpPQgEkr+LKy0JeCoRhrDcpr6wj
+            xZtDpqoq8XwBtNe8gROyPNruj5RE9X2uWZj/7T3wDPBBiTVnG6x9Bg+jHHkSrvXS
+            XAHOgZwfoxwh+gMipg7zC+QDf/8nf2DK9+841E0E4lrSDZFtoDc7hu4YQeIH8tLf
+            0vwVyczrp8JfRu7l0M8roDw5nl/aRRxjDITYUUtrz5kg0QIeMG2i63bSIuFS
+            =OOF8
+            -----END PGP MESSAGE-----
+          fp: 5375D143C4FEC43EBED1D1294823D5B58339B759
+    encrypted_regex: ^(data|stringData)$
+    version: 3.7.1
