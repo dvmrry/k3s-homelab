@@ -8,3 +8,5 @@ resources:
 - kube-system.yaml
 - rook-ceph.yaml
 - monitoring.yaml
+- media.yaml
+- networking.yaml
