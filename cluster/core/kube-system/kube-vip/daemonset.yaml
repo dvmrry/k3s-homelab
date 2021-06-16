@@ -42,7 +42,7 @@ spec:
         - name: bgp_as
           value: "${BGP_CLUSTER_AS}"
         - name: bgp_peers
-          value: "${BGP_PEER_ADDR}":"${BGP_PEER_AS}"::false
+          value: "${BGP_PEER_ADDR}:${BGP_PEER_AS}::false"
         - name: vip_address
           value: "${KUBE_VIP_ADDR}"
         - name: vip_configmap
