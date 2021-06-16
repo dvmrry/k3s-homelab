@@ -1,4 +1,5 @@
-piVersion: traefik.containo.us/v1alpha1
+---
+apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
   name: rfc1918-ips
