@@ -1,8 +1,8 @@
 variable "common" {
   type = map(string)
   default = {
-    os_type       = "debian"
-    clone         = "debian10-cloudimg"
+    os_type       = "ubuntu"
+    clone         = "ubuntu-cloudimg"
     search_domain = "k3s.mrry.io"
     nameserver    = "172.16.0.254"
   }
