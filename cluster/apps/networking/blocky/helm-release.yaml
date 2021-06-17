@@ -62,7 +62,7 @@ spec:
         - tcp-tls:1.0.0.1:853
       conditional:
         mapping:
-          ${SECRET_DOMAIN}: udp:${LB_COREDNS_IP}
+          ${SECRET_DOMAIN}: udp:${KUBE_DNS_IP}
       blocking:
         blackLists:
           ads:

@@ -6,6 +6,7 @@ metadata:
   namespace: flux-system
 data:
   GATEWAY_ADDRESS: "172.24.0.254"
+  KUBE_DNS_ADDRESS: "172.27.0.10"
   BGP_CLUSTER_AS: "64512"
   BGP_PEER_ADDR: "172.18.0.254"
   BGP_PEER_AS: "65100"
