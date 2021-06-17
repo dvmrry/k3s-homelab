@@ -38,13 +38,13 @@ spec:
         - name: bgp_enable
           value: "true"
         - name: bgp_routerinterface
-          value: "${BGP_ROUTER_IFACE}"
+          value: "eth0"
         - name: bgp_as
-          value: "${BGP_CLUSTER_AS}"
+          value: "64512"
         - name: bgp_peers
-          value: "${BGP_PEER_ADDR}:${BGP_PEER_AS}::false"
+          value: "172.24.0.254:64512::false"
         - name: vip_address
-          value: "${KUBE_VIP_ADDR}"
+          value: "172.25.0.1"
         - name: vip_configmap
           value: "plndr"
         image: plndr/kube-vip:0.3.5
