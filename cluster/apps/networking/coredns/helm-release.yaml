@@ -26,7 +26,7 @@ spec:
     serviceType: LoadBalancer
     service:
       externalIPs:
-      - "${LB_COREDNS_IP}"
+      - "${SVC_COREDNS_IP}"
       externalTrafficPolicy: Local
     servers:
     - zones:
