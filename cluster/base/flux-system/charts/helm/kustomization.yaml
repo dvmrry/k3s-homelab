@@ -6,3 +6,4 @@ resources:
 - k8s-at-home-charts.yaml
 - rook-ceph-charts.yaml
 - traefik-charts.yaml
+- node-feature-discovery-charts.yaml
