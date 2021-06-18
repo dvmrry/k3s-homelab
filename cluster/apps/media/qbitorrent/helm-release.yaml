@@ -27,7 +27,7 @@ spec:
       - enabled: true
         nameSuffix: bittorrent
         type: LoadBalancer
-        loadBalancerIP: "${SVC_QBITTORRENT_SVC}"
+        loadBalancerIP: "${SVC_QBITTORRENT_ADDR}"
         port:
           port: 50413
           name: bittorrent
@@ -57,17 +57,12 @@ spec:
       supplementalGroups:
       - 100
     additionalVolumeMounts:
-    - name: media-rocinante
-      mountPath: "/media-rocinante"
-    - name: media-serenity
-      mountPath: "/media-serenity"
+    - name: media-nas
+      mountPath: "/media"
     additionalVolumes:
     - name: media-rocinante
       persistentVolumeClaim:
-        claimName: nfs-media-rocinante-pvc
-    - name: media-serenity
-      persistentVolumeClaim:
-        claimName: nfs-media-serenity-pvc
+        claimName: nfs-media-nas-pvc
     resources:
       requests:
         memory: 250Mi
