@@ -19,7 +19,7 @@
 - [x] Create Ansible playbook for node configurationterraf
 - [x] Replace Aruba S3500 with Brocade 6610
 - [x] Configure kube-vip & calico for BGP routing 
-- [ ] Implement Flux/Kustomize
+- [x] Implement Flux/Kustomize
 - [ ] Install Mellanox CX311A-XCAT's [Awaiting PCIe risers]
 
 ----
@@ -74,10 +74,10 @@
 - [ ] snipe-it
 
 ## Network
-- [ ] external-dns
-- [ ] kube-vip
-- [ ] metallb
-- [ ] traefik
+- [x] calico
+- [x] external-dns
+- [x] kube-vip
+- [x] traefik
 
 ### Development
 - [ ] gitea
@@ -93,7 +93,6 @@
 ### Services
 - [ ] authelia
 - [ ] firefly-iii
-- [x] flood
 - [ ] grocy
 - [ ] polr
 - [x] qBitorrent 
@@ -103,7 +102,7 @@
 ### Media
 - [ ] bazarr
 - [x] jackett
-- [ ] tautulli
+- [x] tautulli
 - [ ] ombi
 - [x] plex
 - [x] radarr
