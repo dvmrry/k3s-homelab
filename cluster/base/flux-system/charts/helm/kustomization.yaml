@@ -7,6 +7,7 @@ resources:
 - grafana-charts.yaml
 - jetstack-charts.yaml
 - k8s-at-home-charts.yaml
+- prometheus-community-charts.yaml
 - rook-ceph-charts.yaml
 - traefik-charts.yaml
 - node-feature-discovery-charts.yaml
