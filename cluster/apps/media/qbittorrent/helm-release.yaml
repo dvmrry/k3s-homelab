@@ -60,7 +60,7 @@ spec:
     - name: media-nas
       mountPath: "/media"
     additionalVolumes:
-    - name: media-rocinante
+    - name: media-nas
       persistentVolumeClaim:
         claimName: nfs-media-nas-pvc
     resources:
