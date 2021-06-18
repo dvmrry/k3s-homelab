@@ -62,7 +62,7 @@ spec:
         type: emptyDir
         medium: Memory
       media-nas:
-        enabled: true
+        enabled: false
         existingClaim: nfs-media-nas-pvc
         mountPath: /media
         readOnly: true
