@@ -57,7 +57,7 @@ spec:
       config:
         enabled: true
         existingClaim: plex-config-v1
-      tmp:
+      transcode:
         enabled: true
         type: emptyDir
         medium: Memory
