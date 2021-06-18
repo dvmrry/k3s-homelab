@@ -55,14 +55,14 @@ spec:
           - "plex.${SECRET_DOMAIN}"
     persistence:
       config:
-        enabled: false
+        enabled: true
         existingClaim: plex-config-v1
       tmp:
         enabled: true
         type: emptyDir
         medium: Memory
       media-nas:
-        enabled: false
+        enabled: true
         existingClaim: nfs-media-nas-pvc
         mountPath: /media
         readOnly: true
