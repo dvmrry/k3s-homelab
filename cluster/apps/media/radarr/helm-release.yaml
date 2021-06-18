@@ -58,8 +58,8 @@ spec:
       supplementalGroups:
       - 100
     additionalVolumeMounts:
-    - name: media-rocinante
-      mountPath: "/media-rocinante"
+    - name: media-nas
+      mountPath: "/media"
     additionalVolumes:
     - name: media-nas
       persistentVolumeClaim:
