@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://k8s-at-home.com/charts/
       chart: plex
-      version: 5.2.0
+      version: 4.4.0
       sourceRef:
         kind: HelmRepository
         name: k8s-at-home-charts
@@ -21,69 +21,65 @@ spec:
       repository: ghcr.io/k8s-at-home/plex
       tag: v1.23.2.4656-85f0adf5b
     env:
-      TZ: "America/New_York"
+      TZ: "America/Chicago"
+      ADVERTISE_IP: "http://${SVC_PLEX_ADDR}:32400/"
+      ALLOWED_NETWORKS: "10.0.0.0/8,172.16.0.0/16"
+      PLEX_CLAIM: "${SECRET_PLEX_CLAIM_TOKEN}"
     podSecurityContext:
       supplementalGroups:
-      - 44
-      - 109
-      - 100
-    # hostNetwork: true
-    # dnsPolicy: ClusterFirstWithHostNet
+      - 5600
     service:
-      main:
-        type: LoadBalancer
-        externalIPs:
-        - "${SVC_PLEX_ADDR}"
-        externalTrafficPolicy: Local
-        annotations:
-          traefik.ingress.kubernetes.io/service.serversscheme: https
+      enabled: true
+      type: LoadBalancer
+      externalIPs: 
+      - "${SVC_PLEX_ADDR}"
+      externalTrafficPolicy: Local
+      port:
+        port: 32400
+      annotations:
+        traefik.ingress.kubernetes.io/service.serversscheme: https
     ingress:
-      main:
-        enabled: true
-        ingressClassName: "traefik"
-        annotations:
-          traefik.ingress.kubernetes.io/service.serversscheme: https
-          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-          external-dns/is-public: "true"
-          external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
-        hosts:
-        - host: "plex.${SECRET_DOMAIN}"
-          paths:
-          - path: /
-            pathType: Prefix
-        tls:
-        - hosts:
-          - "plex.${SECRET_DOMAIN}"
+      enabled: true
+      ingressClassName: "traefik"
+      annotations:
+        traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+        external-dns/is-public: "true"
+        external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
+      hosts:
+      - host: "plex.${SECRET_DOMAIN}"
+        paths:
+        - path: /
+          pathType: Prefix
+      tls:
+      - hosts:
+        - "plex.${SECRET_DOMAIN}"
     persistence:
       config:
         enabled: true
         existingClaim: plex-config-v1
-      transcode:
+      tmp:
         enabled: true
-        type: emptyDir
-        medium: Memory
-      media-nas:
-        enabled: true
-        existingClaim: nfs-media-nas-pvc
-        mountPath: /media
-        readOnly: true
+        emptyDir:
+          enabled: true
+          medium: "Memory"
+    additionalVolumeMounts:
+    - name: media-nas
+      mountPath: "/media-nas"
+      readOnly: true
+    additionalVolumes:
+    - name: media-nas
+      persistentVolumeClaim:
+        claimName: nfs-media-nas-pvc
+    tolerations:
+    - key: "nvidia.com/gpu"
+      operator: "Exists"
     affinity:
       nodeAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
           nodeSelectorTerms:
           - matchExpressions:
-            - key: feature.node.kubernetes.io/custom-intel-gpu
-              operator: In
-              values:
-              - "true"
-    resources:
-      requests:
-        gpu.intel.com/i915: 1
-        cpu: 1000m
-        memory: 1000Mi
-      limits:
-        gpu.intel.com/i915: 1
-        memory: 24000Mi
+            - key: feature.node.kubernetes.io/pci-0300_10de.present
+              operator: Exists
     podAnnotations:
       configmap.reloader.stakater.com/reload: "plex-promtail"
     addons:
@@ -104,4 +100,3 @@ spec:
           readOnly: true
         securityContext:
           runAsUser: 0
-
