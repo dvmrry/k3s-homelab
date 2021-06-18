@@ -20,10 +20,6 @@
   tags:
   - kernel
 
-- include: boot.yml
-  tags:
-  - boot
-
 - include: network.yml
   tags:
   - network

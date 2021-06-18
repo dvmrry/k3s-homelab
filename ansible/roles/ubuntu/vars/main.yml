@@ -46,15 +46,14 @@ packages:
   - unzip
   # - vim
   apt_remove:
-  - apparmor
+  # - apparmor
   - apport
   - bcache-tools
   - btrfs-progs
   - byobu
-  - cloud-init
-  - cloud-guest-utils
-  - cloud-initramfs-copymods
-  - cloud-initramfs-dyn-netconf
+  # - cloud-init - cloud-guest-utils
+  # - cloud-initramfs-copymods
+  # - cloud-initramfs-dyn-netconf
   - friendly-recovery
   - fwupd
   - landscape-common

@@ -12,7 +12,7 @@
     replace: '\1 {{ option }}={{ value }}\2'
   vars:
     option: apparmor
-    value: 0
+    value: 1
   when:
   - grub_result.stat.exists
 
