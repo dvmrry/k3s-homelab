@@ -4,6 +4,7 @@ resources:
 - bitnami-charts.yaml
 - coredns-charts.yaml
 - deliveryhero-charts.yaml
+- grafana-charts.yaml
 - jetstack-charts.yaml
 - k8s-at-home-charts.yaml
 - rook-ceph-charts.yaml
