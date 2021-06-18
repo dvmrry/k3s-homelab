@@ -22,7 +22,6 @@ spec:
       tag: v1.23.2.4656-85f0adf5b
     env:
       TZ: "America/New York"
-      ADVERTISE_IP: "http://${SVC_PLEX_ADDR}:32400/"
       ALLOWED_NETWORKS: "172.16.0.0/12"
       PLEX_CLAIM: "${SECRET_PLEX_CLAIM_TOKEN}"
     podSecurityContext:
