@@ -40,7 +40,7 @@ spec:
         - "requests.${SECRET_DOMAIN}"
     persistence:
       config:
-        enabled: false
+        enabled: true
         existingClaim: overseerr-config-v1
         mountPath: /app/config
     resources:
