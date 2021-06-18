@@ -53,11 +53,11 @@ spec:
           enabled: true
           medium: "Memory"
     additionalVolumeMounts:
-    - name: media-nas
+    - name: media
       mountPath: "/media-nas"
       readOnly: true
     additionalVolumes:
-    - name: media-nas
+    - name: media
       persistentVolumeClaim:
         claimName: nfs-media-nas-pvc
     tolerations:
