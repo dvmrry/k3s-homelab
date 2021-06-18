@@ -4,4 +4,5 @@ resources:
 - cert-manager
 - kube-system
 - namespaces
+- rook-ceph
 - system-upgrade
