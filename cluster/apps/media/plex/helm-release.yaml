@@ -47,11 +47,10 @@ spec:
       config:
         enabled: true
         existingClaim: plex-config-v1
-      tmp:
+      transcode:
         enabled: true
-        emptyDir:
-          enabled: true
-          medium: "Memory"
+        type: emptyDir
+        medium: "Memory"
       media:
         enabled: true
         existingClaim: nfs-media-nas-pvc
