@@ -40,7 +40,6 @@ spec:
         ports:
           dns-tcp:
             port: 53
-            name: dns-tcp
             protocol: TCP
             targetPort: 53
         externalTrafficPolicy: Local
@@ -52,7 +51,6 @@ spec:
         ports:
           dns-udp:
             port: 53
-            name: dns-tcp
             protocol: UDP
             targetPort: 53
         externalTrafficPolicy: Local
