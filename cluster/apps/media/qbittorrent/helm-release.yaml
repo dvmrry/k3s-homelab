@@ -23,46 +23,40 @@ spec:
     env:
       TZ: "America/New_York"
     service:
-      additionalServices:
-      - enabled: true
-        nameSuffix: bittorrent
+      main: 
         type: LoadBalancer
-        loadBalancerIP: "${SVC_QBITTORRENT_ADDR}"
-        port:
+        externalIPs: 
+        - "${SVC_QBITTORRENT_ADDR}"
+        ports:
           port: 50413
           name: bittorrent
           protocol: TCP
           targetPort: 6881
         externalTrafficPolicy: Local
     ingress:
-      enabled: true
-      ingressClassName: "traefik"
-      annotations:
-        traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-        external-dns/is-public: "true"
-        external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
-      hosts:
-      - host: "qb.${SECRET_DOMAIN}"
-        paths:
-        - path: /
-          pathType: Prefix
-      tls:
-      - hosts:
-        - "qb.${SECRET_DOMAIN}"
+      main: 
+        enabled: true
+        ingressClassName: "traefik"
+        annotations:
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          external-dns/is-public: "true"
+          external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
+        hosts:
+        - host: "qb.${SECRET_DOMAIN}"
+          paths:
+          - path: /
+            pathType: Prefix
+        tls:
+        - hosts:
+          - "qb.${SECRET_DOMAIN}"
     persistence:
       config:
         enabled: true
         existingClaim: qbittorrent-config-v1
-    podSecurityContext:
-      supplementalGroups:
-      - 100
-    additionalVolumeMounts:
-    - name: media-nas
-      mountPath: "/media"
-    additionalVolumes:
-    - name: media-nas
-      persistentVolumeClaim:
-        claimName: nfs-media-nas-pvc
+      media:
+        enabled: true
+        mountPath: "/media"
+        existingClaim: nfs-media-nas-pvc
     resources:
       requests:
         memory: 250Mi

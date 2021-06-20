@@ -83,10 +83,10 @@ spec:
         enabled: true
         type: emptyDir
         medium: Memory
-      media-nas:
+      media:
         enabled: true
         existingClaim: nfs-media-nas-pvc
-        mountPath: /media-nas
+        mountPath: /media
         readOnly: true
     affinity:
       nodeAffinity:
