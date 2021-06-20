@@ -36,6 +36,26 @@ spec:
         ports:
           http:
             port: 32400
+      dnla-tcp:
+        enabled: true
+        type: LoadBalancer
+        externalIPs:
+        - "${SVC_PLEX_ADDR}"
+        ports:
+          dnla-udp:
+            enabled: true
+            port: 32469
+        externalTrafficPolicy: Local
+      dnla-udp:
+        enabled: true
+        type: LoadBalancer
+        externalIPs:
+        - "${SVC_PLEX_ADDR}"
+        ports:
+          dnla-udp:
+            enabled: true
+            port: 32469
+        externalTrafficPolicy: Local
     ingress:
       main:
         enabled: true
