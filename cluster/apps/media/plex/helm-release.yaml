@@ -29,11 +29,10 @@ spec:
       - 100
     service:
       main:
-        primary: true
         type: LoadBalancer
-        externalTrafficPolicy: Local
         externalIPs:
-        - "${SVC_PLEX_ADDR}
+        - "${SVC_PLEX_ADDR}"
+        externalTrafficPolicy: Local
         ports:
           http:
             port: 32400
