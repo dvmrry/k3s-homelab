@@ -2,15 +2,15 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: plex
+  name: sonarr
   namespace: media
 spec:
   interval: 5m
   chart:
     spec:
       # renovate: registryUrl=https://k8s-at-home.com/charts/
-      chart: plex
-      version: 5.2.0
+      chart: sonarr
+      version: 12.2.0
       sourceRef:
         kind: HelmRepository
         name: k8s-at-home-charts
@@ -18,86 +18,83 @@ spec:
       interval: 5m
   values:
     image:
-      repository: ghcr.io/k8s-at-home/plex
-      tag: v1.23.2.4656-85f0adf5b
+      repository: ghcr.io/k8s-at-home/sonarr
+      tag: v3.0.6.1265
     env:
       TZ: "America/New_York"
-    podSecurityContext:
-      supplementalGroups:
-      - 44
-      - 109
-      - 100
-    service:
-      main:
-        type: LoadBalancer
-        externalIPs:
-        - "${SVC_PLEX_ADDR}"
-        externalTrafficPolicy: Local
-        annotations:
-          traefik.ingress.kubernetes.io/service.serversscheme: https
     ingress:
-      main:
-        enabled: true
+      enabled: true
+      ingressClassName: "traefik"
+      annotations:
+        traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+        traefik.ingress.kubernetes.io/router.middlewares: "networking-basic-auth@kubernetescrd"
+      hosts:
+      - host: "sonarr.${SECRET_DOMAIN}"
+        paths:
+        - path: /
+          pathType: Prefix
+      tls:
+      - hosts:
+        - "sonarr.${SECRET_DOMAIN}"
+      additionalIngresses:
+      - enabled: true
+        nameSuffix: "api"
         ingressClassName: "traefik"
         annotations:
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-          external-dns/is-public: "true"
-          external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
         hosts:
-        - host: "plex.${SECRET_DOMAIN}"
+        - host: "sonarr.${SECRET_DOMAIN}"
           paths:
-          - path: /
+          - path: /api
             pathType: Prefix
         tls:
         - hosts:
-          - "plex.${SECRET_DOMAIN}"
+          - "sonarr.${SECRET_DOMAIN}"
     persistence:
       config:
         enabled: true
-        existingClaim: plex-config-v1
-      transcode:
-        enabled: true
-        type: emptyDir
-        medium: Memory
-      media-rocinante:
-        enabled: true
-        existingClaim: nfs-media-nas-pvc
-        mountPath: /media-nas
-        readOnly: true
-    affinity:
-      nodeAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution:
-          nodeSelectorTerms:
-          - matchExpressions:
-            - key: feature.node.kubernetes.io/custom-intel-gpu
-              operator: In
-              values:
-              - "true"
+        existingClaim: sonarr-config-v1
+    podSecurityContext:
+      supplementalGroups:
+      - 100
+    additionalVolumeMounts:
+    - name: media-nas
+      mountPath: "/media"
+    additionalVolumes:
+    - name: media-nas
+      persistentVolumeClaim:
+        claimName: nfs-media-nas-pvc
     resources:
       requests:
-        gpu.intel.com/i915: 1
-        cpu: 1000m
-        memory: 1000Mi
+        memory: 250Mi
+        cpu: 500m
       limits:
-        gpu.intel.com/i915: 1
-        memory: 16000Mi
-    podAnnotations:
-      configmap.reloader.stakater.com/reload: "plex-promtail"
-    addons:
-      promtail:
+        memory: 1500Mi
+    prometheus:
+      podMonitor:
         enabled: true
-        image:
-          repository: grafana/promtail
-          tag: 2.2.1
-        loki: http://loki.monitoring.svc.cluster.local:3100/loki/api/v1/push
-        logs:
-        - name: promtail/plex
-          path: "/config/Library/Application Support/Plex Media Server/Logs/*.log"
-        - name: promtail/plex/plugins
-          path: "/config/Library/Application Support/Plex Media Server/Logs/PMS Plugin Logs/*.log"
-        volumeMounts:
-        - name: config
-          mountPath: /config
-          readOnly: true
-        securityContext:
-          runAsUser: 0
+        interval: 3m
+        scrapeTimeout: 1m30s
+    additionalContainers:
+    - name: exportarr
+      image: ghcr.io/onedr0p/exportarr:v0.6.0
+      imagePullPolicy: IfNotPresent
+      args: ["exportarr", "sonarr"]
+      env:
+      - name: PORT
+        value: "32123"
+      - name: URL
+        value: "http://localhost"
+      - name: CONFIG
+        value: "/config/config.xml"
+      - name: ENABLE_UNKNOWN_QUEUE_ITEMS
+        value: "true"
+      - name: ENABLE_ADDITIONAL_METRICS
+        value: "true"
+      ports:
+      - name: exportarr
+        containerPort: 32123
+      volumeMounts:
+      - name: config
+        mountPath: /config
+        readOnly: true
