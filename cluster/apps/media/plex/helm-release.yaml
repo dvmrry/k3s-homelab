@@ -21,28 +21,36 @@ spec:
       repository: ghcr.io/k8s-at-home/plex
       tag: v1.23.2.4656-85f0adf5b
     env:
-      TZ: "America/New York"
-      ALLOWED_NETWORKS: "172.16.0.0/12"
-      PLEX_CLAIM: "${SECRET_PLEX_CLAIM_TOKEN}"
+      TZ: "America/New_York"
     podSecurityContext:
       supplementalGroups:
-      - 5600
+      - 44
+      - 109
+      - 100
+    service:
+      main:
+        type: LoadBalancer
+        externalIPs:
+        - "${SVC_PLEX_ADDR}"
+        externalTrafficPolicy: Local
+        annotations:
+          traefik.ingress.kubernetes.io/service.serversscheme: https
     ingress:
-      enabled: true
-      ingressClassName: "traefik"
-      annotations:
-        traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-        external-dns/is-public: "true"
-        external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
-        traefik.ingress.kubernetes.io/service.serversscheme: https
-      hosts:
-      - host: "plex.${SECRET_DOMAIN}"
-        paths:
-        - path: /
-          pathType: Prefix
-      tls:
-      - hosts:
-        - "plex.${SECRET_DOMAIN}"
+      main:
+        enabled: true
+        ingressClassName: "traefik"
+        annotations:
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          external-dns/is-public: "true"
+          external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
+        hosts:
+        - host: "plex.${SECRET_DOMAIN}"
+          paths:
+          - path: /
+            pathType: Prefix
+        tls:
+        - hosts:
+          - "plex.${SECRET_DOMAIN}"
     persistence:
       config:
         enabled: true
@@ -50,11 +58,11 @@ spec:
       transcode:
         enabled: true
         type: emptyDir
-        medium: "Memory"
-      media:
+        medium: Memory
+      media-rocinante:
         enabled: true
         existingClaim: nfs-media-nas-pvc
-        mountPath: /media
+        mountPath: /media-nas
         readOnly: true
     affinity:
       nodeAffinity:
@@ -64,7 +72,7 @@ spec:
             - key: feature.node.kubernetes.io/custom-intel-gpu
               operator: In
               values:
-                - "true"
+              - "true"
     resources:
       requests:
         gpu.intel.com/i915: 1
