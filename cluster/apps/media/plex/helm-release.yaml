@@ -30,12 +30,19 @@ spec:
     service:
       main:
         primary: true
+        type: LoadBalancer
+        externalTrafficPolicy: Local
+        externalIPs:
+        - "${SVC_PLEX_ADDR}
         ports:
           http:
             port: 32400
       dnla-tcp:
         enabled: true
-        type: NodePort
+        type: LoadBalancer
+        externalTrafficPolicy: Local
+        externalIPs:
+        - "${SVC_PLEX_ADDR}
         ports:
           dnla-tcp:
             enabled: true
@@ -44,15 +51,17 @@ spec:
             targetPort: 32469
         externalTrafficPolicy: Local
       dnla-udp:
-        enabled: false
-        type: NodePort
+        enabled: true
+        type: LoadBalancer
+        externalTrafficPolicy: Local
+        externalIPs:
+        - "${SVC_PLEX_ADDR}
         ports:
           dnla-udp:
             enabled: true
             port: 1900
             protocol: TCP
             targetPort: 1900
-        externalTrafficPolicy: Local
     ingress:
       main:
         enabled: true
