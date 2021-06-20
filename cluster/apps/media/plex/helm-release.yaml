@@ -45,6 +45,8 @@ spec:
         ports:
           dnla-udp:
             port: 32469
+            protocol: TCP
+            targetPort: 32469
       dnla-udp:
         enabled: true
         type: LoadBalancer
@@ -54,6 +56,8 @@ spec:
         ports:
           dnla-udp:
             port: 32469
+            protocol: UDP
+            targetPort: 1900
     ingress:
       main:
         enabled: true
