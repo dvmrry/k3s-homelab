@@ -53,16 +53,14 @@ spec:
       config:
         enabled: true
         existingClaim: sonarr-config-v1
+      media:
+        enabled: true
+        existingClaim: nfs-media-nas-pvc
+        mountPath: /media
+        readOnly: true
     podSecurityContext:
       supplementalGroups:
       - 100
-    additionalVolumeMounts:
-    - name: media-nas
-      mountPath: "/media"
-    additionalVolumes:
-    - name: media-nas
-      persistentVolumeClaim:
-        claimName: nfs-media-nas-pvc
     resources:
       requests:
         memory: 250Mi
