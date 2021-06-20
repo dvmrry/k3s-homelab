@@ -52,17 +52,11 @@ spec:
         emptyDir:
           enabled: true
           medium: "Memory"
-    additionalVolumeMounts:
-    - name: media
-      mountPath: "/media-nas"
-      readOnly: true
-    additionalVolumes:
-    - name: media
-      persistentVolumeClaim:
-        claimName: nfs-media-nas-pvc
-    tolerations:
-    - key: "nvidia.com/gpu"
-      operator: "Exists"
+      media:
+        enabled: true
+        existingClaim: nfs-media-nas-pvc
+        mountPath: /media
+        readOnly: true
     affinity:
       nodeAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
