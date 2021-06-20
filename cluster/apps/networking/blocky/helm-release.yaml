@@ -59,8 +59,7 @@ spec:
     config: |
       upstream:
         externalResolvers:
-        - tcp-tls:${SECRET_NEXTDNS_ID}.dns1.nextdns.io:853
-        - tcp-tls:${SECRET_NEXTDNS_ID}.dns2.nextdns.io:853
+        - tcp:  1.1.1.1
       conditional:
         mapping:
           ${SECRET_DOMAIN}: udp:${SVC_COREDNS_ADDR}
