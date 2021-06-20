@@ -27,12 +27,20 @@ spec:
         type: LoadBalancer
         externalIPs: 
         - "${SVC_QBITTORRENT_ADDR}"
-        ports:
-          port: 50413
-          name: bittorrent
-          protocol: TCP
-          targetPort: 6881
         externalTrafficPolicy: Local
+        ports:
+          http:
+            port: 8080
+      bittorrent: 
+        type: LoadBalancer
+        externalIPs: 
+        - "${SVC_QBITTORRENT_ADDR}"
+          port: 6881
+        externalTrafficPolicy: Local
+        ports:
+          bittorrent:
+            port: 6881
+            protocol: TCP
     ingress:
       main: 
         enabled: true
