@@ -83,7 +83,7 @@ spec:
         enabled: true
         type: emptyDir
         medium: Memory
-      media-rocinante:
+      media-nas:
         enabled: true
         existingClaim: nfs-media-nas-pvc
         mountPath: /media-nas
