@@ -84,8 +84,8 @@
 - [ ] wiki.js
 
 ### Monitoring
-- [ ] grafana
-- [ ] prometheus
+- [x] grafana
+- [x] prometheus
 - [ ] prometheus-blackbox-exporter
 - [ ] prometheus-snmp-exporter
 - [ ] zabbix
@@ -103,7 +103,7 @@
 - [ ] bazarr
 - [x] jackett
 - [x] tautulli
-- [ ] ombi
+- [x] overseer
 - [x] plex
 - [x] radarr
 - [x] sonarr
