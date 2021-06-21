@@ -4,4 +4,5 @@ resources:
 - blocky
 - coredns
 - external-dns
+- traefik
 - wildcard-certificate
