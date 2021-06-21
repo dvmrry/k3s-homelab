@@ -6,6 +6,7 @@ resources:
 - jackett
 - overseerr
 - plex
+- qbittorrent
 - radarr
 - sonarr
 - tautulli
