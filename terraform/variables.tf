@@ -54,7 +54,7 @@ variable "workers" {
       gw          = "172.24.0.254"
       macaddr     = "02:DE:4D:48:24:20"
       memory      = 22528
-      disk        = "16G"
+      disk        = "32G"
       target_node = "pve03"
     },
     "w2.k3s.mrry.io" = {
@@ -64,7 +64,7 @@ variable "workers" {
       gw          = "172.24.0.254"
       macaddr     = "02:DE:4D:48:24:21"
       memory      = 22528
-      disk        = "16G"
+      disk        = "32G"
       target_node = "pve04"
     },
     "w3.k3s.mrry.io" = {
@@ -74,7 +74,7 @@ variable "workers" {
       gw          = "172.24.0.254"
       macaddr     = "02:DE:4D:48:24:22"
       memory      = 22528
-      disk        = "16G"
+      disk        = "32G"
       target_node = "pve05"
     }
   }

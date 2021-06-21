@@ -27,3 +27,5 @@
   - packages.apt is iterable
   - packages.apt | length > 0
 
+- name: Reboot
+  ansible.builtin.reboot:
