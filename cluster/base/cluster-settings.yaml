@@ -5,7 +5,7 @@ metadata:
   name: cluster-settings
   namespace: flux-system
 data:
-  GATEWAY_ADDR: "172.16.0.254"
+  GATEWAY_ADDR: "172.24.0.254"
   BGP_CLUSTER_AS: "64512"
   BGP_PEER_ADDR: "172.18.0.254"
   BGP_PEER_AS: "65100"
