@@ -52,6 +52,7 @@ spec:
       # Static hosts
       - name: hosts
         configBlock: |-
+          172.25.0.5 alert-manager.${SECRET_DOMAIN}
           172.25.0.5 grafana.${SECRET_DOMAIN}
           172.25.0.5 jackett.${SECRET_DOMAIN}
           172.25.0.5 plex.${SECRET_DOMAIN}
