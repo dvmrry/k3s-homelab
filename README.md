@@ -1,11 +1,11 @@
 <div align="center">
   
 ### My WIP homelab running on:
-[![Ansible](https://img.shields.io/badge/Ansible-V2.10.8-red?style=for-the-badge)](https://ansible.com)
-[![Debian](https://img.shields.io/badge/Debian-V10.9-orange?style=for-the-badge)](https://debian.com)
-[![k3s](https://img.shields.io/badge/k3s-v1.21.0-yellow?style=for-the-badge)](https://k3s.io/)
+[![Ansible](https://img.shields.io/badge/Ansible-V2.11.1-red?style=for-the-badge)](https://ansible.com)
+[![Ubuntu](https://img.shields.io/badge/Ubuntu-V21.04-orange?style=for-the-badge)](https://ubuntu.com)
+[![k3s](https://img.shields.io/badge/k3s-v1.21.1-yellow?style=for-the-badge)](https://k3s.io/)
 [![Proxmox](https://img.shields.io/badge/Proxmox-V6.4-green?style=for-the-badge)](https://proxmox.com)
-[![Terraform](https://img.shields.io/badge/Terraform-V0.15.4-bluegreen?style=for-the-badge)](https://terraform.io)
+[![Terraform](https://img.shields.io/badge/Terraform-V1.0.0-bluegreen?style=for-the-badge)](https://terraform.io)
  
 </div>
 
@@ -42,12 +42,11 @@
 
 <div align="center">
 
-| Device               | Proccessor          | Memory   | OS          | Roles          |
-|----------------------|---------------------|----------|-------------|----------------|
-| Aruba S3500-24P      | Broadcom XLS 208    | 1G       | ArubaOS     | N/A            |
-| Brocade ICX 6610-48P | ?                   | ?        | FastIron OS | L3 core        |
-| Extreme x250e-24P    | ?                   | ?        | ExtremeOS   | N/A            |
-
+| Device               | Proccessor       | Memory | OS          | Roles   |
+|----------------------|------------------|--------|-------------|---------|
+| Aruba S3500-24P      | Broadcom XLS 208 | 1G     | ArubaOS     | N/A     |
+| Brocade ICX 6610-48P | ?                | ?      | FastIron OS | L3 core |
+| Extreme x250e-24P    | ?                | ?      | ExtremeOS   | N/A     |
   
 </div>
 
@@ -55,14 +54,14 @@
 
 <div align="center">
 
-| Hostname       | CPU           | Memory | OS        | OS Disk | Roles                    |
-|----------------|---------------|--------|-----------|---------|--------------------------|
-| m1.k3s.mrry.io | 2vCPU - Host  | 4G     | Debian 1  | 32G     | control-pane/etcd/master | 
-| m2.k3s.mrry.io | 2vCPU - Host  | 4G     | Debian 10 | 32G     | control-pane/etcd/master | 
-| m3.k3s.mrry.io | 2vCPU - Host  | 4G     | Debian 10 | 32G     | control-pane/etcd/master | 
-| w1.k3s.mrry.io | 10vCPU - Host | 24G    | Debian 10 | 64G     | worker                   | 
-| w2.k3s.mrry.io | 10vCPU - Host | 24G    | Debian 10 | 64G     | worker                   | 
-| w3.k3s.mrry.io | 10vCPU - Host | 24G    | Debian 10 | 64G     | worker                   | 
+| Hostname       | CPU           | Memory | OS           | OS Disk | Roles                    |
+|----------------|---------------|--------|--------------|---------|--------------------------|
+| m1.k3s.mrry.io | 2vCPU - Host  | 4G     | Ubuntu 21.04 | 16G     | control-pane/etcd/master | 
+| m2.k3s.mrry.io | 2vCPU - Host  | 4G     | Ubuntu 21.04 | 16G     | control-pane/etcd/master | 
+| m3.k3s.mrry.io | 2vCPU - Host  | 4G     | Ubuntu 21.04 | 16G     | control-pane/etcd/master | 
+| w1.k3s.mrry.io | 10vCPU - Host | 24G    | Ubuntu 21.04 | 32G     | worker                   | 
+| w2.k3s.mrry.io | 10vCPU - Host | 24G    | Ubuntu 21.04 | 32G     | worker                   | 
+| w3.k3s.mrry.io | 10vCPU - Host | 24G    | Ubuntu 21.04 | 32G     | worker                   | 
 
 </div>
 
