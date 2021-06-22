@@ -26,14 +26,12 @@
 ### Hardware
 <div align="center">
   
-| Device            | Proccessor            | Memory       | OS         | OS Disk   | Data Disk          | NIC             | Roles                             |
-|-------------------|-----------------------|--------------|------------|-----------|--------------------|-----------------|-----------------------------------|
-| Lenovo m920x Tiny | Intel Core i7-8700    | 32G DDR4     | Proxmox VE | 256G NVMe | 256G NVMe          | Mellanox CX311A | 1x master / 1x worker / Ceph      | 
-| Lenovo m920x Tiny | Intel Core i7-8700    | 32G DDR4     | Proxmox VE | 256G NVMe | 256G NVMe          | Mellanox CX311A | 1x master / 1x worker / Ceph      |
-| Lenovo m920x Tiny | Intel Core i7-8700    | 32G DDR4     | Proxmox VE | 256G NVMe | 256G NVMe          | Mellanox CX311A | 1x master / 1x worker / Ceph      |  
-| HPE ML30 Gen9     | Intel Xeon E3-1230 v5 | 32G DDR4 ECC | Proxmox VE | 500G SSD  | 4x 12T Exos RAIDZ2 | Mellanox CX322A | VyOS / webproxy / NFS / SMB / ZFS |
-| Kettop Mi18C      | Intel Celeron J1800   | 2G DDR3      | Proxmox BS | 32G SSD   | 1T HDD             | Realtek RTL8111 | Proxmox backup server             |
-| Whitebox PC       | Intel Core i7-6700k   | 16G DDR4     | Proxmox VE | 256G SSD  | 1T SSD             | Intel I219-V    | Parsec / Steam                    |
+| Device               | Proccessor            | Memory       | OS         | OS Disk   | Data Disk          | NIC             | Roles                             |
+|----------------------|-----------------------|--------------|------------|-----------|--------------------|-----------------|-----------------------------------|
+| 3x Lenovo m920x Tiny | Intel Core i7-8700    | 32G DDR4     | Proxmox VE | 256G NVMe | 256G NVMe          | Mellanox CX311A | 1x master / 1x worker / Ceph      | 
+| HPE ML30 Gen9        | Intel Xeon E3-1230 v5 | 32G DDR4 ECC | Proxmox VE | 500G SSD  | 4x 12T Exos RAIDZ2 | Mellanox CX322A | VyOS / webproxy / NFS / SMB / ZFS |
+| Kettop Mi18C         | Intel Celeron J1800   | 2G DDR3      | Proxmox BS | 32G SSD   | 1T HDD             | Realtek RTL8111 | Proxmox backup server             |
+| Whitebox PC          | Intel Core i7-6700k   | 16G DDR4     | Proxmox VE | 256G SSD  | 1T SSD             | Intel I219-V    | Parsec / Steam                    |
 
 </div>
   
