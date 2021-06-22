@@ -37,11 +37,11 @@ spec:
         type: LoadBalancer
         externalIPs:
         - "${SVC_BLOCKY_ADDR}"
+        externalTrafficPolicy: Local
         ports:
           dns-tcp:
             port: 53
             protocol: TCP
-        externalTrafficPolicy: Local
       dns-udp: 
         enabled: true
         type: LoadBalancer
@@ -71,7 +71,7 @@ spec:
           default:
           - ads
       clientLookup:
-        upstream: udp:${GATEWAY_ADDRESS}
+        upstream: udp:172.16.0.254
       prometheus:
         enable: true
         path: /metrics
