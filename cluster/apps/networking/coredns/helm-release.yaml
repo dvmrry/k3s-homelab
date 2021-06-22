@@ -52,7 +52,8 @@ spec:
       # Static hosts
       - name: hosts
         configBlock: |-
-          172.25.0.20 traefik.${SECRET_DOMAIN}
+          172.25.0.5 traefik.${SECRET_DOMAIN}
+          172.25.0.20 plex.${SECRET_DOMAIN}
           172.25.0.30 qb.${SECRET_DOMAIN}
           172.25.0.31 jackett.${SECRET_DOMAIN}
           fallthrough
