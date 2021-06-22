@@ -52,7 +52,6 @@ spec:
       # Static hosts
       - name: hosts
         configBlock: |-
-          172.25.0.5 ceph.${SECRET_DOMAIN}
           172.25.0.5 grafana.${SECRET_DOMAIN}
           172.25.0.5 jackett.${SECRET_DOMAIN}
           172.25.0.5 plex.${SECRET_DOMAIN}
@@ -60,6 +59,7 @@ spec:
           172.25.0.5 qb.${SECRET_DOMAIN}
           172.25.0.5 radarr.${SECRET_DOMAIN}
           172.25.0.5 requests.${SECRET_DOMAIN}
+          172.25.0.5 rook.${SECRET_DOMAIN}
           172.25.0.5 sonarr.${SECRET_DOMAIN}
           172.25.0.5 tautulli.${SECRET_DOMAIN}
           172.25.0.5 traefik.${SECRET_DOMAIN}
