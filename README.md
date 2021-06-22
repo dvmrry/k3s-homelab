@@ -20,7 +20,7 @@
 - [x] Replace Aruba S3500 with Brocade 6610
 - [x] Configure kube-vip & calico for BGP routing 
 - [x] Implement Flux/Kustomize
-- [ ] Install Mellanox CX311A-XCAT's [Awaiting PCIe risers]
+- [x] Install Mellanox CX311A-XCAT's
 
 ----
 ### Hardware
