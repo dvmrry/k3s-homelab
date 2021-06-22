@@ -23,7 +23,7 @@
 - [x] Install Mellanox CX311A-XCAT's
 
 ----
-### Hardware
+### Servers
 <div align="center">
   
 | Device               | Proccessor            | Memory       | OS         | OS Disk   | Data Disk          | NIC             | Roles                             |
@@ -48,7 +48,8 @@
   
 </div>
 
-### Nodes
+---
+### k3s nodes
 
 <div align="center">
 
