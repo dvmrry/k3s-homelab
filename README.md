@@ -78,29 +78,29 @@
 
 ---
 
-## Management
+### Management
 - [ ] homer
 - [x] rancher
 - [ ] snipe-it
 
-## Network
+### Network
 - [x] calico
 - [x] external-dns
 - [x] kube-vip
 - [x] traefik
 
-## Development
+### Development
 - [ ] gitea
 - [ ] wiki.js
 
-## Monitoring
+### Monitoring
 - [x] grafana
 - [x] prometheus
 - [ ] prometheus-blackbox-exporter
 - [ ] prometheus-snmp-exporter
 - [ ] zabbix
 
-## Services
+### Services
 - [ ] authelia
 - [ ] firefly-iii
 - [ ] grocy
@@ -109,7 +109,7 @@
 - [ ] snapdrop
 - [ ] vaultwarden
 
-## Media
+### Media
 - [ ] bazarr
 - [x] jackett
 - [x] tautulli
