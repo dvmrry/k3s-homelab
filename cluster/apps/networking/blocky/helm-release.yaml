@@ -27,6 +27,8 @@ spec:
       type: LoadBalancer
       externalIPs:
       - "${SVC_BLOCKY_ADDR}"
+      port:
+        port: 4000
       additionalServices:
       - enabled: true
         nameSuffix: dns-tcp
