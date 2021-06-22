@@ -57,7 +57,7 @@ spec:
     config: |
       upstream:
         externalResolvers:
-        - tcp:  1.1.1.1
+        - 1.1.1.1
       conditional:
         mapping:
           ${SECRET_DOMAIN}: udp:${SVC_COREDNS_ADDR}
