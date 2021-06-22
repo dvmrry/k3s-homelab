@@ -2,10 +2,10 @@
   
 ### My WIP homelab running on:
 [![Ansible](https://img.shields.io/badge/Ansible-V2.11.1-red?style=for-the-badge)](https://ansible.com)
-[![Ubuntu](https://img.shields.io/badge/Ubuntu-V21.04-orange?style=for-the-badge)](https://ubuntu.com)
 [![k3s](https://img.shields.io/badge/k3s-v1.21.1-yellow?style=for-the-badge)](https://k3s.io/)
 [![Proxmox](https://img.shields.io/badge/Proxmox-V6.4-green?style=for-the-badge)](https://proxmox.com)
 [![Terraform](https://img.shields.io/badge/Terraform-V1.0.0-bluegreen?style=for-the-badge)](https://terraform.io)
+[![Ubuntu](https://img.shields.io/badge/Ubuntu-V21.04-orange?style=for-the-badge)](https://ubuntu.com)
  
 </div>
 
