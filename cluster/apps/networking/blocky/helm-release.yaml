@@ -41,7 +41,6 @@ spec:
           dns-tcp:
             port: 53
             protocol: TCP
-            targetPort: 53
         externalTrafficPolicy: Local
       dns-udp: 
         enabled: true
@@ -52,7 +51,6 @@ spec:
           dns-udp:
             port: 53
             protocol: UDP
-            targetPort: 53
         externalTrafficPolicy: Local
     config: |
       upstream:
