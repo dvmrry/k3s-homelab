@@ -52,12 +52,20 @@ spec:
       # Static hosts
       - name: hosts
         configBlock: |-
-          172.25.0.5 traefik.${SECRET_DOMAIN}
           172.25.0.5 sonarr.${SECRET_DOMAIN}
           172.25.0.5 radarr.${SECRET_DOMAIN}
-          172.25.0.20 plex.${SECRET_DOMAIN}
-          172.25.0.30 qb.${SECRET_DOMAIN}
-          172.25.0.31 jackett.${SECRET_DOMAIN}
+          172.25.0.5 plex.${SECRET_DOMAIN}
+          172.25.0.5 qb.${SECRET_DOMAIN}
+          172.25.0.5 jackett.${SECRET_DOMAIN}
+          172.25.0.5 requests.${SECRET_DOMAIN}
+          172.25.0.5 grafana.${SECRET_DOMAIN}
+          172.25.0.5 prometheus.${SECRET_DOMAIN}
+          172.25.0.5 traefik.${SECRET_DOMAIN}
+          172.25.0.10 coredns.${SECRET_DOMAIN_2}
+          172.25.0.15 blocky.${SECRET_DOMAIN_2}
+          172.25.0.20 plex.${SECRET_DOMAIN_2}
+          172.25.0.30 qb.${SECRET_DOMAIN_2}
+          172.25.0.31 jackett.${SECRET_DOMAIN_2}
           fallthrough
       # Set up local resolution
       - name: etcd
