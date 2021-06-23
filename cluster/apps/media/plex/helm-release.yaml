@@ -33,38 +33,14 @@ spec:
         externalIPs:
         - "${SVC_PLEX_ADDR}"
         externalTrafficPolicy: Local
-        ports:
-          http:
-            port: 32400
-      dnla-tcp:
-        enabled: true
-        type: LoadBalancer
-        externalIPs:
-        - "${SVC_PLEX_ADDR}"
-        externalTrafficPolicy: Local
-        ports:
-          dnla-udp:
-            port: 32469
-            protocol: TCP
-            targetPort: 32469
-      dnla-udp:
-        enabled: true
-        type: LoadBalancer
-        externalIPs:
-        - "${SVC_PLEX_ADDR}"
-        externalTrafficPolicy: Local
-        ports:
-          dnla-udp:
-            port: 32469
-            protocol: UDP
-            targetPort: 1900
+        annotations:
+          traefik.ingress.kubernetes.io/service.serversscheme: https
     ingress:
       main:
         enabled: true
         ingressClassName: "traefik"
         annotations:
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-          traefik.ingress.kubernetes.io/service.serversscheme: https
           external-dns/is-public: "true"
           external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
         hosts:
