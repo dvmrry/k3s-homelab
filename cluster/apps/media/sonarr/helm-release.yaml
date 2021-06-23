@@ -27,6 +27,7 @@ spec:
         enabled: true
         ingressClassName: "traefik"
         annotations:
+          external-dns/is-public: "true"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
         hosts:
         - host: "sonarr.${SECRET_DOMAIN}"
