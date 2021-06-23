@@ -22,6 +22,15 @@ spec:
       tag: v1.23.2.4656-85f0adf5b
     env:
       TZ: "America/New_York"
+      ADVERTISE_IP: "172.25.0.20"
+      PLEX_PREFERENCE_1: "allowMediaDeletion=0"
+      PLEX_PREFERENCE_2: "DlnaEnabled=1" 
+      PLEX_PREFERENCE_3: "EnableIPv6=0"
+      PLEX_PREFERENCE_4: "FriendlyName=plex.k3s.mrry.io"
+      PLEX_PREFERENCE_5: "logDebug=0"
+      PLEX_PREFERENCE_6: "secureConnections=0"
+      PLEX_PREFERENCE_7: "TranscoderH264OptionsOverride=veryfast"
+      PLEX_PREFERENCE_8: "TranscoderQuality=2"
     podSecurityContext:
       supplementalGroups:
       - 44
@@ -33,6 +42,31 @@ spec:
         externalIPs:
         - "${SVC_PLEX_ADDR}"
         externalTrafficPolicy: Local
+        ports:
+          http:
+            port: 32400
+      dnla-tcp:
+        enabled: true
+        type: LoadBalancer
+        externalIPs:
+        - "${SVC_PLEX_ADDR}"
+        externalTrafficPolicy: Local
+        ports:
+          dnla-udp:
+            port: 32469
+            protocol: TCP
+            targetPort: 32469
+      dnla-udp:
+        enabled: true
+        type: LoadBalancer
+        externalIPs:
+        - "${SVC_PLEX_ADDR}"
+        externalTrafficPolicy: Local
+        ports:
+          dnla-udp:
+            port: 32469
+            protocol: UDP
+            targetPort: 1900
     ingress:
       main:
         enabled: true
