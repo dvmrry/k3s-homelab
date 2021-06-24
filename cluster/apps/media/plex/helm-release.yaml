@@ -31,6 +31,7 @@ spec:
       PLEX_PREFERENCE_6: "secureConnections=1"
       PLEX_PREFERENCE_7: "TranscoderH264OptionsOverride=veryfast"
       PLEX_PREFERENCE_8: "TranscoderQuality=2"
+    replicas: 2
     podSecurityContext:
       supplementalGroups:
       - 44
