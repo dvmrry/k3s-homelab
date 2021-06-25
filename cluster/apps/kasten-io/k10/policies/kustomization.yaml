@@ -3,4 +3,3 @@ kind: Kustomization
 resources:
 - k10-disaster-recovery-policy.yaml
 - media.yaml
-- home.yaml
