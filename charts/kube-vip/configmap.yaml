@@ -1,8 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: plndr
-  namespace: kube-system
-data:
-  cidr-default: 172.25.0.16/28
-  cidr-global: 172.25.0.32/28
