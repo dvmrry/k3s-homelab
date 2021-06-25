@@ -32,8 +32,6 @@ spec:
     - zones:
       - zone: ${SECRET_DOMAIN}
         scheme: dns://
-      - zone: ${SECRET_DOMAIN_2}
-        scheme: dns://
       port: 53
       plugins:
       # Enables console logging
@@ -52,30 +50,13 @@ spec:
       # Static hosts
       - name: hosts
         configBlock: |-
-          172.25.0.5 alert-manager.${SECRET_DOMAIN}
-          172.25.0.5 grafana.${SECRET_DOMAIN}
-          172.25.0.5 jackett.${SECRET_DOMAIN}
-          172.25.0.5 plex.${SECRET_DOMAIN}
-          172.25.0.5 prometheus.${SECRET_DOMAIN}
-          172.25.0.5 qb.${SECRET_DOMAIN}
-          172.25.0.5 radarr.${SECRET_DOMAIN}
-          172.25.0.5 requests.${SECRET_DOMAIN}
-          172.25.0.5 rook.${SECRET_DOMAIN}
-          172.25.0.5 sonarr.${SECRET_DOMAIN}
-          172.25.0.5 tautulli.${SECRET_DOMAIN}
-          172.25.0.5 traefik.${SECRET_DOMAIN}
-          172.25.0.10 coredns.${SECRET_DOMAIN_2}
-          172.25.0.15 blocky.${SECRET_DOMAIN_2}
-          172.25.0.20 plex.${SECRET_DOMAIN_2}
-          172.25.0.30 qb.${SECRET_DOMAIN_2}
-          172.25.0.31 jackett.${SECRET_DOMAIN_2}
           fallthrough
       # Set up local resolution
       - name: etcd
         configBlock: |-
           stubzones
           path /skydns
-          endpoint https://172.24.0.20:2379 https://172.24.0.21:2379 https://172.24.0.22:2379
+          endpoint https://172.24.0.10:2379 https://172.24.0.11:2379 https://172.24.0.12:2379
           tls /etc/coredns/coredns-etcd/cert.pem /etc/coredns/coredns-etcd/key.pem /etc/coredns/coredns-etcd/ca.crt
       # Set up cache
       - name: cache
@@ -99,4 +80,3 @@ spec:
         cpu: 50m
       limits:
         memory: 500Mi
-
