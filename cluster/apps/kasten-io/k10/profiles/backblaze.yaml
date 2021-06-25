@@ -18,6 +18,6 @@ spec:
       secret:
         apiVersion: v1
         kind: secret
-        name: k10secret-minio
+        name: k10secret-backblaze
         namespace: kasten-io
   type: Location
