@@ -42,7 +42,7 @@ spec:
     exportParameters:
       frequency: "@daily"
       profile:
-        name: minio
+        name: bakblaze
         namespace: kasten-io
       exportData:
         enabled: true
