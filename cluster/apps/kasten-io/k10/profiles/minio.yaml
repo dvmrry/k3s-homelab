@@ -8,7 +8,7 @@ spec:
   locationSpec:
     type: ObjectStore
     objectStore:
-      endpoint: "https://minio.${SECRET_DOMAIN}"
+      endpoint: "https://s3.us-west-000.backblazeb2.com"
       name: k10
       objectStoreType: S3
       path: k10/56d1eff5-8470-489b-8209-1a6c5656f047/migration
