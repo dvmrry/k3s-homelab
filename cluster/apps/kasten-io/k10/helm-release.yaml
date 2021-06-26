@@ -30,15 +30,22 @@ spec:
         enabled: true
     clusterName: k8s
     ingress:
-      create: true
-      host: "k10.${SECRET_DOMAIN}"
-      annotations:
-        traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-      hosts:
-      - "k10.${SECRET_DOMAIN}"
-      tls:
+      main:
         enabled: true
-        secretName: "${SECRET_DOMAIN/./-}-tls"
+        ingressClassName: "traefik"
+        annotations:
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          external-dns/is-public: "true"
+          external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
+          traefik.ingress.kubernetes.io/service.serversscheme: https
+        hosts:
+        - host: "k10.${SECRET_DOMAIN}"
+          paths:
+          - path: /
+            pathType: Prefix
+        tls:
+        - hosts:
+          - "plex.${SECRET_DOMAIN}"
   postRenderers:
   - kustomize:
       patchesJson6902:
