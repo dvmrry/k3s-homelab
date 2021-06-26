@@ -36,7 +36,7 @@ spec:
         tefik.ingress.kubernetes.io/router.entrypoints: "websecure"
         external-dns/is-public: "true"
         external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
-      urlPath: k10
+      urlPath: /
       hosts:
       - "k10.${SECRET_DOMAIN}"
       tls:
