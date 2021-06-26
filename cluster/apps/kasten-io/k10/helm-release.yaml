@@ -20,7 +20,7 @@ spec:
   values:
     eula:
       accept: true
-      company: Devbu
+      company: mrry
       email: "${SECRET_EMAIL}"
     global:
       persistence:
@@ -52,4 +52,3 @@ spec:
         - op: add
           path: /spec/ingressClassName
           value: traefik
-
