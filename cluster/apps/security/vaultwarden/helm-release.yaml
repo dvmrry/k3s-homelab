@@ -36,7 +36,7 @@ spec:
       SMTP_FROM_NAME: "Vaultwarden"
       SMTP_SSL: true
       SMTP_PORT: 587
-      SMTP_USERNAME: "apikey"
+      SMTP_USERNAME: "temp"
       SMTP_PASSWORD: "${SECRET_SENDGRID_API_KEY}"
       DATABASE_URL: "vaultwarden:${SECRET_VAULTWARDEN_DB_PASSWORD}@vaultwarden-postgresql/vaultwarden"
     ingress:
