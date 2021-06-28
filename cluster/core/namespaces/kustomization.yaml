@@ -11,3 +11,4 @@ resources:
 - monitoring.yaml
 - media.yaml
 - networking.yaml
+- security.yaml
