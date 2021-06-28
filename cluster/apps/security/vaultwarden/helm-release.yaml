@@ -32,7 +32,7 @@ spec:
       DOMAIN: https://vault.${SECRET_DOMAIN}
       ADMIN_TOKEN: ${SECRET_VAULTWARDEN_ADMIN_TOKEN}
       SMTP_HOST: "smtp.office365.com"
-      SMTP_FROM: "no-reply@mrry.io"
+      SMTP_FROM: "no-reply@${SECRET_DOMAIN}"
       SMTP_FROM_NAME: "Vaultwarden"
       SMTP_SSL: true
       SMTP_PORT: 587
