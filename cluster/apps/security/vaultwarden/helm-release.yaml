@@ -59,7 +59,7 @@ spec:
             servicePort: 3012
         tls:
         - hosts:
-          - "warden.${SECRET_DOMAIN}"
+          - "vault.${SECRET_DOMAIN}"
     persistence:
       config:
         enabled: true
