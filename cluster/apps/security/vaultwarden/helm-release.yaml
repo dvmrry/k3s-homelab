@@ -31,12 +31,12 @@ spec:
       WEBSOCKET_PORT: 3012
       DOMAIN: https://vault.${SECRET_DOMAIN}
       ADMIN_TOKEN: ${SECRET_VAULTWARDEN_ADMIN_TOKEN}
-      SMTP_HOST: "smtp.office365.com"
+      SMTP_HOST: "smtp.sendgrid.net"
       SMTP_FROM: "no-reply@${SECRET_DOMAIN}"
       SMTP_FROM_NAME: "Vaultwarden"
       SMTP_SSL: true
       SMTP_PORT: 587
-      SMTP_USERNAME: "temp"
+      SMTP_USERNAME: "apikey"
       SMTP_PASSWORD: "${SECRET_SENDGRID_API_KEY}"
       DATABASE_URL: "vaultwarden:${SECRET_VAULTWARDEN_DB_PASSWORD}@vaultwarden-postgresql/vaultwarden"
     ingress:
