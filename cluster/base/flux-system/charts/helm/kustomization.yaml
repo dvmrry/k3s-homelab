@@ -12,5 +12,6 @@ resources:
 - kubernetes-sigs-descheduler-charts.yaml
 - prometheus-community-charts.yaml
 - rook-ceph-charts.yaml
+- stakater-charts.yaml
 - traefik-charts.yaml
 - node-feature-discovery-charts.yaml
