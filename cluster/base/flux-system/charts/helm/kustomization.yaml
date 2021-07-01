@@ -7,8 +7,9 @@ resources:
 - deliveryhero-charts.yaml
 - grafana-charts.yaml
 - jetstack-charts.yaml
-- kasten-charts.yaml
 - k8s-at-home-charts.yaml
+- kasten-charts.yaml
+- kubernetes-sigs-descheduler-charts.yaml
 - prometheus-community-charts.yaml
 - rook-ceph-charts.yaml
 - traefik-charts.yaml
