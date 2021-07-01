@@ -29,7 +29,7 @@ spec:
         annotations:
           external-dns/is-public: "true"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-          traefik.ingress.kubernetes.io/router.middlewares: security-ak-outpost-traefik@kubernetescrd
+          traefik.ingress.kubernetes.io/router.middlewares: networking-authentik@kubernetescrd
           external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
         hosts:
         - host: "sonarr.${SECRET_DOMAIN}"
