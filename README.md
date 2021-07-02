@@ -12,17 +12,6 @@
 ### Overview
 ----
 
-### To Do:
-- [x] Create Ansible role for Proxmox hosts
-- [x] Create initial cloud-init Debian 10 template
-- [x] Create Terraform playbook for node creation
-- [x] Create Ansible playbook for node configurationterraf
-- [x] Replace Aruba S3500 with Brocade 6610
-- [x] Configure kube-vip & calico for BGP routing 
-- [x] Implement Flux/Kustomize
-- [x] Install Mellanox CX311A-XCAT's
-
-----
 ### Servers
 <div align="center">
   
