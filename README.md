@@ -53,10 +53,10 @@
 | 18   | 172.18.0.0/24   | mgmt         | 
 | 19   | 172.19.0.0/24   | prod         | 
 | 20   | 172.20.0.0/24   | home         | 
-| 24   | 172.24.0.0/24   | k3s nodes    | 
-|      | 172.25.0.0/24   | k3s bgp lb   | 
-|      | 172.26.0.0/26   | k3s cluster  | 
-|      | 172.27.0.0/26   | k3s services | 
+| 24   | 172.24.0.0/24   | k8s nodes    | 
+|      | 172.25.0.0/24   | k8s lb       | 
+|      | 172.26.0.0/26   | k8s cluster  | 
+|      | 172.27.0.0/26   | k8s services | 
 
 </div>
 
@@ -65,22 +65,20 @@
 
 <div align="center">
 
-| Hostname       | CPU           | Memory | OS           | OS Disk | Roles                    |
-|----------------|---------------|--------|--------------|---------|--------------------------|
-| m1.k3s.mrry.io | 2vCPU - Host  | 4G     | Ubuntu 21.04 | 16G     | control-pane/etcd/master | 
-| m2.k3s.mrry.io | 2vCPU - Host  | 4G     | Ubuntu 21.04 | 16G     | control-pane/etcd/master | 
-| m3.k3s.mrry.io | 2vCPU - Host  | 4G     | Ubuntu 21.04 | 16G     | control-pane/etcd/master | 
-| w1.k3s.mrry.io | 10vCPU - Host | 24G    | Ubuntu 21.04 | 32G     | worker                   | 
-| w2.k3s.mrry.io | 10vCPU - Host | 24G    | Ubuntu 21.04 | 32G     | worker                   | 
-| w3.k3s.mrry.io | 10vCPU - Host | 24G    | Ubuntu 21.04 | 32G     | worker                   | 
+| Hostname | CPU           | Memory | OS           | OS Disk | Roles                    |
+|----------|---------------|--------|--------------|---------|--------------------------|
+| m1       | 2vCPU - Host  | 4G     | Ubuntu 21.04 | 16G     | control-pane/etcd/master | 
+| m2       | 2vCPU - Host  | 4G     | Ubuntu 21.04 | 16G     | control-pane/etcd/master | 
+| m3       | 2vCPU - Host  | 4G     | Ubuntu 21.04 | 16G     | control-pane/etcd/master | 
+| w1       | 10vCPU - Host | 24G    | Ubuntu 21.04 | 32G     | worker                   | 
+| w2       | 10vCPU - Host | 24G    | Ubuntu 21.04 | 32G     | worker                   | 
+| w3       | 10vCPU - Host | 24G    | Ubuntu 21.04 | 32G     | worker                   | 
 
 </div>
 
 ---
 
 ### Management
-- [ ] homer
-- [x] rancher
 - [ ] snipe-it
 
 ### Network
@@ -101,7 +99,7 @@
 - [ ] zabbix
 
 ### Services
-- [ ] authelia
+- [x] authentik
 - [ ] firefly-iii
 - [ ] grocy
 - [ ] polr
