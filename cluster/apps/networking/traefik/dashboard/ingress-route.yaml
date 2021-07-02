@@ -15,7 +15,6 @@ spec:
     - name: api@internal
       kind: TraefikService
     middlewares:
-    - name: cloudflare-ips
     - name: rfc1918-ips
   tls:
     secretName: "${SECRET_DOMAIN/./-}-tls"
