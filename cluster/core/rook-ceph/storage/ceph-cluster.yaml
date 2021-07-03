@@ -63,9 +63,6 @@ spec:
     - name: "w1"
       devices:
       - name: "nvme0n1"
-    - name: "w2"
-      devices:
-      - name: "nvme0n1"
     - name: "w3"
       devices:
       - name: "nvme0n1"
