@@ -23,7 +23,8 @@ spec:
     env:
       SHORT_DOMAIN_HOST: "link.${SECRET_DOMAIN}"
       SHORT_DOMAIN_SCHEMA: "https"
-      # GEOLITE_LICENSE_KEY: "kjh23ljkbndskj345"
+      DB_DRIVER: postgres
+      SHLINK_SERVER_API_KEY: "${SECRET_SHLINK_API_KEY}"
     service:
       main:
         ports:
