@@ -7,8 +7,6 @@
     export OSD_NUM="2"
     export OSD_NODE="w2"
 
-** General playbook **
-
     # zap the drive of all mbr/gpt headers
     sgdisk --zap-all $DISK
 
