@@ -54,7 +54,7 @@ spec:
         accessMode: ReadWriteOnce
         size: 1Gi
     postgresql:
-      enabled: false
+      enabled: true
       postgresqlUsername: "shlink"
       postgresqlPassword: "${SECRET_SHLINK_POSTGRES_PASSWORD}"
       postgresqlDatabase: "shlink"
