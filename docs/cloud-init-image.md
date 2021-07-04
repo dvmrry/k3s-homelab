@@ -1,4 +1,4 @@
-# Template machine config
+# cloud-init template config
 Following settings should be adjusted to your needs.
 Eg. I have my k3s machines utilizing vmbr0 on the hosts and VLAN24 with images on Ceph storage
 
@@ -7,15 +7,14 @@ Eg. I have my k3s machines utilizing vmbr0 on the hosts and VLAN24 with images o
     export MEMORY="2048"
     export NIC="vmbr0"
     export SSH_KEY="id_ed25519.pub"
-    export STORAGE="ceph"
+    export STORAGE="local-lvm"
     export USER="dvmrry"
     export VLAN="24"
     export VM_ID="9000"
-    export VM_NAME="debian10-cloudimg"
+    export VM_NAME="ubuntu-cloudimg"
 
 **Pull down latest Debian 10 cloud-init image**
-
-    wget https://cdimage.debian.org/cdimage/openstack/current/debian-10-openstack-amd64.qcow2
+    wget https://cloud-images.ubuntu.com/hirsute/current/hirsute-server-cloudimg-amd64.img
     
 **Create proxmox VM**
 
