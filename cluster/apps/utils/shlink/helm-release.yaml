@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: shlink
+  name: shlink-server
   namespace: utils
 spec:
   interval: 5m
@@ -63,3 +63,4 @@ spec:
         storageClass: rook-ceph-block
         accessModes:
         - ReadWriteOnce
+        size: 5Gi
