@@ -21,7 +21,7 @@ spec:
       repository: ghcr.io/k8s-at-home/shlink
       tag: 2.7.1
     env:
-      SHORT_DOMAIN_HOST: "mrry.io"
+      SHORT_DOMAIN_HOST: "${SECRET_DOMAIN}"
       SHORT_DOMAIN_SCHEMA: "https"
       # GEOLITE_LICENSE_KEY: "kjh23ljkbndskj345"
     service:
