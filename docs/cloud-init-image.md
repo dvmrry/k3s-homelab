@@ -13,55 +13,43 @@ Eg. I have my k3s machines utilizing vmbr0 on the hosts and VLAN24 with images o
     export VM_ID="9000"
     export VM_NAME="ubuntu-cloudimg"
 
-**Pull down latest Debian 10 cloud-init image**
+    # Pull down latest Debian 10 cloud-init image
     wget https://cloud-images.ubuntu.com/hirsute/current/hirsute-server-cloudimg-amd64.img
     
-**Create proxmox VM**
-
+    # Create VM
     qm create $VM_ID --name $VM_NAME --memory $MEMORY -net0 virtio,bridge=$NIC,tag=$VLAN
     
-**Import Debian cloud-init image**
-
-    qm importdisk --format qcow2 $VM_ID debian-10-openstack-amd64.qcow2 $STORAGE 
+    # Import disk
+    qm importdisk --format qcow2 $VM_ID hirsute-server-cloudimg-amd64.img $STORAGE 
  
-**Set imported image as scsi0**
-
+    # Set imported image as scsi0
     qm set $VM_ID --scsihw virtio-scsi-pci --scsi0 $STORAGE:vm-$VM_ID-disk-0
    
-   *NFS storage may require:*
-
+    # NFS storage may require
     qm set $VM_ID --scsihw virtio-scsi-pci --scsi0 $STORAGE:$VM_ID/vm-$VM_ID-disk-0.qcow2
     
-**Add cloud-init disk**
-
+    # Add cloud-init disk**
     qm set $VM_ID --ide2 $STORAGE:cloudinit
     
-**Set scsi0 as boot disk**
-
+    # Set scsi0 as boot disk**
     qm set $VM_ID --boot c --bootdisk scsi0
 
-**Set host CPU type and add AES hardware acceleration flag**
-
+    # Set host CPU type and add AES hardware acceleration flag**
     qm set $VM_ID --cpu host,flags=+aes
 
-**Add serial device for cloud-init**
-
+    # Add serial device for cloud-init
     qm set $VM_ID --serial0 socket
 
-**Enable qemu-guest-agent (to be installed via Ansible)**
-
+    # Enable qemu-guest-agent
     qm set $VM_ID --agent enabled=1
 
-**Copy SSH key**
-
+    # Copy SSH key
     qm set $VM_ID --sshkey ~/.ssh/$SSH_KEY
 
-**Set local user (no password - SSH key will be used for login)**
-
+    # Set local user (no password - SSH key will be used for login)
     qm set $VM_ID --ciuser $USER
     
-**Convert to template**
-    
+    # Convert to template
     qm template $VM_ID
 
 If this template utilizes shared storage, it should be able to be cloned from node to node without issue.
