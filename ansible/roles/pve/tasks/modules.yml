@@ -17,5 +17,5 @@
   become: true
   lineinfile:
     path: /etc/modules
-    line: " {{ item }} "
+    line: "{{ item }}"
   when: lineinfile_check.changed
