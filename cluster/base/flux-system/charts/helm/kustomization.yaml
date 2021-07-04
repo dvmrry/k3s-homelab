@@ -10,6 +10,7 @@ resources:
 - k8s-at-home-charts.yaml
 - kasten-charts.yaml
 - kubernetes-sigs-descheduler-charts.yaml
+- lwolf-charts.yaml
 - prometheus-community-charts.yaml
 - rook-ceph-charts.yaml
 - stakater-charts.yaml
