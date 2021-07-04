@@ -23,7 +23,6 @@ spec:
     env:
       SHORT_DOMAIN_HOST: "link.${SECRET_DOMAIN}"
       SHORT_DOMAIN_SCHEMA: "https"
-      DB_DRIVER: postgres
       SHLINK_SERVER_API_KEY: "${SECRET_SHLINK_API_KEY}"
     service:
       main:
@@ -54,14 +53,3 @@ spec:
         storageClass: rook-ceph-block
         accessMode: ReadWriteOnce
         size: 1Gi
-    postgresql:
-      enabled: true
-      postgresqlUsername: "shlink"
-      postgresqlPassword: "${SECRET_SHLINK_POSTGRES_PASSWORD}"
-      postgresqlDatabase: "shlink"
-      persistence:
-        enabled: true
-        storageClass: rook-ceph-block
-        accessModes:
-        - ReadWriteOnce
-        size: 5Gi
