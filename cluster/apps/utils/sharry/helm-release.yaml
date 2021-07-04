@@ -43,7 +43,7 @@ spec:
           - "share.${SECRET_DOMAIN}"
     config:
       sharry.restserver {
-        # base-url = "https://sharry.${DOMAIN}"
+        base-url = "https://share.${SECRET_DOMAIN}"
         bind {
           address = "0.0.0.0"
           port = {{ .Values.service.main.ports.http.port }}
