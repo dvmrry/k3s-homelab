@@ -53,3 +53,14 @@ spec:
         storageClass: rook-ceph-block
         accessMode: ReadWriteOnce
         size: 1Gi
+    postgresql:
+      enabled: true
+      postgresqlUsername: "shlink"
+      postgresqlPassword: "${SECRET_SHLINK_POSTGRES_PASSWORD}"
+      postgresqlDatabase: "shlink"
+      persistence:
+        enabled: true
+        storageClass: rook-ceph-block
+        accessModes:
+        - ReadWriteOnce
+        size: 5Gi
