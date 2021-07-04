@@ -40,7 +40,7 @@ spec:
         hosts:
         - host: "link.${SECRET_DOMAIN}"
           paths: 
-          - path: /server
+          - path: /
             pathType: Prefix
         tls:
         - hosts:
