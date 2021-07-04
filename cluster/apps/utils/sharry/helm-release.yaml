@@ -20,7 +20,6 @@ spec:
     image:
       repository: eikek0/sharry
       tag: 1.8.0
-    env:
     service:
       main:
         ports:
