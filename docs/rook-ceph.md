@@ -1,7 +1,5 @@
 # rook-ceph notes
 
-**Export ENV variables**
-    
     # Change as needed for physical disk mounting or OSD to rebuild
     export DISK="/dev/nvme0n1"
     export OSD_NUM="2"
