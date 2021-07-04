@@ -56,7 +56,7 @@ spec:
     postgresql:
       enabled: false
       postgresqlUsername: "shlink"
-      postgresqlPassword: "${SECRET_SHLINK_DB_PASSWORD}"
+      postgresqlPassword: "${SECRET_SHLINK_POSTGRES_PASSWORD}"
       postgresqlDatabase: "shlink"
       persistence:
         enabled: true
