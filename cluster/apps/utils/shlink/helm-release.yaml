@@ -11,11 +11,11 @@ spec:
       # renovate: registryUrl=https://k8s-at-home.com/charts/
       chart: shlink
       version: 2.7.1
-    sourceRef:
-      kind: HelmRelease
-      name: k8s-at-home-charts
-      namespace: flux-system
-    interval: 5m
+      sourceRef:
+        kind: HelmRelease
+        name: k8s-at-home-charts
+        namespace: flux-system
+      interval: 5m
   values:
     image:
       repository: schlinkio/schlink
