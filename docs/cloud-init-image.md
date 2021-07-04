@@ -2,8 +2,7 @@
 Following settings should be adjusted to your needs.
 Eg. I have my k3s machines utilizing vmbr0 on the hosts and VLAN24 with images on Ceph storage
 
-**Export ENV variables**
-
+    # Export ENV variables
     export MEMORY="2048"
     export NIC="vmbr0"
     export SSH_KEY="id_ed25519.pub"
