@@ -12,3 +12,4 @@ resources:
 - media.yaml
 - networking.yaml
 - security.yaml
+- utils.yaml
