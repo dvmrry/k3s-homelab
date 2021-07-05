@@ -61,8 +61,8 @@ spec:
             oauth = [
               {
                 enabled = true
-                id = "microsoft"
-                name = "Microsoft"
+                id = "azure"
+                name = "Azure"
                 icon = "fab fa-microsoft"
                 authorize-url = "https://login.microsoftonline.com/common/oauth2/authorize"
                 token-url = "https://login.microsoftonline.com/common/oauth2/token"
