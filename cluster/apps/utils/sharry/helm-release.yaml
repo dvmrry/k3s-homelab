@@ -44,8 +44,9 @@ spec:
         - hosts:
           - "share.${SECRET_DOMAIN}"
     config: |
-      sharry.restserver {
-        base-url = "https://share.mrry.io"
+        sharry.restserver {
+
+            base-url = "https://share.${SECRET_DOMAIN}"
         bind {
           address = "0.0.0.0"
           port = "9090"
@@ -54,10 +55,27 @@ spec:
           auth {
             fixed {
               enabled = true
-              user = "admin"
+              user = "dvmrry"
               password = "${SECRET_ADMIN_PASSWORD}"
               order = 10
             }
+            oauth = [
+              {
+                enabled = false
+                id = "microsoft"
+                name = "Microsoft"
+                icon = "fab fa-microsoft"
+                authorize-url = "https://login.microsoftonline.com/common/oauth2/authorize"
+                token-url = "https://login.microsoftonline.com/common/oauth2/token"
+                user-url = "https://graph.windows.net/myorganization/me?api-version=1.6"
+                user-id-key = "login"
+                client-id = "$SECRET_AZURE_OAUTH_ID"
+                client-secret = "$SECRET_AZURE_OAUTH_SECRET"
+              }
+            ] 
           }
+        }
+        signup {
+          mode = "closed"
         }
       }
