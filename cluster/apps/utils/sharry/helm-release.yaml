@@ -25,6 +25,8 @@ spec:
         ports:
           http:
             port: 9090
+    args:
+    - "/opt/sharry.conf"
     ingress:
       main:
         enabled: true
