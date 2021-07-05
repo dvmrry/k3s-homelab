@@ -43,7 +43,7 @@ spec:
         tls:
         - hosts:
           - "share.${SECRET_DOMAIN}"
-    config: |
+    config: 
       sharry.restserver {
         bind {
           address = "0.0.0.0"
