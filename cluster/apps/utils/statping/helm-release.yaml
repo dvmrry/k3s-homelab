@@ -9,7 +9,7 @@ spec:
   chart:
     spec: 
       # renovate: registryUrl=https://k8s-at-home.com/charts/
-      chart: statpin
+      chart: statping
       version: v0.90.74
       sourceRef:
         kind: HelmRepository
