@@ -44,9 +44,8 @@ spec:
         - hosts:
           - "share.${SECRET_DOMAIN}"
     config: |
-        sharry.restserver {
-
-            base-url = "https://share.${SECRET_DOMAIN}"
+      sharry.restserver {
+        base-url = "https://share.${SECRET_DOMAIN}"
         bind {
           address = "0.0.0.0"
           port = "9090"
@@ -61,7 +60,7 @@ spec:
             }
             oauth = [
               {
-                enabled = false
+                enabled = true
                 id = "microsoft"
                 name = "Microsoft"
                 icon = "fab fa-microsoft"
@@ -74,8 +73,8 @@ spec:
               }
             ] 
           }
-        }
-        signup {
-          mode = "closed"
+          signup {
+            mode = "closed"
+          }
         }
       }
