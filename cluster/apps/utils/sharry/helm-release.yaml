@@ -41,14 +41,21 @@ spec:
         tls:
         - hosts:
           - "share.${SECRET_DOMAIN}"
-    config:
-      backend {
-        auth {
-          fixed {
-            enabled = false  # set to true to enable this auth provider
-            user = "admin"
-            password = "admin"
-            order = 10
+    config: |
+      sharry.restserver {
+        base-url = "https://share.${SECRET_DOMAIN}"
+        bind {
+          address = "0.0.0.0"
+          port = "9090"
+        }
+        backend {
+          auth {
+            fixed {
+              enabled = true  # set to true to enable this auth provider
+              user = "admin"
+              password = "admin"
+              order = 10
           }
         }
       }
+    }
