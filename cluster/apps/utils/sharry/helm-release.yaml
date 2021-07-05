@@ -55,7 +55,7 @@ spec:
             fixed {
               enabled = true
               user = "admin"
-              password = "admin"
+              password = "${SECRET_ADMIN_PASSWORD}"
               order = 10
             }
           }
