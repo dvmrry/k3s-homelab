@@ -74,12 +74,3 @@ spec:
       externalIPs: 
       - "${SVC_UNIFI_ADDR}"
       externalTrafficPolicy: Local
-    logging:
-      promtail:
-        enabled: false
-        image:
-          repository: grafana/promtail
-          tag: 2.2.1
-          pullPolicy: IfNotPresent
-        loki:
-          url: http://loki.logs.svc.cluster.local:3100/loki/api/v1/push
