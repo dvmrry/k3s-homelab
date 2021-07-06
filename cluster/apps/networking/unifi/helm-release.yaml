@@ -40,37 +40,37 @@ spec:
       type: LoadBalancer
       externalIPs: 
       - "${SVC_UNIFI_ADDR}"
-      externalTrafficPolicy: local
+      externalTrafficPolicy: Local
     captivePortalService:
       type: LoadBalancer
       externalIPs: 
       - "${SVC_UNIFI_ADDR}"
-      externalTrafficPolicy: local
+      externalTrafficPolicy: Local
     controllerService:
       type: LoadBalancer
       externalIPs: 
       - "${SVC_UNIFI_ADDR}"
-      externalTrafficPolicy: local
+      externalTrafficPolicy: Local
     stunService:
       type: LoadBalancer
       externalIPs: 
       - "${SVC_UNIFI_ADDR}"
-      externalTrafficPolicy: local
+      externalTrafficPolicy: Local
     discoveryService:
       type: LoadBalancer
       externalIPs: 
       - "${SVC_UNIFI_ADDR}"
-      externalTrafficPolicy: local
+      externalTrafficPolicy: Local
     syslogService:
       type: LoadBalancer
       externalIPs: 
       - "${SVC_UNIFI_ADDR}"
-      externalTrafficPolicy: local
+      externalTrafficPolicy: Local
     speedtestService:
       type: LoadBalancer
       externalIPs: 
       - "${SVC_UNIFI_ADDR}"
-      externalTrafficPolicy: local
+      externalTrafficPolicy: Local
     logging:
       promtail:
         enabled: true
