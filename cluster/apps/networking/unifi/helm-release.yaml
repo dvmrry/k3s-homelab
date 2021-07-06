@@ -21,7 +21,10 @@ spec:
       repository: jacobalberty/unifi
       tag: v6.2.26
     timezone: "America/New_York"
-    runAsRoot: true
+    runAsRoot: false
+    persistence:
+      enabled: true
+      existingClaim: unifi-config-v1
     ingress:
       enabled: true
       annotations:
@@ -80,11 +83,3 @@ spec:
           pullPolicy: IfNotPresent
         loki:
           url: http://loki.logs.svc.cluster.local:3100/loki/api/v1/push
-    mongodb:
-      enabled: false
-      dbUri: mongodb://mongo/unifi
-      statDbUri: mongodb://mongo/unifi_stat
-      databaseName: unifi
-    persistence:
-      enabled: true
-      existingClaim: unifi-config-v1
