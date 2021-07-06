@@ -24,6 +24,7 @@ spec:
     runAsRoot: false
     persistence:
       enabled: true
+      accessMode: ReadWriteOnce
       existingClaim: unifi-config-v1
     ingress:
       enabled: true
@@ -74,5 +75,12 @@ spec:
       externalIPs: 
       - "${SVC_UNIFI_ADDR}"
       externalTrafficPolicy: Local
+    probes:
+      liveness:
+        enabled: false
+      readiness:
+        enabled: false
+      startup:
+        enabled: false
     mongodb:
       enabled: false
