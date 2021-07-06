@@ -26,20 +26,6 @@ spec:
       enabled: true
       accessMode: ReadWriteOnce
       existingClaim: unifi-config-v1
-    ingress:
-      enabled: true
-      annotations:
-        traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-        external-dns/is-public: "true"
-        external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
-      hosts:
-      - host: "unifi.${SECRET_DOMAIN}"
-        paths:
-        - path: /
-          pathType: Prefix
-      tls:
-      - hosts:
-        - "unifi.${SECRET_DOMAIN}"
     guiService:
       type: LoadBalancer
       externalIPs: 
@@ -75,6 +61,20 @@ spec:
       externalIPs: 
       - "${SVC_UNIFI_ADDR}"
       externalTrafficPolicy: Local
+    ingress:
+      enabled: true
+      annotations:
+        traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+        external-dns/is-public: "true"
+        external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
+      hosts:
+      - host: "unifi.${SECRET_DOMAIN}"
+        paths:
+        - path: /
+          pathType: Prefix
+      tls:
+      - hosts:
+        - "unifi.${SECRET_DOMAIN}"
     probes:
       liveness:
         enabled: false
