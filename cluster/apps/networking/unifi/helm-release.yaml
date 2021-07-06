@@ -87,8 +87,4 @@ spec:
       databaseName: unifi
     persistence:
       enabled: false
-      storageClass: rook-ceph-block
       existingClaim: unifi-config-v1
-      accessMode: ReadWriteOnce
-      size: 5Gi
-      skipuninstall: false
