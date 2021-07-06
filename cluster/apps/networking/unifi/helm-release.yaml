@@ -81,7 +81,7 @@ spec:
         loki:
           url: http://loki.logs.svc.cluster.local:3100/loki/api/v1/push
     mongodb:
-      enabled: false
+      enabled: true
       dbUri: mongodb://mongo/unifi
       statDbUri: mongodb://mongo/unifi_stat
       databaseName: unifi
