@@ -73,7 +73,7 @@ spec:
       externalTrafficPolicy: local
     logging:
       promtail:
-        enabled: false
+        enabled: true
         image:
           repository: grafana/promtail
           tag: 1.6.0
@@ -81,10 +81,10 @@ spec:
         loki:
           url: http://loki.logs.svc.cluster.local:3100/loki/api/v1/push
     mongodb:
-      enabled: true
+      enabled: false
       dbUri: mongodb://mongo/unifi
       statDbUri: mongodb://mongo/unifi_stat
       databaseName: unifi
     persistence:
-      enabled: false
+      enabled: true
       existingClaim: unifi-config-v1
