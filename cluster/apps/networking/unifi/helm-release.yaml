@@ -1,0 +1,94 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: unifi
+  namespace: networking
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://k8s-at-home.com/charts/
+      chart: unifi
+      version: 2.0.4
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    image:
+      repository: jacobalberty/unifi
+      tag: 6.2.25
+    timezone: "America/New_York"
+    runAsRoot: false
+    ingress:
+      enabled: true
+      annotations:
+        traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+        external-dns/is-public: "true"
+        external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
+      hosts:
+      - host: "unifi.${SECRET_DOMAIN}"
+        paths:
+        - path: /
+          pathType: Prefix
+      tls:
+      - hosts:
+        - "unifi.${SECRET_DOMAIN}"
+    guiService:
+      type: LoadBalancer
+      externalIPs: 
+      - "${UNIFI_SVC_ADDR}"
+      externalTrafficPolicy: local
+    captivePortalService:
+      type: LoadBalancer
+      externalIPs: 
+      - "${UNIFI_SVC_ADDR}"
+      externalTrafficPolicy: local
+    controllerService:
+      type: LoadBalancer
+      externalIPs: 
+      - "${UNIFI_SVC_ADDR}"
+      externalTrafficPolicy: local
+    stunService:
+      type: LoadBalancer
+      externalIPs: 
+      - "${UNIFI_SVC_ADDR}"
+      externalTrafficPolicy: local
+    discoveryService:
+      type: LoadBalancer
+      externalIPs: 
+      - "${UNIFI_SVC_ADDR}"
+      externalTrafficPolicy: local
+    syslogService:
+      type: LoadBalancer
+      externalIPs: 
+      - "${UNIFI_SVC_ADDR}"
+      externalTrafficPolicy: local
+    speedtestService:
+      type: LoadBalancer
+      externalIPs: 
+      - "${UNIFI_SVC_ADDR}"
+      externalTrafficPolicy: local
+    logging:
+      promtail:
+        enabled: false
+        image:
+          repository: grafana/promtail
+          tag: 1.6.0
+          pullPolicy: IfNotPresent
+        loki:
+          url: http://loki.logs.svc.cluster.local:3100/loki/api/v1/push
+    mongodb:
+      enabled: true
+      dbUri: mongodb://mongo/unifi
+      statDbUri: mongodb://mongo/unifi_stat
+      databaseName: unifi
+    persistence:
+      enabled: false
+      storageClass: rook-ceph-block
+      existingClaim: unifi-config-v1
+      accessMode: ReadWriteOnce
+      size: 5Gi
+      skipuninstall: false
