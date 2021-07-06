@@ -39,37 +39,37 @@ spec:
     guiService:
       type: LoadBalancer
       externalIPs: 
-      - "${UNIFI_SVC_ADDR}"
+      - "${SVC_UNIFI_ADDR}"
       externalTrafficPolicy: local
     captivePortalService:
       type: LoadBalancer
       externalIPs: 
-      - "${UNIFI_SVC_ADDR}"
+      - "${SVC_UNIFI_ADDR}"
       externalTrafficPolicy: local
     controllerService:
       type: LoadBalancer
       externalIPs: 
-      - "${UNIFI_SVC_ADDR}"
+      - "${SVC_UNIFI_ADDR}"
       externalTrafficPolicy: local
     stunService:
       type: LoadBalancer
       externalIPs: 
-      - "${UNIFI_SVC_ADDR}"
+      - "${SVC_UNIFI_ADDR}"
       externalTrafficPolicy: local
     discoveryService:
       type: LoadBalancer
       externalIPs: 
-      - "${UNIFI_SVC_ADDR}"
+      - "${SVC_UNIFI_ADDR}"
       externalTrafficPolicy: local
     syslogService:
       type: LoadBalancer
       externalIPs: 
-      - "${UNIFI_SVC_ADDR}"
+      - "${SVC_UNIFI_ADDR}"
       externalTrafficPolicy: local
     speedtestService:
       type: LoadBalancer
       externalIPs: 
-      - "${UNIFI_SVC_ADDR}"
+      - "${SVC_UNIFI_ADDR}"
       externalTrafficPolicy: local
     logging:
       promtail:
