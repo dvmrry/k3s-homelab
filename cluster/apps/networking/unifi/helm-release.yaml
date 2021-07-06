@@ -22,10 +22,6 @@ spec:
       tag: v6.2.26
     timezone: "America/New_York"
     runAsRoot: false
-    persistence:
-      enabled: true
-      accessMode: ReadWriteOnce
-      existingClaim: unifi-config-v1
     guiService:
       type: LoadBalancer
       externalIPs: 
@@ -80,5 +76,18 @@ spec:
         enabled: false
       startup:
         enabled: false
+    persistence:
+      enabled: true
+      accessMode: ReadWriteOnce
+      existingClaim: unifi-config-v1
     mongodb:
       enabled: false
+    logging:
+      promtail:
+        enabled: true
+        image:
+          repository: grafana/promtail
+          tag: 2.2.1
+          pullPolicy: IfNotPresent
+        loki:
+          url: http://loki:3100/loki/api/v1/push
