@@ -74,3 +74,5 @@ spec:
       externalIPs: 
       - "${SVC_UNIFI_ADDR}"
       externalTrafficPolicy: Local
+    mongodb:
+      enabled: false
