@@ -26,7 +26,7 @@ spec:
       PLEX_PREFERENCE_1: "allowMediaDeletion=0"
       PLEX_PREFERENCE_2: "DlnaEnabled=1" 
       PLEX_PREFERENCE_3: "EnableIPv6=0"
-      PLEX_PREFERENCE_4: "FriendlyName=plex.k3s.mrry.io"
+      PLEX_PREFERENCE_4: "FriendlyName=plex.mrry.io"
       PLEX_PREFERENCE_5: "logDebug=0"
       PLEX_PREFERENCE_6: "secureConnections=1"
     podSecurityContext:
