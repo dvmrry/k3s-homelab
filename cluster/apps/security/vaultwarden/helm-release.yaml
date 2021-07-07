@@ -58,7 +58,6 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: vaultwarden-config
     postgresql:
       enabled: true
       postgresqlUsername: "vaultwarden"
@@ -66,4 +65,7 @@ spec:
       postgresqlDatabase: "vaultwarden"
       persistence:
         enabled: true
-        existingClaim: vaultwarden-postgresql
+        storageClass: rook-ceph-block
+        accessModes:
+        - ReadWriteOnce
+        size: 10Gi
