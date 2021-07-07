@@ -38,7 +38,7 @@ spec:
       SMTP_PORT: 587
       SMTP_USERNAME: "apikey"
       SMTP_PASSWORD: "${SECRET_SENDGRID_API_KEY}"
-      DATABASE_URL: postgresql://vaultwarden:${SECRET_VAULTWARDEN_DB_PASSWORD}@vaultwarden-postgresql:5432/vaultwarden
+      DATABASE_URL: "postgresql://vaultwarden:${SECRET_VAULTWARDEN_DB_PASSWORD}@vaultwarden-postgresql/vaultwarden"
     ingress:
       main:
         enabled: true
@@ -68,4 +68,4 @@ spec:
         storageClass: rook-ceph-block
         accessModes:
         - ReadWriteOnce
-        size: 10Gi
+        size: 8Gi
