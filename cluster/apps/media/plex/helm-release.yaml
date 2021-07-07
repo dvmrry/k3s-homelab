@@ -111,7 +111,7 @@ spec:
         memory: 8000Mi
       limits:
         gpu.intel.com/i915: 1
-        memory: 24000Mi
+        memory: 16000Mi
     podAnnotations:
       configmap.reloader.stakater.com/reload: "plex-promtail"
     addons:
