@@ -61,7 +61,7 @@ spec:
           - "vault.${SECRET_DOMAIN}"
     persistence:
       config:
-        enabled: false
+        enabled: true
         existingClaim: vaultwarden-config
     postgresql:
       enabled: true
