@@ -34,7 +34,7 @@ spec:
       SMTP_PORT: 587
       SMTP_USERNAME: "apikey"
       SMTP_PASSWORD: "${SECRET_SENDGRID_API_KEY}"
-      DATABASE_URL: "postgresql://vaultwarden:${SECRET_VAULTWARDEN_DB_PASSWORD}@172.27.238.154/vaultwarden"
+      DATABASE_URL: postgresql://vaultwarden:${SECRET_VAULTWARDEN_DB_PASSWORD}@172.27.238.154/vaultwarden
     ingress:
       main:
         enabled: true
@@ -65,3 +65,5 @@ spec:
         accessModes:
         - ReadWriteOnce
         size: 8Gi
+
+
