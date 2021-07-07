@@ -24,13 +24,9 @@ spec:
       repository: vaultwarden/server
       tag: 1.22.1
     env:
-      DATA_FOLDER: "config"
       SIGNUPS_ALLOWED: false
-      WEBSOCKET_ENABLED: true
-      WEBSOCKET_ADDRESS: 0.0.0.0
-      WEBSOCKET_PORT: 3012
-      DOMAIN: https://vault.${SECRET_DOMAIN}
-      ADMIN_TOKEN: ${SECRET_VAULTWARDEN_ADMIN_TOKEN}
+      DOMAIN: "https://vault.${SECRET_DOMAIN}"
+      ADMIN_TOKEN: "${SECRET_VAULTWARDEN_ADMIN_TOKEN}"
       SMTP_HOST: "smtp.sendgrid.net"
       SMTP_FROM: "no-reply@${SECRET_DOMAIN}"
       SMTP_FROM_NAME: "Vaultwarden"
