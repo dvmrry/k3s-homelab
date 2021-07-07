@@ -29,6 +29,7 @@ spec:
       PLEX_PREFERENCE_4: "FriendlyName=plex.k3s.mrry.io"
       PLEX_PREFERENCE_5: "logDebug=0"
       PLEX_PREFERENCE_6: "secureConnections=1"
+      PLEX_PREFERENCE_7: "TranscoderH264OptionsOverride=fast"
     podSecurityContext:
       supplementalGroups:
       - 44
