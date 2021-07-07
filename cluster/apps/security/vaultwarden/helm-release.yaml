@@ -66,4 +66,4 @@ spec:
       postgresqlDatabase: "vaultwarden"
       persistence:
         enabled: true
-        existingClaim: vaultwarden-postgres
+        existingClaim: vaultwarden-postgresql
