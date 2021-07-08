@@ -129,3 +129,6 @@ spec:
         - name: config
           mountPath: /config
           readOnly: true
+        securityContext:
+          runAsUser: 0
+
