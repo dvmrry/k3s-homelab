@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
 - coredns
 - external-dns
+- internal-dns
 - traefik
 - unifi
 - wildcard-certificate
