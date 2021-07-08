@@ -47,10 +47,6 @@ spec:
       - name: reload
       # Detect forwarding loops
       - name: loop
-      # Static hosts
-      - name: hosts
-        configBlock: |-
-          fallthrough
       # Set up local resolution
       - name: etcd
         configBlock: |-
