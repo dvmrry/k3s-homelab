@@ -30,9 +30,10 @@ spec:
       PLEX_PREFERENCE_5: "logDebug=0"
       PLEX_PREFERENCE_6: "secureConnections=1"
     podSecurityContext:
+      runAsUser: 568
+      runAsGrou: 568
       supplementalGroups:
       - 44
-      - 109
       - 100
     service:
       main:
