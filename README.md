@@ -93,8 +93,7 @@
 - [ ] grocy
 - [ ] polr
 - [x] qBitorrent 
-- [ ] snapdrop
-- [ ] vaultwarden
+- [x] vaultwarden
 
 ### Media
 - [ ] bazarr
