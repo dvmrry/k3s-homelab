@@ -31,7 +31,7 @@ spec:
       PLEX_PREFERENCE_6: "secureConnections=1"
     podSecurityContext:
       runAsUser: 568
-      runAsGrou: 568
+      runAsGroup: 568
       supplementalGroups:
       - 44
       - 100
@@ -131,5 +131,3 @@ spec:
         - name: config
           mountPath: /config
           readOnly: true
-        securityContext:
-          runAsUser: 0
