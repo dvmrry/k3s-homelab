@@ -5,7 +5,7 @@ resources:
 - _pvc
 - jackett
 - overseerr
-- plex
+  #- plex
 - qbittorrent
 - radarr
 - sonarr
