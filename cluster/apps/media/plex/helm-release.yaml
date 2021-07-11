@@ -23,10 +23,10 @@ spec:
     env:
       TZ: "America/New_York"
       PLEX_CLAIM: "${SECRET_PLEX_CLAIM_TOKEN}"
-      ADVERTISE_IP: "http://${SVC_PLEX_ADDR}:32400"
+      ADVERTISE_IP: "http://${SVC_PLEX_ADDR}:32400,https://plex.${SECRET_DOMAIN}"
       PLEX_PREFERENCE_1: "allowMediaDeletion=0"
       PLEX_PREFERENCE_2: "enableIPv6=0"
-      PLEX_PREFERENCE_3: "FriendlyName=plex"
+      PLEX_PREFERENCE_3: "FriendlyName=plex.${SECRET_DOMAIN}"
     podSecurityContext:
       supplementalGroups:
       - 44
