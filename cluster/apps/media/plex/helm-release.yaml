@@ -22,7 +22,6 @@ spec:
       tag: v1.23.3.4707-ebb5fe9f3
     env:
       TZ: "America/New_York"
-      PLEX_CLAIM: "${SECRET_PLEX_CLAIM_TOKEN}"
       ADVERTISE_IP: "http://${SVC_PLEX_ADDR}:32400,https://plex.${SECRET_DOMAIN}"
       PLEX_PREFERENCE_1: "allowMediaDeletion=0"
       PLEX_PREFERENCE_2: "enableIPv6=0"
