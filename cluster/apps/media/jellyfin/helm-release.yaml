@@ -62,11 +62,13 @@ spec:
         existingClaim: nfs-media-nas-pvc
         readOnly: true
     resources:
+      requests: 
+        gpu.intel.com/i915: 1
+        cpu: 2000m
+        memory: 4000Mi
       limits:
+        gpu.intel.com/i915: 1
         memory: 8000Mi
-    tolerations:
-    - key: "nvidia.com/gpu"
-      operator: "Exists"
     affinity:
       nodeAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
