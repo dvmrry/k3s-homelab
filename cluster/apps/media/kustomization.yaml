@@ -6,7 +6,7 @@ resources:
 - jackett
 - jellyfin
 - overseerr
-- plex
+  #- plex
 - qbittorrent
 - radarr
 - sonarr
