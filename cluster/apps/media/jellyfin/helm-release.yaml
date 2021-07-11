@@ -74,5 +74,7 @@ spec:
         requiredDuringSchedulingIgnoredDuringExecution:
           nodeSelectorTerms:
           - matchExpressions:
-            - key: feature.node.kubernetes.io/pci-0300_10de.present
-              operator: Exists
+            - key: feature.node.kubernetes.io/custom-intel-gpu
+              operator: in
+              values:
+              - "true"
