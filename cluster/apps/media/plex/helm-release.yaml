@@ -1,3 +1,4 @@
+
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
@@ -24,13 +25,15 @@ spec:
       TZ: "America/New_York"
       ADVERTISE_IP: "172.25.0.20"
       PLEX_PREFERENCE_1: "allowMediaDeletion=0"
-      PLEX_PREFERENCE_2: "DlnaEnabled=0" 
+      PLEX_PREFERENCE_2: "DlnaEnabled=1" 
       PLEX_PREFERENCE_3: "EnableIPv6=0"
       PLEX_PREFERENCE_4: "FriendlyName=plex.mrry.io"
       PLEX_PREFERENCE_5: "logDebug=0"
+      PLEX_PREFERENCE_6: "secureConnections=1"
     podSecurityContext:
       supplementalGroups:
       - 44
+      - 109
       - 100
     service:
       main:
@@ -130,4 +133,3 @@ spec:
           readOnly: true
         securityContext:
           runAsUser: 0
-
