@@ -24,8 +24,7 @@ spec:
       TZ: "America/New_York"
       ADVERTISE_IP: "http://${SVC_PLEX_ADDR}:32400,https://plex.${SECRET_DOMAIN}"
       PLEX_PREFERENCE_1: "AllowMediaDeletion=0"
-      PLEX_PREFERENCE_2: "EnableIPv6=0"
-      PLEX_PREFERENCE_3: "FriendlyName=plex.${SECRET_DOMAIN}"
+      PLEX_PREFERENCE_2: "FriendlyName=plex.${SECRET_DOMAIN}"
     podSecurityContext:
       runAsUser: 568
       runAsGroup: 568
