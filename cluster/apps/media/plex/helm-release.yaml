@@ -23,8 +23,8 @@ spec:
       tag: v1.23.2.4656-85f0adf5b
     env:
       TZ: "America/New_York"
-      PLEX_CLAIM: claim-w2xws1PPMVS-o5a_Y3rd
-      ADVERTISE_IP: "172.25.0.20"
+      PLEX_CLAIM: "${SECRET_PLEX_CLAIM_TOKEN}"
+      ADVERTISE_IP: "http://${SVC_PLEX_ADDR}:32400"
       PLEX_PREFERENCE_1: "allowMediaDeletion=0"
       PLEX_PREFERENCE_2: "EnableIPv6=0"
       PLEX_PREFERENCE_3: "FriendlyName=plex.mrry.io"
