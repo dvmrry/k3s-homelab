@@ -16,10 +16,6 @@ spec:
         name: k8s-at-home-charts
         namespace: flux-system
       interval: 5m
-      dnsConfig:
-        options:
-          - name: ndots
-            value: 1
   values:
     image:
       repository: ghcr.io/k8s-at-home/plex
@@ -32,9 +28,11 @@ spec:
       PLEX_PREFERENCE_2: "enableIPv6=0"
       PLEX_PREFERENCE_3: "FriendlyName=plex.${SECRET_DOMAIN}"
     podSecurityContext:
+      runAsUser: 568
+      runAsGroup: 568
+      fsGroup: 568
       supplementalGroups:
       - 44
-      - 100
       - 109
     service:
       main:
