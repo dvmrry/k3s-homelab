@@ -21,7 +21,7 @@ spec:
       repository: ghcr.io/k8s-at-home/plex
       tag: v1.23.3.4707-ebb5fe9f3
     env:
-      TZ: UTC
+      TZ: "America/New_York"
       ADVERTISE_IP: "http://${SVC_PLEX_ADDR}:32400,https://plex.${SECRET_DOMAIN}"
       PLEX_PREFERENCE_1: "FriendlyName=plex.${SECRET_DOMAIN}"
       PLEX_PREFERENCE_2: "allowMediaDeletion=0"
