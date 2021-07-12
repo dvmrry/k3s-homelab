@@ -7,6 +7,7 @@ resources:
 - jellyfin
 - overseerr
 - qbittorrent
+- plex
 - radarr
 - sonarr
 - tautulli
