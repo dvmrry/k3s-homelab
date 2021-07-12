@@ -5,6 +5,7 @@ resources:
 - _pvc
 - jackett
 - jellyfin
+- overseerr
 - plex
 - qbittorrent
 - radarr
