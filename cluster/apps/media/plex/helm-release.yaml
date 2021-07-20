@@ -104,7 +104,7 @@ spec:
             - key: feature.node.kubernetes.io/custom-intel-gpu
               operator: In
               values:
-              - "true"
+              - "True"
     resources:
       requests:
         gpu.intel.com/i915: 1
