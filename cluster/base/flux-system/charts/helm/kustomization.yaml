@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
 - authentik-charts.yaml
 - bitnami-charts.yaml
+- cetic-charts.yaml
 - coredns-charts.yaml
 - deliveryhero-charts.yaml
 - grafana-charts.yaml
