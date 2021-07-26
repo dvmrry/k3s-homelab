@@ -54,5 +54,5 @@ spec:
         existingClaim: wikijs-config
       data:
         enabled: true
-        mountPath: /app/wiki/data
+        mountPath: /data
         existingClaim: wikijs-data
