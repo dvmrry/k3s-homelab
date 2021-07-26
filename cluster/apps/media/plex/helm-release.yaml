@@ -27,7 +27,6 @@ spec:
       PLEX_PREFERENCE_2: "allowMediaDeletion=0"
       PLEX_PREFERENCE_3: "EnableIPv6=0"
       PLEX_PREFERENCE_4: "logDebug=0"
-
     podSecurityContext:
       runAsUser: 568
       runAsGroup: 568
