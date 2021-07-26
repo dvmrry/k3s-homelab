@@ -1,0 +1,58 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: wikijs
+  namespace: utils
+spec:
+  interval: 5m
+  chart:
+    spec: 
+      # renovate: registryUrl=https://k8s-at-home.com/charts/
+      chart: wikijs
+      version: 5.1.0
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    image:
+      repository: ghcr.io/linuxserver/wikijs
+      tag: "version-2.5.201"
+    env:
+      TZ: "America/New York"
+      DB_TYPE: sqlite
+      DB_FILEPATH: /app/wiki/data/db.sqlite
+      DB_USER: wikijs
+      DB_PASS: "${SECRET_WIKIJS_DB_PASSWORD}"
+    service:
+      main:
+        ports:
+          http:
+            port: 3000
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: "traefik"
+        annotations:
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          external-dns/is-public: "true"
+          external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
+        hosts:
+        - host: "kb.${SECRET_DOMAIN}"
+          paths: 
+          - path: /
+            pathType: Prefix
+        tls:
+        - hosts:
+          - "kb.${SECRET_DOMAIN}"
+    persistence:
+      config:
+        enabled: true
+        mountPath: /config
+        existingClaim: wikijs-config
+      data:
+        enabled: true
+        mountPath: /app/wiki/data
+        existingClaim: wikijs-data
