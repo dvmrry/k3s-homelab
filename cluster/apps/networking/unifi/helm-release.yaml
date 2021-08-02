@@ -58,6 +58,7 @@ spec:
       - "${SVC_UNIFI_ADDR}"
       externalTrafficPolicy: Local
     ingress:
+      ingressClassName: "traefik"
       enabled: true
       annotations:
         traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
