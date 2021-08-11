@@ -1,0 +1,21 @@
+---
+
+- name: Check for existence of modules
+  stat:
+    path: /etc/modules
+  register: modules_result
+
+- name: Check if module is missing
+  become: true
+  shell: "grep '{{ item }}' /etc/modules"
+  register: lineinfile_check
+  failed_when: "lineinfile_check.rc == 2"
+  changed_when: "lineinfile_check.rc == 1"
+  ignore_errors: yes
+
+- name: Add module
+  become: true
+  lineinfile:
+    path: /etc/modules
+    line: "{{ item }}"
+  when: lineinfile_check.changed
