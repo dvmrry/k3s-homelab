@@ -4,3 +4,4 @@ packages:
   apt:
   - ifupdown2
   - libsasl2-modules
+  - postfix-pcre

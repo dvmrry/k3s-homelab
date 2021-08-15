@@ -20,6 +20,10 @@
   tags:
   - modules
 
+- include: postfix.yml
+  tags:
+  - postfix
+
 - include: packages.yml
   tags:
   - packages

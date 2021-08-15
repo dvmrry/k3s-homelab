@@ -1,0 +1,47 @@
+---
+
+- name: Check for existence of postfix main.cf
+  ansible.builtin.stat:
+    path: /etc/postfix/main.cf
+  register: main_result
+
+- name: Copy main.cf template
+  ansible.builtin.template:
+    src: templates/etc/postfix/main.cf.j2
+    dest: /etc/postfix/main.cf
+
+- name: Check for existence of postfix sasl_passwd
+  ansible.builtin.stat:
+    path: /etc/postfix/sasl_passwd
+  register: sasl_passwd_result
+
+- name: Copy sasl_passwd template
+  ansible.builtin.template:
+    src: templates/etc/postfix/sasl_passwd.j2
+    dest: /etc/postfix/sasl_passwd
+
+- name: Check for existence of postfix smtp_header_checks
+  ansible.builtin.stat:
+    path: /etc/postfix/smtp_header_checks
+  register: main_result
+
+- name: Copy smtp_header_checks template
+  ansible.builtin.template:
+    src: templates/etc/postfix/smtp_header_checks.j2
+    dest: /etc/postfix/smtp_header_checks
+
+- name: Update sasl_passwd.db
+  ansible.builtin.shell: 
+    cmd: postmap /etc/postfix/sasl_passwd
+
+- name: Lock sasl_passwd
+  ansible.builtin.shell: 
+    cmd: chmod 600 /etc/postfix/sasl_passwd
+
+- name: Update postmap for smtp_header_checks
+  ansible.builtin.shell: 
+    cmd: postmap /etc/postfix/smtp_header_checks
+
+- name: Update postfix
+  ansible.builtin.shell: 
+    cmd: postfix reload

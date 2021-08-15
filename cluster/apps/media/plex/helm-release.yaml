@@ -22,7 +22,7 @@ spec:
       tag: v1.23.3.4707-ebb5fe9f3
     env:
       TZ: "America/New_York"
-      ADVERTISE_IP: "http://${SVC_PLEX_ADDR}:32400"
+      ADVERTISE_IP: "https://plex.${SECRET_DOMAIN}:443"
       PLEX_PREFERENCE_1: "FriendlyName=plex.${SECRET_DOMAIN}"
       PLEX_PREFERENCE_2: "allowMediaDeletion=0"
       PLEX_PREFERENCE_3: "EnableIPv6=0"
