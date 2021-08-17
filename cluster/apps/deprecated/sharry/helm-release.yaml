@@ -44,11 +44,5 @@ spec:
     config:
       backend {
         auth {
-          fixed {
-            enabled = false  # set to true to enable this auth provider
-            user = "admin"
-            password = "admin"
-            order = 10
-          }
         }
       }
