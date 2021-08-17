@@ -30,7 +30,7 @@ spec:
       pullSecrets: []
     DB_SERVER_HOST: "zabbix-postgresql"
     POSTGRES_USER: "zabbix"
-  POSTGRES_PASSWORD: ""${SECRET_ZABBIX_DB_PW}""
+  POSTGRES_PASSWORD: "${SECRET_ZABBIX_DB_PW}"
   POSTGRES_DB: "zabbix"
   service:
     type: ClusterIP
