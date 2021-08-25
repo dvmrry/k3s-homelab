@@ -1,0 +1,17 @@
+---
+
+# Encapsulation type
+calico:
+  enabled: true
+  operator_manifest: "https://docs.projectcalico.org/manifests/tigera-operator.yaml"
+  bgp:
+    enabled: true
+    peer: 172.24.0.254
+    as: 64512
+    # externalIPs is the network you want services to consume
+    # (this network should not exist or be defined anywhere in your network)
+    externalIPs: 172.25.0.0/24
+    clusterIPs: 172.27.0.0/16
+  node:
+    cidrs:
+    - 172.24.0.0/24

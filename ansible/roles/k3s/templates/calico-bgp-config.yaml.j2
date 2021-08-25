@@ -1,0 +1,10 @@
+---
+apiVersion: crd.projectcalico.org/v1
+kind: BGPConfiguration
+metadata:
+  name: default
+spec:
+  serviceExternalIPs:
+  - cidr: {{ calico.bgp.externalIPs }}
+  serviceClusterIPs:
+  - cidr: {{ calico.bgp.clusterIPs }}

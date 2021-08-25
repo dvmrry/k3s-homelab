@@ -1,0 +1,43 @@
+---
+
+- name: Stop all k3s VMs
+  hosts:
+    - pve03
+    - pve04
+    - pve05
+  user: root
+  ignore_errors: yes
+  tasks:
+  - name: stop all vms
+    shell: pvesh create /nodes/localhost/stopall
+
+- name: Destroy all nodes on k3s-h2
+  hosts: pve04
+  user: root
+  ignore_errors: yes
+  tasks:
+  - name: destroy m1
+    shell: qm destroy 300
+  - name: destroy w1
+    shell: qm destroy 303
+
+- name: Destroy all nodes on k3s-h2
+  hosts: pve04
+  user: root
+  ignore_errors: yes
+  tasks:
+  - name: destroy m2
+    shell: qm destroy 301
+  - name: destroy w2
+    shell: qm destroy 304
+  
+- name: Destroy all nodes on pve05
+  hosts: pve05
+  user: root
+  ignore_errors: yes
+  tasks:
+  - name: destroy m3
+    shell: qm destroy 302
+  - name: destroy w3
+    shell: qm destroy 305
+  

@@ -1,0 +1,6 @@
+---
+
+packages:
+  apt:
+  - ifupdown2
+  - libsasl2-modules

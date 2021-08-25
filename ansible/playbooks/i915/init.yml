@@ -1,0 +1,13 @@
+---
+
+- hosts:
+  - worker-nodes
+  become: true
+  gather_facts: true
+  any_errors_fatal: true
+  pre_tasks:
+  - name: Pausing for 3 seconds...
+    ansible.builtin.pause:
+      seconds: 3
+  roles:
+    - i915

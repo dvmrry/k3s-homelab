@@ -1,0 +1,10 @@
+---
+
+# IP address of node
+ansible_host: "172.24.0.22"
+
+# Subdomain of node
+ansible_subdomain: "k3s.mrry.io"
+
+# Ansible user to ssh into servers with
+ansible_user: "dvmrry"

@@ -1,0 +1,6 @@
+--- 
+
+- include: kube-vip.yml
+  tags:
+  - kube-vip
+
