@@ -22,11 +22,8 @@ spec:
       tag: v1.24.1.4931-1a38e63c6 
     env:
       TZ: "America/New_York"
-      ADVERTISE_IP: "https://plex.${SECRET_DOMAIN}:32400"
+      ADVERTISE_IP: "http://plex.${SECRET_DOMAIN}:32400"
       PLEX_PREFERENCE_1: "FriendlyName=plex.${SECRET_DOMAIN}"
-      PLEX_PREFERENCE_2: "allowMediaDeletion=0"
-      PLEX_PREFERENCE_3: "EnableIPv6=0"
-      PLEX_PREFERENCE_4: "logDebug=0"
     podSecurityContext:
       runAsUser: 568
       runAsGroup: 568
@@ -47,28 +44,6 @@ spec:
         ports:
           http:
             port: 32400
-      dnla-tcp:
-        enabled: true
-        type: LoadBalancer
-        externalIPs:
-        - "${SVC_PLEX_ADDR}"
-        externalTrafficPolicy: Local
-        ports:
-          dnla-udp:
-            port: 32469
-            protocol: TCP
-            targetPort: 32469
-      dnla-udp:
-        enabled: true
-        type: LoadBalancer
-        externalIPs:
-        - "${SVC_PLEX_ADDR}"
-        externalTrafficPolicy: Local
-        ports:
-          dnla-udp:
-            port: 32469
-            protocol: UDP
-            targetPort: 1900
     ingress:
       main:
         enabled: true
@@ -115,7 +90,7 @@ spec:
         memory: 4000Mi
       limits:
         gpu.intel.com/i915: 1
-        memory: 8000Mi
+        memory: 12000Mi
     podAnnotations:
       configmap.reloader.stakater.com/reload: "plex-promtail"
     addons:
