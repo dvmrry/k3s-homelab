@@ -22,7 +22,7 @@ spec:
       tag: v1.24.1.4931-1a38e63c6 
     env:
       TZ: "America/New_York"
-      ADVERTISE_IP: "https://plex.${SECRET_DOMAIN}:32400,http://172.25.0.20:32400"
+      ADVERTISE_IP: "https://plex.${SECRET_DOMAIN}:32400"
       PLEX_PREFERENCE_1: "FriendlyName=plex.${SECRET_DOMAIN}"
       PLEX_PREFERENCE_2: "allowMediaDeletion=0"
       PLEX_PREFERENCE_3: "EnableIPv6=0"
@@ -34,6 +34,10 @@ spec:
       supplementalGroups:
       - 44
       - 109
+    dnsConfig:
+      options:
+        - name: ndots
+          value: "1"
     service:
       main:
         type: LoadBalancer
