@@ -38,5 +38,5 @@ resource "proxmox_vm_qemu" "kube-worker" {
   ciuser       = "dvmrry"
   searchdomain = var.common.search_domain
   nameserver   = var.common.nameserver
-  sshkeys      = data.sops_file.secrets.data["k3s.ssh_key"]
+  sshkeys      = data.sops_file.secrets.data["k8s.ssh_key"]
 }
