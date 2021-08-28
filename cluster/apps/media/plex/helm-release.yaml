@@ -22,7 +22,7 @@ spec:
       tag: v1.24.1.4931-1a38e63c6 
     env:
       TZ: "America/New_York"
-      ADVERTISE_IP: "http://plex.${SECRET_DOMAIN}:32400"
+      ADVERTISE_IP: "https://plex.${SECRET_DOMAIN}:443"
       PLEX_PREFERENCE_1: "FriendlyName=plex.${SECRET_DOMAIN}"
     podSecurityContext:
       runAsUser: 568
@@ -43,7 +43,7 @@ spec:
         externalTrafficPolicy: Local
         ports:
           http:
-            port: 32400
+            port: 443
     ingress:
       main:
         enabled: true
