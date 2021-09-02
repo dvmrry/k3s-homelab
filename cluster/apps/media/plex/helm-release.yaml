@@ -25,9 +25,6 @@ spec:
       ADVERTISE_IP: "http://plex.${SECRET_DOMAIN}:32400"
       PLEX_PREFERENCE_1: "FriendlyName=plex.${SECRET_DOMAIN}"
     podSecurityContext:
-      runAsUser: 568
-      runAsGroup: 568
-      fsGroup: 568
       supplementalGroups:
       - 44
       - 109
@@ -57,8 +54,8 @@ spec:
           - path: /
             pathType: Prefix
         tls:
-        - hosts:
-          - "plex.${SECRET_DOMAIN}"
+          - hosts:
+            - "plex.${SECRET_DOMAIN}"
     persistence:
       config:
         enabled: true
@@ -88,7 +85,7 @@ spec:
         memory: 4000Mi
       limits:
         gpu.intel.com/i915: 1
-        memory: 12000Mi
+        memory: 16000Mi
     podAnnotations:
       configmap.reloader.stakater.com/reload: "plex-promtail"
     addons:
