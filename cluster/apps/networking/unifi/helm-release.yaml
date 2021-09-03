@@ -27,6 +27,10 @@ spec:
         ports:
           https:
             port: 8443
+            type: LoadBalancer
+            externalIPs: 
+            - "${SVC_UNIFI_ADDR}"
+            externalTrafficPolicy: Local
           controller:
             enabled: true
             port: 8080
