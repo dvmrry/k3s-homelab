@@ -53,6 +53,8 @@ spec:
             enabled: true
             port: 8443
             protocol: HTTPS
+            annotations:
+              traefik.ingress.kubernetes.io/service.serversscheme: https
             type: LoadBalancer
             externalIPs: 
             - "${SVC_UNIFI_ADDR}"
