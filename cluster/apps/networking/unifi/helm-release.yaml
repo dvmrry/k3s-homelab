@@ -28,6 +28,8 @@ spec:
           https:
             port: 8443
             type: LoadBalancer
+            annotations:
+              traefik.ingress.kubernetes.io/service.serversscheme: https
             externalIPs: 
             - "${SVC_UNIFI_ADDR}"
             externalTrafficPolicy: Local
@@ -94,7 +96,6 @@ spec:
         annotations:
           external-dns.alpha.kubernetes.io/target: ipv4.${SECRET_DOMAIN}
           traefik.ingress.kubernetes.io/router.entrypoints: websecure
-          traefik.ingress.kubernetes.io/service.serversscheme: https
         hosts:
           - host: unifi.${SECRET_DOMAIN}
             paths:
