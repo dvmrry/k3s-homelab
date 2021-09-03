@@ -20,43 +20,21 @@ spec:
     image:
       repository: jacobalberty/unifi
       tag: v6.2.26
-    timezone: "America/New_York"
-    runAsRoot: false
-    guiService:
-      type: LoadBalancer
-      externalIPs: 
-      - "${SVC_UNIFI_ADDR}"
-      externalTrafficPolicy: Local
-    captivePortalService:
-      type: LoadBalancer
-      externalIPs: 
-      - "${SVC_UNIFI_ADDR}"
-      externalTrafficPolicy: Local
-    controllerService:
-      type: LoadBalancer
-      externalIPs: 
-      - "${SVC_UNIFI_ADDR}"
-      externalTrafficPolicy: Local
-    stunService:
-      type: LoadBalancer
-      externalIPs: 
-      - "${SVC_UNIFI_ADDR}"
-      externalTrafficPolicy: Local
-    discoveryService:
-      type: LoadBalancer
-      externalIPs: 
-      - "${SVC_UNIFI_ADDR}"
-      externalTrafficPolicy: Local
-    syslogService:
-      type: LoadBalancer
-      externalIPs: 
-      - "${SVC_UNIFI_ADDR}"
-      externalTrafficPolicy: Local
-    speedtestService:
-      type: LoadBalancer
-      externalIPs: 
-      - "${SVC_UNIFI_ADDR}"
-      externalTrafficPolicy: Local
+    env:
+      TZ: "America/New_York"
+      RUNAS_UID0: "false"
+      UNIFI_UID: "999"
+      UNIFI_GID: "999"
+    
+    service:
+      main:
+        type: LoadBalancer
+        annotations:
+          coredns.io/hostname: unifi
+          traefik.ingress.kubernetes.io/service.serverscheme: https
+        loadBalancerIP: "${SVC_UNIFI_ADDR}"
+        externalTrafficPolicy: Local
+
     ingress:
       ingressClassName: "traefik"
       enabled: true
@@ -70,25 +48,8 @@ spec:
       - hosts:
         - "unifi.${SECRET_DOMAIN}"
         secretName: unifi-cert
-    probes:
-      liveness:
-        enabled: false
-      readiness:
-        enabled: false
-      startup:
-        enabled: false
+    
     persistence:
-      enabled: true
-      accessMode: ReadWriteOnce
-      existingClaim: unifi-config-v1
-    mongodb:
-      enabled: false
-    logging:
-      promtail:
+      data:
         enabled: true
-        image:
-          repository: grafana/promtail
-          tag: 2.3.0
-          pullPolicy: IfNotPresent
-        loki:
-          url: http://loki:3100/loki/api/v1/push
+        existingClaim: unifi-data
