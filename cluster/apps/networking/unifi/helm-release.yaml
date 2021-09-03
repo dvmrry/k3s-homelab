@@ -24,6 +24,13 @@ spec:
       TZ: "America/New York" 
     service:
       main:
+        type: LoadBalancer
+        annotations:
+          traefik.ingress.kubernetes.io/service.serversscheme: https
+        externalIPs: 
+        - "${SVC_UNIFI_ADDR}"
+        externalTrafficPolicy: Local
+        
         ports:
           https:
             port: 8443
