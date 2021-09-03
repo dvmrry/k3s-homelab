@@ -24,69 +24,11 @@ spec:
       TZ: "America/New York" 
     service:
       main:
-        ports:
-          https:
-            port: 8443
-            type: LoadBalancer
-            externalIPs: 
-            - "${SVC_UNIFI_ADDR}"
-            externalTrafficPolicy: Local
-          controller:
-            enabled: true
-            port: 8080
-            protocol: TCP
-            type: LoadBalancer
-            externalIPs: 
-            - "${SVC_UNIFI_ADDR}"
-            externalTrafficPolicy: Local
-          portal-http:
-            enabled: true
-            port: 8080
-            protocol: HTTP
-            type: LoadBalancer
-            externalIPs: 
-            - "${SVC_UNIFI_ADDR}"
-            externalTrafficPolicy: Local
-          portal-https:
-            enabled: true
-            port: 8443
-            protocol: HTTPS
-            type: LoadBalancer
-            externalIPs: 
-            - "${SVC_UNIFI_ADDR}"
-            externalTrafficPolicy: Local
-          speedtest:
-            enabled: true
-            port: 6789
-            protocol: TCP
-            type: LoadBalancer
-            externalIPs: 
-            - "${SVC_UNIFI_ADDR}"
-            externalTrafficPolicy: Local
-          stun:
-            enabled: true
-            port: 3478
-            protocol: UDP
-            type: LoadBalancer
-            externalIPs: 
-            - "${SVC_UNIFI_ADDR}"
-            externalTrafficPolicy: Local
-          syslog:
-            enabled: true
-            port: 5514
-            protocol: UDP
-            type: LoadBalancer
-            externalIPs: 
-            - "${SVC_UNIFI_ADDR}"
-            externalTrafficPolicy: Local
-          discovery:
-            enabled: true
-            port: 10001
-            protocol: UDP
-            type: LoadBalancer
-            externalIPs: 
-            - "${SVC_UNIFI_ADDR}"
-            externalTrafficPolicy: Local
+        type: LoadBalancer
+        annotations:
+          traefik.ingress.kubernetes.io/service.serverscheme: https
+        externalIP: ${SVC_UNIFI_ADDR}
+        externalTrafficPolicy: Local
     ingress:
       main:
         enabled: true
