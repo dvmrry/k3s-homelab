@@ -39,7 +39,15 @@ spec:
         annotations:
           external-dns.alpha.kubernetes.io/target: ipv4.${SECRET_DOMAIN}
           traefik.ingress.kubernetes.io/router.entrypoints: websecure
-
+        ports:
+          controller:
+            enabled: true
+            port: 8080
+            protocol: TCP
+            type: LoadBalancer
+            externalIPs: ${SVC_UNIFI_ADDR}
+            externalTrafficPolicy: Local
+              
         hosts:
           - host: unifi.${SECRET_DOMAIN}
             paths:
