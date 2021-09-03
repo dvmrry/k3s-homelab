@@ -24,19 +24,10 @@ spec:
       TZ: "America/New York" 
     service:
       main:
-        type: LoadBalancer
-        annotations:
-          traefik.ingress.kubernetes.io/service.serversscheme: https
-        externalIPs: 
-        - "${SVC_UNIFI_ADDR}"
-        externalTrafficPolicy: Local
-        
         ports:
           https:
             port: 8443
             type: LoadBalancer
-            annotations:
-              traefik.ingress.kubernetes.io/service.serversscheme: https
             externalIPs: 
             - "${SVC_UNIFI_ADDR}"
             externalTrafficPolicy: Local
@@ -60,8 +51,6 @@ spec:
             enabled: true
             port: 8443
             protocol: HTTPS
-            annotations:
-              traefik.ingress.kubernetes.io/service.serversscheme: https
             type: LoadBalancer
             externalIPs: 
             - "${SVC_UNIFI_ADDR}"
@@ -103,17 +92,25 @@ spec:
         enabled: true
         ingressClassName: "traefik"
         annotations:
-          external-dns.alpha.kubernetes.io/target: ipv4.${SECRET_DOMAIN}
           traefik.ingress.kubernetes.io/router.entrypoints: websecure
           traefik.ingress.kubernetes.io/service.serversscheme: https
+      portal:
+        enabled: true
+        ingressClassName: "traefik"
+        annotations:
+          traefik.ingress.kubernetes.io/router.entrypoints: websecure
+          traefik.ingress.kubernetes.io/service.serversscheme: https
+
         hosts:
           - host: unifi.${SECRET_DOMAIN}
             paths:
               - path: /
+            pathType: Prefix
         tls:
           - hosts:
               - unifi.${SECRET_DOMAIN}
             secretName: unifi-cert
+
     persistence:
       data:
         enabled: true
