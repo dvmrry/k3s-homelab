@@ -25,24 +25,17 @@ spec:
     service:
       main:
         type: LoadBalancer
+        externalIPs: 
+          - ${SVC_UNIFI_ADDR}
+        externalTrafficPolicy: Local
         annotations:
           traefik.ingress.kubernetes.io/service.serverscheme: https
-        externalIP: ${SVC_UNIFI_ADDR}
-        externalTrafficPolicy: Local
     ingress:
       main:
         enabled: true
         ingressClassName: "traefik"
         annotations:
           traefik.ingress.kubernetes.io/router.entrypoints: websecure
-          traefik.ingress.kubernetes.io/service.serversscheme: https
-      portal:
-        enabled: true
-        ingressClassName: "traefik"
-        annotations:
-          traefik.ingress.kubernetes.io/router.entrypoints: websecure
-          traefik.ingress.kubernetes.io/service.serversscheme: https
-
         hosts:
           - host: unifi.${SECRET_DOMAIN}
             paths:
