@@ -21,7 +21,7 @@ spec:
       repository: jacobalberty/unifi
       tag: v6.2.26
     env:
-      TZ: "America/New_York"
+      TZ: "America/New York"
     
     service:
       main:
