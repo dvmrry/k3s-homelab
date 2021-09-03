@@ -22,14 +22,14 @@ spec:
       tag: v6.2.26
 
     env:
-      TZ: "Europe/New York"
+      TZ: "America/New York"
 
     service:
       main:
         type: LoadBalancer
         annotations:
           traefik.ingress.kubernetes.io/service.serversscheme: https
-        loadBalancerIP: ${SVC_UNIFI_ADDR}
+        externalIPs: ${SVC_UNIFI_ADDR}
         externalTrafficPolicy: Local
 
     ingress:
