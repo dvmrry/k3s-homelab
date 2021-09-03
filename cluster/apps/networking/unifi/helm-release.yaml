@@ -24,20 +24,73 @@ spec:
       TZ: "America/New York" 
     service:
       main:
-        type: LoadBalancer
-        annotations:
-          coredns.io/hostname: unifi
-          traefik.ingress.kubernetes.io/service.serversscheme: https
-        externalIP: ${SVC_UNIFI_ADDR}
-        externalTrafficPolicy: Local
+        ports:
+          https:
+            port: 8080
+          controller:
+            enabled: true
+            port: 8080
+            protocol: TCP
+            type: LoadBalancer
+            externalIPs: 
+            - "${SVC_UNIFI_ADDR}"
+            externalTrafficPolicy: Local
+          portal-http:
+            enabled: true
+            port: 8080
+            protocol: HTTP
+            type: LoadBalancer
+            externalIPs: 
+            - "${SVC_UNIFI_ADDR}"
+            externalTrafficPolicy: Local
+          portal-https:
+            enabled: true
+            port: 8443
+            protocol: HTTPS
+            type: LoadBalancer
+            externalIPs: 
+            - "${SVC_UNIFI_ADDR}"
+            externalTrafficPolicy: Local
+          speedtest:
+            enabled: true
+            port: 6789
+            protocol: TCP
+            type: LoadBalancer
+            externalIPs: 
+            - "${SVC_UNIFI_ADDR}"
+            externalTrafficPolicy: Local
+          stun:
+            enabled: true
+            port: 3478
+            protocol: UDP
+            type: LoadBalancer
+            externalIPs: 
+            - "${SVC_UNIFI_ADDR}"
+            externalTrafficPolicy: Local
+          syslog:
+            enabled: true
+            port: 5514
+            protocol: UDP
+            type: LoadBalancer
+            externalIPs: 
+            - "${SVC_UNIFI_ADDR}"
+            externalTrafficPolicy: Local
+          discovery:
+            enabled: true
+            port: 10001
+            protocol: UDP
+            type: LoadBalancer
+            externalIPs: 
+            - "${SVC_UNIFI_ADDR}"
+            externalTrafficPolicy: Local
     ingress:
       main:
         enabled: true
         ingressClassName: "traefik"
         annotations:
-          cert-manager.io/cluster-issuer: letsencrypt-production
           external-dns.alpha.kubernetes.io/target: ipv4.${SECRET_DOMAIN}
           traefik.ingress.kubernetes.io/router.entrypoints: websecure
+          traefik.ingress.kubernetes.io/service.serversscheme: https
         hosts:
           - host: unifi.${SECRET_DOMAIN}
             paths:
