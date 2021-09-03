@@ -21,12 +21,24 @@ spec:
       repository: jacobalberty/unifi
       tag: v6.2.26
     env:
+<<<<<<< HEAD
       TZ: "America/New York" 
     service:
       main:
         type: LoadBalancer
         externalIPs: 
           - ${SVC_UNIFI_ADDR}
+=======
+      TZ: "America/New York"
+    
+    service:
+      main:
+        type: LoadBalancer
+        annotations:
+          coredns.io/hostname: unifi
+          traefik.ingress.kubernetes.io/service.serverscheme: https
+        loadBalancerIP: "${SVC_UNIFI_ADDR}"
+>>>>>>> parent of 7b18ecd (Update UniFi helm-release re: template/common.yaml issues)
         externalTrafficPolicy: Local
         annotations:
           traefik.ingress.kubernetes.io/service.serverscheme: https
@@ -35,6 +47,7 @@ spec:
         enabled: true
         ingressClassName: "traefik"
         annotations:
+<<<<<<< HEAD
           traefik.ingress.kubernetes.io/router.entrypoints: websecure
         hosts:
           - host: unifi.${SECRET_DOMAIN}
@@ -46,13 +59,30 @@ spec:
               - unifi.${SECRET_DOMAIN}
             secretName: unifi-cert
 
+=======
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          external-dns/is-public: "true"
+          external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
+      hosts:
+        - host: "unifi.${SECRET_DOMAIN}"
+          paths:
+            - path: /
+      tls:
+        - secretName: unifi-cert
+          hosts: 
+            - "unifi.${SECRET_DOMAIN}"
+    
+>>>>>>> parent of 7b18ecd (Update UniFi helm-release re: template/common.yaml issues)
     persistence:
       data:
         enabled: true
         existingClaim: unifi-data
+<<<<<<< HEAD
     resources:
       requests:
         cpu: "0.02"
         memory: "1024M"
       limits:
         memory: "1536M"
+=======
+>>>>>>> parent of 7b18ecd (Update UniFi helm-release re: template/common.yaml issues)
