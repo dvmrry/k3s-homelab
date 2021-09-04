@@ -3,7 +3,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: unifi
-  namespace: network
+  namespace: networking
 spec:
   interval: 5m
   chart:
@@ -22,35 +22,33 @@ spec:
       tag: v6.2.26
 
     env:
-      TZ: "America/New_York"
+      TZ: "America/New York"
 
     service:
       main:
-        type: LoadBalancer
         annotations:
-          #coredns.io/hostname: unifi
           traefik.ingress.kubernetes.io/service.serversscheme: https
-        loadBalancerIP: ${SVC_UNIFI_ADDR}
+        type: LoadBalancer
+        externalIPs:
+          - 172.25.0.40
         externalTrafficPolicy: Local
 
     ingress:
       main:
         enabled: true
         ingressClassName: "traefik"
-        annotations:
-          #cert-manager.io/cluster-issuer: letsencrypt-production
-          #external-dns.alpha.kubernetes.io/target: ipv4.${SECRET_DOMAIN}
-          traefik.ingress.kubernetes.io/router.entrypoints: websecure
-          #traefik.ingress.kubernetes.io/router.middlewares: system-ingress-rfc1918-ips@kubernetescrd
-
         hosts:
-          - host: unifi.${SECRET_DOMAIN}
-            paths:
-              - path: /
-
+        - host: unifi.mrry.io
+          paths:
+            - path: /
         tls:
-          - hosts:
-              - unifi.${SECRET_DOMAIN}
+        - hosts:
+          - unifi.mrry.io
+
+    persistence:
+      data:
+        enabled: true
+        existingClaim: unifi-config
 
     resources:
       requests:
@@ -58,11 +56,6 @@ spec:
         memory: "1024M"
       limits:
         memory: "1536M"
-
-    persistence:
-      data:
-        enabled: true
-        existingClaim: unifi-config
 
     mongodb:
       enabled: true
