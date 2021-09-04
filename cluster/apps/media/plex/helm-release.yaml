@@ -23,7 +23,7 @@ spec:
       tag: v1.24.1.4931-1a38e63c6 
 
     env:
-      TZ: "America/New_York"
+      TZ: "America/New York"
       ADVERTISE_IP: "http://plex.${SECRET_DOMAIN}:32400"
       PLEX_PREFERENCE_1: "FriendlyName=k8s-plex"
       PLEX_PREFERENCE_2: "EnableIPV6=0"
