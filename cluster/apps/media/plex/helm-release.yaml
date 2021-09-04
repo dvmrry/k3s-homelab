@@ -45,8 +45,6 @@ spec:
         ingressClassName: "traefik"
         annotations:
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-          external-dns/is-public: "true"
-          external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
         hosts:
         - host: "plex.${SECRET_DOMAIN}"
           paths:
@@ -59,15 +57,15 @@ spec:
       config:
         enabled: true
         existingClaim: plex-config
-      transcode:
-        enabled: true
-        type: emptyDir
-        medium: Memory
       media:
         enabled: true
         existingClaim: nfs-media-nas-pvc
         mountPath: /media
         readOnly: true
+      transcode:
+        enabled: true
+        type: emptyDir
+        medium: Memory
     affinity:
       nodeAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
