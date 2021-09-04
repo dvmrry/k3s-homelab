@@ -35,8 +35,7 @@ spec:
     service:
       main:
         type: LoadBalancer
-        externalIPs:
-          - "${SVC_PLEX_ADDR}"
+        externalIPs: "${SVC_PLEX_ADDR}"
         externalTrafficPolicy: Local
         annotations:
           traefik.ingress.kubernetes.io/service.serversscheme: https
@@ -82,7 +81,7 @@ spec:
       requests:
         gpu.intel.com/i915: 1
         cpu: 2000m
-        memory: 4000Mi
+        memory: 2000Mi
       limits:
         gpu.intel.com/i915: 1
         memory: 16000Mi
