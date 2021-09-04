@@ -37,15 +37,15 @@ spec:
         externalTrafficPolicy: Local
         annotations:
           traefik.ingress.kubernetes.io/service.serversscheme: https
-
     ingress:
       main:
         enabled: true
         ingressClassName: "traefik"
         annotations:
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-          external-dns/is-public: "true"
-          external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
+            # Disabled - CloudFlare proxy only supports 80/443
+            #external-dns/is-public: "true"
+            #external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
         hosts:
         - host: "plex.${SECRET_DOMAIN}"
           paths:
@@ -78,8 +78,8 @@ spec:
 
     dnsConfig:
       options:
-        - name: ndots
-          value: "1"
+      - name: ndots
+        value: "1"
     
     affinity:
       nodeAffinity:
