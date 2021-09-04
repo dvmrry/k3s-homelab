@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
 - _pvc
 - jackett
+# - jellyfin
 - overseerr
 - plex
 - qbittorrent
