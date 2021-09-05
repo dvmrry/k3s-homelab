@@ -93,7 +93,7 @@ spec:
       ports:
       - name: exportarr
         containerPort: 32123
-      volumeMount:
+      volumeMounts:
       - name: config
         mountPath: /config
         readOnly: true
