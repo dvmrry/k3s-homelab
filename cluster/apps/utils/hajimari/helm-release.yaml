@@ -23,8 +23,9 @@ spec:
     env:
       TZ: "America/New_York"
     hajimari:
-      defaultEnable: "true"
+      defaultEnable: "false"
       title: "startpage"
+      name: "Dave"
       namespaceSelector:
         matchNames:
         - media
