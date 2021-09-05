@@ -8,6 +8,7 @@ resources:
 # - jellyfin
 - overseerr
 - plex
+- prowlarr
 - qbittorrent
 - radarr
 - sonarr
