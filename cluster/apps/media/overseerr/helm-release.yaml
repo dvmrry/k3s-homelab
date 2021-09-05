@@ -23,6 +23,11 @@ spec:
     env:
       TZ: "America/New_York"
       LOG_LEVEL: "info"
+    service:
+      main:
+        ports:
+          http:
+            port: 5055
     ingress:
       enabled: true
       ingressClassName: "traefik"
@@ -48,4 +53,4 @@ spec:
         memory: 250Mi
         cpu: 500m
       limits:
-        memory: 1500Mi
+        memory: 500Mi
