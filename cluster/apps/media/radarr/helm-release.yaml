@@ -55,7 +55,7 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: radarr-config-v1
+        existingClaim: radarr-config
       media:
         enabled: true
         existingClaim: nfs-media-nas-pvc

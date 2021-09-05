@@ -4,7 +4,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: radarr-config
   namespace: media
-spec:
+sec:
   accessModes:
   - ReadWriteOnce
   resources:
