@@ -48,9 +48,11 @@ spec:
       enabled: true
       ingressClassName: "traefik"
       annotations:
-        traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
         external-dns/is-public: "true"
         external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
+        hajimari.io/enable: "true"
+        hajimari.io/icon: "shield-account" 
+        traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
       hosts:
       - host: "auth.${SECRET_DOMAIN}"
         paths:
