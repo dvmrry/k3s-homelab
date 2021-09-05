@@ -5,6 +5,8 @@ metadata:
   name: dashboard
   namespace: networking
   annotations:
+    hajimari.io/enable: "true"
+    hajimari.io/icon: "arrow-decision"
     traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
     traefik.ingress.kubernetes.io/router.middlewares: "networking-authentik@kubernetescrd"
 spec:
