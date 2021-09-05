@@ -96,7 +96,7 @@
 - [x] vaultwarden
 
 ### Media
-- [ ] bazarr
+- [x] bazarr
 - [x] jackett
 - [x] tautulli
 - [x] overseer
