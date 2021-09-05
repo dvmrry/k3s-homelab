@@ -48,7 +48,7 @@ spec:
       fallbackApiVersion: v1
     ingressRoute:
       dashboard:
-        enabled: true
+        enabled: false
     globalArguments:
       - "--serverstransport.insecureskipverify=true"
       - "--providers.kubernetesingress.ingressclass=traefik"
@@ -58,6 +58,8 @@ spec:
     additionalArguments:
     - "--providers.kubernetesingress.ingressendpoint.ip=${SVC_TRAEFIK_ADDR}"
     ports:
+      traefik:
+        expose: true
       web:
         redirectTo: websecure
       websecure:
