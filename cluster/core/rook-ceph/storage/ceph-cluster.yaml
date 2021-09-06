@@ -43,13 +43,13 @@ spec:
   resources:
     mon:
       requests:
-        cpu: 35m
+        cpu: 50m
         memory: 800Mi
       limits:
-        memory: 1536Mi
+        memory: 1024Mi
     osd:
       requests:
-        cpu: 35m
+        cpu: 100m
         memory: 2048Mi
       limits:
         memory: 4096Mi

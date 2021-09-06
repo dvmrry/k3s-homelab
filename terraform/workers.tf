@@ -36,7 +36,6 @@ resource "proxmox_vm_qemu" "kube-worker" {
   os_type      = "cloud-init"
   ipconfig0    = "ip=${each.value.cidr},gw=${each.value.gw}"
   ciuser       = "dvmrry"
-  searchdomain = var.common.search_domain
   nameserver   = var.common.nameserver
   sshkeys      = data.sops_file.secrets.data["k8s.ssh_key"]
 }
