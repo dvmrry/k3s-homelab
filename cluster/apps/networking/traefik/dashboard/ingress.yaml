@@ -6,8 +6,7 @@ metadata:
   namespace: networking
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-    # Temporarily disable until Authenitk reconfigured
-    # traefik.ingress.kubernetes.io/router.middlewares: "networking-authentik@kubernetescrd"
+    traefik.ingress.kubernetes.io/router.middlewares: "networking-authentik@kubernetescrd"
 spec:
   tls:
     - secretName: "${SECRET_DOMAIN/./-}-tls"
