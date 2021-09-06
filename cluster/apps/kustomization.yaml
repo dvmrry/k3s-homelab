@@ -3,9 +3,9 @@ kind: Kustomization
 resources:
 #- kasten-io
 - kube-system
-- media
+  #- media
 - monitoring
 - networking
 - security
 - system-upgrade
-- utils
+  #- utils

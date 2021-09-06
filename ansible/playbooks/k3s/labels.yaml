@@ -2,6 +2,7 @@
 # localhost
 - name: Label k3s worker and storage nodes
   hosts: localhost
+  become: false
   tasks:
 
   - name: w1 - kubernetes.io/role
