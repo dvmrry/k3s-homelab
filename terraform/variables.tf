@@ -17,7 +17,7 @@ variable "masters" {
       gw          = "172.24.0.254"
       macaddr     = "02:DE:4D:48:24:10"
       memory      = 4096
-      disk        = "16G"
+      disk        = "32G"
       target_node = "pve03"
     },
     "m2.k8s.mrry.io" = {
@@ -27,7 +27,7 @@ variable "masters" {
       gw          = "172.24.0.254"
       macaddr     = "02:DE:4D:48:24:11"
       memory      = 4096
-      disk        = "16G"
+      disk        = "32G"
       target_node = "pve04"
     },
     "m3.k8s.mrry.io" = {
@@ -37,7 +37,7 @@ variable "masters" {
       gw          = "172.24.0.254"
       macaddr     = "02:DE:4D:48:24:12"
       memory      = 4096
-      disk        = "16G"
+      disk        = "32G"
       target_node = "pve05"
     }
   }
@@ -53,7 +53,7 @@ variable "workers" {
       gw          = "172.24.0.254"
       macaddr     = "02:DE:4D:48:24:20"
       memory      = 24576
-      disk        = "32G"
+      disk        = "64G"
       target_node = "pve03"
     },
     "w2.k8s.mrry.io" = {
@@ -63,7 +63,7 @@ variable "workers" {
       gw          = "172.24.0.254"
       macaddr     = "02:DE:4D:48:24:21"
       memory      = 24576
-      disk        = "32G"
+      disk        = "64G"
       target_node = "pve04"
     },
     "w3.k8s.mrry.io" = {
@@ -73,7 +73,7 @@ variable "workers" {
       gw          = "172.24.0.254"
       macaddr     = "02:DE:4D:48:24:22"
       memory      = 24576
-      disk        = "32G"
+      disk        = "64G"
       target_node = "pve05"
     }
   }
