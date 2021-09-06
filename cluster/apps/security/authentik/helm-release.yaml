@@ -20,7 +20,8 @@ spec:
     fullnameOverride: authentik
     image:
       name: ghcr.io/goauthentik/server
-      tag: 2021.6.2
+      tag: gh-next
+      pullPolicy: Always
     authentik:
       secret_key: "${SECRET_AUTHENTIK_SECRET_KEY}"
       postgresql:
