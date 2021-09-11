@@ -40,12 +40,11 @@
 | 16   | 172.16.0.252/30 | edge         | 
 | 17   | 172.17.0.252/30 | proxy        | 
 | 18   | 172.18.0.0/24   | mgmt         | 
-| 19   | 172.19.0.0/24   | prod         | 
 | 20   | 172.20.0.0/24   | home         | 
 | 24   | 172.24.0.0/24   | k8s nodes    | 
 |      | 172.25.0.0/24   | k8s lb       | 
-|      | 172.26.0.0/26   | k8s cluster  | 
-|      | 172.27.0.0/26   | k8s services | 
+|      | 172.26.0.0/16   | k8s cluster  | 
+|      | 172.27.0.0/16   | k8s services | 
 
 </div>
 
@@ -70,7 +69,7 @@
 ### Management
 - [ ] snipe-it
 
-### Network
+### Networking
 - [x] calico
 - [x] external-dns
 - [x] kube-vip
@@ -78,7 +77,7 @@
 
 ### Development
 - [ ] gitea
-- [ ] wiki.js
+- [ ] mkdocs
 
 ### Monitoring
 - [x] grafana
@@ -97,12 +96,12 @@
 
 ### Media
 - [x] bazarr
-- [x] jackett
-- [x] tautulli
 - [x] overseer
 - [x] plex
+- [x] prowlarr
 - [x] radarr
 - [x] sonarr
+- [x] tautulli
 
 --- 
 
