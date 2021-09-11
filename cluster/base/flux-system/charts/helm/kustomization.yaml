@@ -6,6 +6,7 @@ resources:
 - cetic-charts.yaml
 - coredns-charts.yaml
 - deliveryhero-charts.yaml
+- falco-security-charts.yaml
 - grafana-charts.yaml
 - hajimari-charts.yaml
 - jetstack-charts.yaml
