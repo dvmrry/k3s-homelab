@@ -17,7 +17,7 @@ spec:
       interval: 5m
   values:
     image:
-      repository: cryptofolio/cryptofolio
+      repository: xtrendence/cryptofolio
       tag: V.2.2.0
       pullPolicy: IfNotPresent
     env:
