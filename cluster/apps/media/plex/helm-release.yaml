@@ -28,6 +28,7 @@ spec:
       PLEX_PREFERENCE_1: "FriendlyName=k8s-plex"
       PLEX_PREFERENCE_2: "EnableIPv6=0"
       PLEX_PREFERENCE_3: "logDebug=0"
+      PLEX_PREFERENCE_4: "VaapiDriver=i965"
         
     service:
       main:
@@ -96,10 +97,11 @@ spec:
     resources:
       requests:
         gpu.intel.com/i915: 1
-        cpu: 2000m
+        cpu: 4000m
         memory: 4000Mi
       limits:
         gpu.intel.com/i915: 1
+        cpu: 9000m
         memory: 8000Mi
 
     podAnnotations:
