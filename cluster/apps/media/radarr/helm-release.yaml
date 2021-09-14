@@ -22,11 +22,6 @@ spec:
       tag: v3.2.2.5080
     env:
       TZ: "America/New_York"
-    service:
-      main:
-        ports:
-          http:
-            port: 7878
     ingress:
       main:
         enabled: true
@@ -51,6 +46,7 @@ spec:
         ingressClassName: "traefik"
         annotations:
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          traefik.ingress.kubernetes.io/router.middlewares: "networking-rfc1918@kubernetescrd"
         hosts:
         - host: "radarr.${SECRET_DOMAIN}"
           paths:
@@ -59,6 +55,21 @@ spec:
         tls:
         - hosts:
           - "radarr.${SECRET_DOMAIN}"
+    metrics:
+      enabled: true
+      serviceMonitor:
+        interval: 3m
+        scapetimeout: 1m
+      prometheusRule:
+        enabled: true
+      exporter:
+        image:
+          repository: ghcr.io/onedr0p/exportarr
+          tag: v0.6.1
+        env:
+          port: 9794
+          additionalMetrics: true
+          unknownQueueItems: false
     persistence:
       config:
         enabled: true
@@ -76,15 +87,3 @@ spec:
         cpu: 1000m
       limits:
         memory: 1000Mi
-    exporter:
-      enabled: true
-      image:
-        repository: ghcr.io/onedr0p/exportarr
-        tag: v0.6.1
-      env:
-        port: 32123
-        additionalMetrics: true
-        unknownQueueItems: false
-      podMonitor:
-        interval: 3m
-        scrapeTimeout: 1m
