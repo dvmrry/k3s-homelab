@@ -3,5 +3,4 @@ kind: Kustomization
 resources:
 - external-dns
 - traefik
-- unifi
 - wildcard-certificate
