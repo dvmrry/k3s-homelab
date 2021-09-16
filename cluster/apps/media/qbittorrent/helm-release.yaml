@@ -59,6 +59,23 @@ spec:
         tls:
         - hosts:
           - "qb.${SECRET_DOMAIN}"
+    metrics:
+      enabled: true
+      exporter:
+        image:
+          repository: ghcr.io/k8s-at-home/prometheus-qbittorrent-exporter
+          tag: v1.2.0
+        env:
+          user: "${SECRET_QB_USERNAME}"
+          password: "${SECRET_QB_PASSWORD}"
+      serviceMonitor:
+        interval: 3m
+        scrapeTimeout: 1m
+      prometheusRule:
+        enabled: true
+      podSecurityContext:
+        supplementalGroups:
+        - 100
     persistence:
       config:
         enabled: true
@@ -73,21 +90,3 @@ spec:
         cpu: 500m
       limits:
         memory: 6000Mi
-    podAnnotations:
-      configmap.reloader.stakater.com/reload: "qbittorrent-promtail"
-    addons:
-      promtail:
-        enabled: true
-        image:
-          repository: grafana/promtail
-          tag: 2.3.0
-        loki: http://loki.monitoring.svc.cluster.local:3100/loki/api/v1/push
-        logs:
-        - name: promtail/qbittorrent
-          path: /config/data/qBittorrent/logs/*.log
-        volumeMounts:
-        - name: config
-          mountPath: /config
-          readOnly: true
-        securityContext:
-          runAsUser: 0
