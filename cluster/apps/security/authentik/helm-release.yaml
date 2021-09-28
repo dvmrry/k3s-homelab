@@ -19,7 +19,7 @@ spec:
   values:
     fullnameOverride: authentik
     image:
-      name: beryju.org/goauthentik/server
+      name: beryju.org/authentik/server
       tag: gh-next
       pullPolicy: Always
     authentik:
