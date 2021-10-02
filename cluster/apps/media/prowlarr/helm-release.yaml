@@ -34,13 +34,13 @@ spec:
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
           traefik.ingress.kubernetes.io/router.middlewares: "networking-authentik@kubernetescrd"
         hosts:
-        - host: "prowlarr.${SECRET_DOMAIN}"
-          paths:
-          - path: /
-            pathType: Prefix
+          - host: "prowlarr.${SECRET_DOMAIN}"
+            paths:
+            - path: /
+              pathType: Prefix
         tls:
-        - hosts:
-          - "prowlarr.${SECRET_DOMAIN}"
+          - hosts:
+            - "prowlarr.${SECRET_DOMAIN}"
     persistence:
       config:
         enabled: true
