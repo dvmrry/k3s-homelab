@@ -40,7 +40,7 @@ spec:
                 pathType: Prefix
         tls:
           - hosts:
-              - host: "readarr.${SECRET_DOMAIN}"
+              - "readarr.${SECRET_DOMAIN}"
     persistence:
       config:
         enabled: true
