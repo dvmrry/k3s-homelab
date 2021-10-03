@@ -11,6 +11,7 @@ resources:
 - prowlarr
 - qbittorrent
 - radarr
-- readarr
+- readarr-audio
+- readarr-ebooks
 - sonarr
 - tautulli
