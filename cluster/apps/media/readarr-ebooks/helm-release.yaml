@@ -34,13 +34,13 @@ spec:
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
           traefik.ingress.kubernetes.io/router.middlewares: "networking-authentik@kubernetescrd"
         hosts:
-          - host: "ebooks.readarr.${SECRET_DOMAIN}"
+          - host: "readarr-ebooks.${SECRET_DOMAIN}"
             paths:
               - path: /
                 pathType: Prefix
         tls:
           - hosts:
-              - "ebooks.readarr.${SECRET_DOMAIN}"
+              - "readarr-ebooks.${SECRET_DOMAIN}"
     persistence:
       config:
         enabled: true
