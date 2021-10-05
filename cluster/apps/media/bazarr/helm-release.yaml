@@ -41,8 +41,8 @@ spec:
         hosts:
           - host: "bazarr.${SECRET_DOMAIN}"
             paths:
-            - path: /
-              pathType: Prefix
+              - path: /
+                pathType: Prefix
         tls:
           - hosts:
               - "bazarr.${SECRET_DOMAIN}"
