@@ -20,7 +20,7 @@ spec:
     alertmanager:
       config:
         receivers:
-        - name: 'null'
+          - name: 'null'
       ingress:
         enabled: true
         pathType: Prefix
@@ -31,10 +31,10 @@ spec:
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
           traefik.ingress.kubernetes.io/router.middlewares: "networking-authentik@kubernetescrd"
         hosts:
-        - "alert-manager.${SECRET_DOMAIN}"
-        tls:
-        - hosts:
           - "alert-manager.${SECRET_DOMAIN}"
+        tls:
+          - hosts:
+            - "alert-manager.${SECRET_DOMAIN}"
       alertmanagerSpec:
         storage:
           volumeClaimTemplate:
@@ -46,22 +46,22 @@ spec:
     nodeExporter:
       serviceMonitor:
         relabelings:
-        - action: replace
-          regex: (.*)
-          replacement: $1
-          sourceLabels:
-          - __meta_kubernetes_pod_node_name
-          targetLabel: kubernetes_node
+          - action: replace
+            regex: (.*)
+            replacement: $1
+            sourceLabels:
+              - __meta_kubernetes_pod_node_name
+            targetLabel: kubernetes_node
     grafana:
       enabled: false
     kubelet:
       enabled: true
       serviceMonitor:
         metricRelabelings:
-        - action: replace
-          sourceLabels:
-          - node
-          targetLabel: instance
+          - action: replace
+            sourceLabels:
+            - node
+            targetLabel: instance
     kubeApiServer:
       enabled: true
     kubeControllerManager:
@@ -85,10 +85,10 @@ spec:
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
           traefik.ingress.kubernetes.io/router.middlewares: "networking-authentik@kubernetescrd"
         hosts:
-        - "prometheus.${SECRET_DOMAIN}"
-        tls:
-        - hosts:
           - "prometheus.${SECRET_DOMAIN}"
+        tls:
+          - hosts:
+            - "prometheus.${SECRET_DOMAIN}"
       prometheusSpec:
         ruleSelector: {}
         ruleNamespaceSelector: {}
@@ -110,20 +110,20 @@ spec:
                 requests:
                   storage: 50Gi
         additionalScrapeConfigs:
-        - job_name: 'node-exporter'
-          honor_timestamps: true
-          static_configs:
-          - targets:
-            # opnsense
-            - 192.168.1.1:9100
-            # rocinante nas
-            - 192.168.42.40:9100
-            # serenity nas
-            - 192.168.42.50:9100
-        - job_name: cadvisor
-          honor_timestamps: true
-          metrics_path: /metrics
-          static_configs:
-          - targets:
-            # rocinante nas
-            - 192.168.42.40:9123
+          - job_name: 'node-exporter'
+            honor_timestamps: true
+            static_configs:
+            - targets:
+              # opnsense
+              - 192.168.1.1:9100
+              # rocinante nas
+              - 192.168.42.40:9100
+              # serenity nas
+              - 192.168.42.50:9100
+          - job_name: cadvisor
+            honor_timestamps: true
+            metrics_path: /metrics
+            static_configs:
+            - targets:
+              # rocinante nas
+              - 192.168.42.40:9123
