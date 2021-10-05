@@ -34,13 +34,13 @@ spec:
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
           traefik.ingress.kubernetes.io/router.middlewares: "networking-authentik@kubernetescrd"
         hosts:
-        - host: "sonarr.${SECRET_DOMAIN}"
-          paths:
-          - path: /
-            pathType: Prefix
+          - host: "sonarr.${SECRET_DOMAIN}"
+            paths:
+            - path: /
+              pathType: Prefix
         tls:
-        - hosts:
-          - "sonarr.${SECRET_DOMAIN}"
+          - hosts:
+            - "sonarr.${SECRET_DOMAIN}"
       api:
         enabled: true
         ingressClassName: "traefik"
@@ -48,13 +48,13 @@ spec:
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
           # traefik.ingress.kubernetes.io/router.middlewares: "networking-rfc1918@kubernetescrd"
         hosts:
-        - host: "sonarr.${SECRET_DOMAIN}"
-          paths:
-          - path: /api
-            pathType: Prefix
+          - host: "sonarr.${SECRET_DOMAIN}"
+            paths:
+            - path: /api
+              pathType: Prefix
         tls:
-        - hosts:
-          - "sonarr.${SECRET_DOMAIN}"
+          - hosts:
+            - "sonarr.${SECRET_DOMAIN}"
     metrics:
       enabled: true
       serviceMonitor:
@@ -81,7 +81,7 @@ spec:
         mountPath: /media
     podSecurityContext:
       supplementalGroups:
-      - 100
+        - 100
     resources:
       requests:
         memory: 250Mi
