@@ -36,11 +36,11 @@ spec:
         hosts:
           - host: "sonarr.${SECRET_DOMAIN}"
             paths:
-            - path: /
-              pathType: Prefix
+              - path: /
+                pathType: Prefix
         tls:
           - hosts:
-            - "sonarr.${SECRET_DOMAIN}"
+              - "sonarr.${SECRET_DOMAIN}"
       api:
         enabled: true
         ingressClassName: "traefik"
@@ -50,11 +50,11 @@ spec:
         hosts:
           - host: "sonarr.${SECRET_DOMAIN}"
             paths:
-            - path: /api
-              pathType: Prefix
+              - path: /api
+                pathType: Prefix
         tls:
           - hosts:
-            - "sonarr.${SECRET_DOMAIN}"
+              - "sonarr.${SECRET_DOMAIN}"
     metrics:
       enabled: true
       serviceMonitor:
