@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: readarr-ebooks
+  name: readarr
   namespace: media
 spec:
   interval: 5m
@@ -34,17 +34,17 @@ spec:
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
           traefik.ingress.kubernetes.io/router.middlewares: "networking-authentik@kubernetescrd"
         hosts:
-          - host: "readarr-ebooks.${SECRET_DOMAIN}"
+          - host: "readarr.${SECRET_DOMAIN}"
             paths:
               - path: /
                 pathType: Prefix
         tls:
           - hosts:
-              - "readarr-ebooks.${SECRET_DOMAIN}"
+              - "readarr.${SECRET_DOMAIN}"
     persistence:
       config:
         enabled: true
-        existingClaim: readarr-ebooks-config
+        existingClaim: readarr-config
       media:
         enabled: true
         existingClaim: nfs-media-nas-pvc
