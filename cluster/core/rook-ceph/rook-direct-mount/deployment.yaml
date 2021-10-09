@@ -34,17 +34,17 @@ spec:
             secretKeyRef:
               name: rook-ceph-mon
               key: ceph-secret
-        securityContext:
+          securityContext:
           privileged: true
-        volumeMounts:
-          - mountPath: /dev
-            name: dev
-          - mountPath: /sys/bus
-            name: sysbus
-          - mountPath: /lib/modules
-            name: libmodules
-          - name: mon-endpoint-volume
-            mountPath: /etc/rook
+          volumeMounts:
+            - mountPath: /dev
+              name: dev
+            - mountPath: /sys/bus
+              name: sysbus
+            - mountPath: /lib/modules
+              name: libmodules
+            - name: mon-endpoint-volume
+              mountPath: /etc/rook
       # if hostNetwork: false, the "rbd map" command hangs, see https://github.com/rook/rook/issues/2021
       hostNetwork: true
       volumes:
