@@ -22,11 +22,11 @@ spec:
     logLevel: debug
     sources:
       - ingress
-      provider: cloudflare
-      cloudflare:
-        secretName: cloudflare-api-key
-        email: "${SECRET_CLOUDFLARE_EMAIL}"
-        proxied: true
+    provider: cloudflare
+    cloudflare:
+      secretName: cloudflare-api-key
+      email: "${SECRET_CLOUDFLARE_EMAIL}"
+      proxied: true
     policy: sync
     txtPrefix: "k8s."
     domainFilters:
