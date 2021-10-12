@@ -24,8 +24,6 @@ spec:
       pullPolicy: Always
     authentik:
       secret_key: "${SECRET_AUTHENTIK_SECRET_KEY}"
-      outposts:
-        docker_image_base: beryju.org/authentik/outpost-%(type)s:gh-%(build_hash)s
       postgresql:
         host: "authentik-postgresql"
         name: "authentik"
