@@ -24,6 +24,8 @@ spec:
       pullPolicy: Always
     authentik:
       secret_key: "${SECRET_AUTHENTIK_SECRET_KEY}"
+      outposts:
+        docker_image_base: goauthentik.io/%(type)s:%(version)s
       postgresql:
         host: "authentik-postgresql"
         name: "authentik"
