@@ -23,4 +23,3 @@ spec:
     metrics:
       serviceMonitor:
         enabled: true
-
