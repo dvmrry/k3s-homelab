@@ -41,12 +41,12 @@ spec:
         password: "${SECRET_SENDGRID_API_KEY}"
         from: "no-reply@${SECRET_DOMAIN}"
     volumeMounts:
-    - name: media       
-      mountPath: /media
+      - name: media       
+        mountPath: /media
     volumes:
-    - name: media
-      persistentVolumeClaim:
-        claimName: authentik-config
+      - name: media
+        persistentVolumeClaim:
+          claimName: authentik-config
     ingress:
       enabled: true
       ingressClassName: "traefik"
@@ -54,16 +54,16 @@ spec:
         external-dns/is-public: "true"
         external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
         hajimari.io/enable: "true"
-        hajimari.io/icon: "shield-account" 
+        hajimari.io/icon: "shield-account"
         traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
       hosts:
-      - host: "auth.${SECRET_DOMAIN}"
-        paths:
-        - path: "/"
-          pathType: Prefix
+        - host: "auth.${SECRET_DOMAIN}"
+          paths:
+          - path: "/"
+            pathType: Prefix
       tls:
-      - hosts:
-        - "auth.${SECRET_DOMAIN}"
+        - hosts:
+            - "auth.${SECRET_DOMAIN}"
     postgresql:
       enabled: true
       postgresqlPassword: "${SECRET_AUTHENTIK_POSTGRES_PASSWORD}"
