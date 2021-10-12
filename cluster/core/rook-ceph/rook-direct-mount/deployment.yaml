@@ -29,11 +29,11 @@ spec:
               secretKeyRef:
                 name: rook-ceph-mon
                 key: ceph-username
-        - name: ROOK_CEPH_SECRET
-          valueFrom:
-            secretKeyRef:
-              name: rook-ceph-mon
-              key: ceph-secret
+            - name: ROOK_CEPH_SECRET
+              valueFrom:
+              secretKeyRef:
+                name: rook-ceph-mon
+                key: ceph-secret
           securityContext:
           privileged: true
           volumeMounts:
