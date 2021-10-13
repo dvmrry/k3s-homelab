@@ -47,16 +47,16 @@ spec:
               value: "172.25.0.1"
             - name: vip_configmap
               value: "plndr"
-        image: plndr/kube-vip:v0.3.8
-        imagePullPolicy: Always
-        name: kube-vip
-        resources: {}
-        securityContext:
-          capabilities:
-            add:
-              - NET_ADMIN
-              - NET_RAW
-              - SYS_TIME
+          image: plndr/kube-vip:v0.3.8
+          imagePullPolicy: Always
+          name: kube-vip
+          resources: {}
+          securityContext:
+            capabilities:
+              add:
+                - NET_ADMIN
+                - NET_RAW
+                - SYS_TIME
       hostNetwork: true
       nodeSelector:
         node-role.kubernetes.io/master: "true"
