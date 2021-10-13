@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - args:
-          - manager
+            - manager
           env:
             - name: vip_arp
               value: "false"
