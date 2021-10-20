@@ -28,7 +28,7 @@ spec:
           http:
             port: 8181
     ingress:
-      main: 
+      main:
         enabled: true
         ingressClassName: "traefik"
         annotations:
@@ -41,11 +41,11 @@ spec:
         hosts:
           - host: "tautulli.${SECRET_DOMAIN}"
             paths:
-            - path: /
-              pathType: Prefix
+              - path: /
+                pathType: Prefix
         tls:
-        - hosts:
-          - "tautulli.${SECRET_DOMAIN}"
+          - hosts:
+              - "tautulli.${SECRET_DOMAIN}"
     persistence:
       config:
         enabled: true
