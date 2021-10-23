@@ -46,8 +46,8 @@ spec:
         hosts:
           - host: "plex.${SECRET_DOMAIN}"
             paths:
-             - path: /
-               pathType: Prefix
+              - path: /
+                pathType: Prefix
         tls:
           - hosts:
               - "plex.${SECRET_DOMAIN}"
@@ -66,27 +66,23 @@ spec:
         type: emptyDir
         medium: Memory
         mountPath: /transcode
-
     podSecurityContext:
       supplementalGroups:
-      - 44
-      - 109
-
+        - 44
+        - 109
     dnsConfig:
       options:
-      - name: ndots
-        value: "1"
-    
+        - name: ndots
+          value: "1"
     affinity:
       nodeAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
           nodeSelectorTerms:
-          - matchExpressions:
-            - key: feature.node.kubernetes.io/custom-intel-gpu
-              operator: In
-              values:
-              - "true"
-
+            - matchExpressions:
+              - key: feature.node.kubernetes.io/custom-intel-gpu
+                operator: In
+                values:
+                  - "true"
     resources:
       requests:
         gpu.intel.com/i915: 1
@@ -96,7 +92,6 @@ spec:
         gpu.intel.com/i915: 1
         cpu: 9000m
         memory: 8000Mi
-
     podAnnotations:
       configmap.reloader.stakater.com/reload: "plex-promtail"
     addons:
@@ -107,13 +102,13 @@ spec:
           tag: 2.3.0
         loki: http://loki.monitoring.svc.cluster.local:3100/loki/api/v1/push
         logs:
-        - name: promtail/plex
-          path: "/config/Library/Application Support/Plex Media Server/Logs/*.log"
-        - name: promtail/plex/plugins
-          path: "/config/Library/Application Support/Plex Media Server/Logs/PMS Plugin Logs/*.log"
+          - name: promtail/plex
+            path: "/config/Library/Application Support/Plex Media Server/Logs/*.log"
+          - name: promtail/plex/plugins
+            path: "/config/Library/Application Support/Plex Media Server/Logs/PMS Plugin Logs/*.log"
         volumeMounts:
-        - name: config
-          mountPath: /config
-          readOnly: true
+          - name: config
+            mountPath: /config
+            readOnly: true
         securityContext:
           runAsUser: 0
