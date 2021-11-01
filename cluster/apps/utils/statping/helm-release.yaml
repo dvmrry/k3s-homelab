@@ -53,12 +53,12 @@ spec:
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
         hosts:
           - host: "status.${SECRET_DOMAIN}"
-            paths: 
-            - path: /
-              pathType: Prefix
+            paths:
+              - path: /
+                pathType: Prefix
         tls:
           - hosts:
-            - "status.${SECRET_DOMAIN}"
+              - "status.${SECRET_DOMAIN}"
     persistence:
       data:
         enabled: true
