@@ -7,7 +7,7 @@ metadata:
 spec:
   interval: 5m
   chart:
-    spec: 
+    spec:
       # renovate: registryUrl=https://k8s-at-home.com/charts/
       chart: statping
       version: 5.1.2
@@ -52,13 +52,13 @@ spec:
           hajimari.io/icon: "transit-connection-variant"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
         hosts:
-        - host: "status.${SECRET_DOMAIN}"
-          paths: 
-          - path: /
-            pathType: Prefix
+          - host: "status.${SECRET_DOMAIN}"
+            paths: 
+            - path: /
+              pathType: Prefix
         tls:
-        - hosts:
-          - "status.${SECRET_DOMAIN}"
+          - hosts:
+            - "status.${SECRET_DOMAIN}"
     persistence:
       data:
         enabled: true
@@ -75,5 +75,5 @@ spec:
         enabled: true
         storageClass: rook-ceph-block
         accessModes:
-        - ReadWriteOnce
+          - ReadWriteOnce
         size: 8Gi
