@@ -12,9 +12,9 @@ spec:
       chart:
       version: 1.0.0
       sourceRef:
-        kind:
-        name:
-        flux-system:
+        kind: HelmRepository
+        name: mrry-io-charts
+        namespace: flux-system
       interval: 5m
   values:
     image:
