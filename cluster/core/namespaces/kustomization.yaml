@@ -6,6 +6,7 @@ resources:
 - cert-manager.yaml
 - falco-system.yaml
 - flux-system.yaml
+- ibc.yaml
 - kasten-io.yaml
 - kube-system.yaml
 - rook-ceph.yaml
