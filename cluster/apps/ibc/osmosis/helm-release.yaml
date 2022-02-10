@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       # renovate: registryURL=https://dvmrry.github.io/charts
-      chart:
+      chart: osmosis
       version: 1.0.0
       sourceRef:
         kind: HelmRepository
