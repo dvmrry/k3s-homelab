@@ -4,6 +4,7 @@ resources:
 - calico-system
 - falco-system
 #- kasten-io
+- ibc
 - kube-system
 - media
 - monitoring

@@ -1,0 +1,60 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: osmosis
+  namespace: ibc
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryURL=https://dvmrry.github.io/charts
+      chart:
+      version: 1.0.0
+      sourceRef:
+        kind:
+        name:
+        flux-system:
+      interval: 5m
+  values:
+    image:
+      repository: ghcr.io/ovrclk/cosmos-omnibus
+      tag: v6.1.0
+    env:
+      TZ: "America/New_York"
+    service:
+      main:
+        type: LoadBalancer
+        externalIPs:
+          - "${SVC_OSMOSIS_ADDR}"
+        externalTrafficPolicy: Local
+        annotations:
+          traefik.ingress.kubernetes.io/service.serverscheme: https
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: "traefik"
+        hosts:
+          - host: "osmo.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+            - "osmo.${SECRET_DOMAIN}"
+    persistence:
+      config:
+        enabled: true
+        existingClaim: osmo-config
+        mountPath: /config
+      osmosis:
+        enabled: true
+        existingClaim: osmo-data
+        mountPath: /osmosis 
+    resources:
+      requests:
+        cpu: 1000m
+        memory: 4000Mi
+      limits:
+        cpu: 4000m
+        memory: 8000Mi
