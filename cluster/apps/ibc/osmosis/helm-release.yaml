@@ -9,6 +9,7 @@ spec:
   chart:
     spec:
       # renovate: registryURL=https://dvmrry.github.io/charts
+      # renovate: registryUrl=https://charts.mrry.io
       chart: osmosis
       version: 1.0.0
       sourceRef:
