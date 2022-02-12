@@ -5,6 +5,7 @@ metadata:
   name: plex-config
   namespace: media
 spec:
+  persistentVolumeReclaimPolicy: Retain
   accessModes:
   - ReadWriteOnce
   resources:
