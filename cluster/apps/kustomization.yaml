@@ -10,5 +10,5 @@ resources:
 - monitoring
 - networking
 - security
-# - system-upgrade
+- system-upgrade
 - utils
