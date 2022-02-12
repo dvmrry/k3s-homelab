@@ -1,6 +1,6 @@
 # cloud-init template config
 Following settings should be adjusted to your needs.
-Eg. I have my k3s machines utilizing vmbr0 on the hosts and VLAN24 with images on Ceph storage
+Eg. I have my k3s machines utilizing vmbr0 on the hosts and VLAN24 with images on local-lvm storage
 
     # Export ENV variables
     export MEMORY="2048"
@@ -11,6 +11,7 @@ Eg. I have my k3s machines utilizing vmbr0 on the hosts and VLAN24 with images o
     export VLAN="24"
     export VM_ID="9000"
     export VM_NAME="ubuntu-cloudimg"
+    export VM_IMG="jammy-server-cloudimg-amd64.img"
 
     # Pull down latest Debian 10 cloud-init image
     wget https://cloud-images.ubuntu.com/hirsute/current/hirsute-server-cloudimg-amd64.img
@@ -19,7 +20,7 @@ Eg. I have my k3s machines utilizing vmbr0 on the hosts and VLAN24 with images o
     qm create $VM_ID --name $VM_NAME --memory $MEMORY -net0 virtio,bridge=$NIC,tag=$VLAN
     
     # Import disk
-    qm importdisk --format qcow2 $VM_ID hirsute-server-cloudimg-amd64.img $STORAGE 
+    qm importdisk --format qcow2 $VM_ID $VM_IMG $STORAGE 
  
     # Set imported image as scsi0
     qm set $VM_ID --scsihw virtio-scsi-pci --scsi0 $STORAGE:vm-$VM_ID-disk-0
