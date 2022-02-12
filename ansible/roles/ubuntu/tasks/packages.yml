@@ -60,6 +60,7 @@
     loop:
     - lxd
     - core18
+    - core20
     - snapd
     when:
     - "'snapd' in packages.apt_remove"
