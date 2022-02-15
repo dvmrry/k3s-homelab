@@ -5,6 +5,7 @@ resources:
 - _pvc
 - bazarr
 - calibre
+- filebrowser
 # - jackett
 # - jellyfin
 - overseerr
@@ -12,7 +13,9 @@ resources:
 - prowlarr
 - qbittorrent
 - radarr
+- radarr-4k
 - readarr
 - readarr-audio
 - sonarr
+- sonarr-4k
 - tautulli

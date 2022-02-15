@@ -2,15 +2,15 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: sonarr
+  name: filebrowswer
   namespace: media
 spec:
   interval: 5m
   chart:
     spec:
       # renovate: registryUrl=https://k8s-at-home.com/charts/
-      chart: sonarr
-      version: 16.0.0
+      chart: filebrowser
+      version: 10.3.0
       sourceRef:
         kind: HelmRepository
         name: k8s-at-home-charts
@@ -18,10 +18,15 @@ spec:
       interval: 5m
   values:
     image:
-      repository: ghcr.io/k8s-at-home/sonarr
-      tag: v3.0.6.1342
+      repository: docker.io/filebrowser/filebrowser
+      tag: v2.18.0
     env:
       TZ: "America/New_York"
+    service:
+      main:
+        ports:
+          http:
+            port: 80
     ingress:
       main:
         enabled: true
@@ -30,51 +35,21 @@ spec:
           external-dns/is-public: "true"
           external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
           hajimari.io/enable: "true"
-          hajimari.io/icon: "television-box"
+          hajimari.io/icon: "subtitles"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
           traefik.ingress.kubernetes.io/router.middlewares: "networking-authentik@kubernetescrd"
         hosts:
-          - host: "sonarr.${SECRET_DOMAIN}"
+          - host: "media.${SECRET_DOMAIN}"
             paths:
               - path: /
                 pathType: Prefix
         tls:
           - hosts:
-              - "sonarr.${SECRET_DOMAIN}"
-      api:
-        enabled: true
-        ingressClassName: "traefik"
-        annotations:
-          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-          # traefik.ingress.kubernetes.io/router.middlewares: "networking-rfc1918@kubernetescrd"
-        hosts:
-          - host: "sonarr.${SECRET_DOMAIN}"
-            paths:
-              - path: /api
-                pathType: Prefix
-        tls:
-          - hosts:
-              - "sonarr.${SECRET_DOMAIN}"
-    metrics:
-      enabled: true
-      serviceMonitor:
-        interval: 3m
-        scrapetimeout: 1m
-      prometheusRule:
-        enabled: true
-      exporter:
-        enabled: true
-        image:
-          repository: ghcr.io/onedr0p/exportarr
-          tag: v1.0.0
-        env:
-          port: 9794
-          additionalMetrics: true
-          unknownQueueItems: false
+              - "media.${SECRET_DOMAIN}"
     persistence:
       config:
         enabled: true
-        existingClaim: sonarr-config
+        existingClaim: filebrowser-config
       media:
         enabled: true
         existingClaim: nfs-media-nas-pvc
