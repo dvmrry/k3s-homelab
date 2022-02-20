@@ -19,7 +19,7 @@ spec:
   values:
     image:
       repository: shlinkio/shlink
-      tag: 3.0.2
+      tag: 3.0.3
     env:
       SHORT_DOMAIN_HOST: "link.${SECRET_DOMAIN}"
       SHORT_DOMAIN_SCHEMA: "https"
