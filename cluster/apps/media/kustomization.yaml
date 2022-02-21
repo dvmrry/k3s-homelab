@@ -13,9 +13,7 @@ resources:
 - prowlarr
 - qbittorrent
 - radarr
-- radarr-4k
 - readarr
 - readarr-audio
 - sonarr
-- s4k
 - tautulli
