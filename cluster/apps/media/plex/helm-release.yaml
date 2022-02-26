@@ -26,7 +26,7 @@ spec:
       PLEX_PREFERENCE_1: "FriendlyName=k8s-plex"
       PLEX_PREFERENCE_2: "EnableIPv6=0"
       PLEX_PREFERENCE_3: "logDebug=0"
-      #PLEX_PREFERENCE_4: "VaapiDriver=i965"
+      PLEX_PREFERENCE_4: "VaapiDriver=i965"
     service:
       main:
         type: LoadBalancer
