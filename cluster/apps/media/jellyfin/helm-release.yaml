@@ -32,6 +32,8 @@ spec:
         externalIPs:
           - "${SVC_JELLYFIN_ADDR}"
         externalTrafficPolicy: Local
+        annotations:
+          traefik.ingress.kubernetes.io/service.serversscheme: https
     ingress:
       main:
         enabled: true
