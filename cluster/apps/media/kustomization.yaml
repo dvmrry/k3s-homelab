@@ -6,7 +6,6 @@ resources:
 - bazarr
 - calibre
 - filebrowser
-- jellyfin
 - overseerr
 - plex
 - prowlarr
