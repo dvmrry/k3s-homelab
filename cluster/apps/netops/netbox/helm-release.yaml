@@ -1,0 +1,127 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: netbox
+  namespace: netops
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: netbox
+      version: 4.0.1
+      sourceRef:
+        kind: HelmRepository
+        name: bootc-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    image:
+      repository: ghcr.io/anthr76/netbox-docker-kutara
+      pullPolicy: IfNotPresent
+      tag: "v3.1.10"
+    superuser:
+      name: admin
+      email: "admin@${SECRET_DOMAIN}"
+    admins:
+      - ["Dave Murray", "admin@${SECRET_DOMAIN}"]
+    logging:
+      disable_existing_loggers: false
+      handlers:
+        console:
+          class: logging.StreamHandler
+      loggers:
+        netbox.authentication.*:
+          handlers:
+            - console
+          level: DEBUG
+      version: 1
+    remoteAuth:
+      enabled: True
+      header: HTTP_REMOTE_USER
+      groupHeader: HTTP_REMOTE_GROUPS
+      defaultPermissions: None
+      groupSyncEnabled: True
+      autoCreateUser: True
+      superuserGroups:
+        - admins
+      staffGroups:
+        - family
+    # plugins:
+    #   - netbox_ddns
+    # - napalm-vyos
+    # - napalm_ros
+    loginRequired: false
+    storageBackend: null
+    storageConfig: {}
+    # AWS_ACCESS_KEY_ID: "${SECRET_MINIO_ACCESS_KEY}"
+    # AWS_SECRET_ACCESS_KEY: "${SECRET_MINIO_SECRET_KEY}"
+    # AWS_STORAGE_BUCKET_NAME: "netbox"
+    # AWS_S3_ENDPOINT_URL: "https://s3.kutara.io"
+    metricsEnabled: true
+    existingSecret: "netbox"
+    postgresql:
+      enabled: false
+    externalDatabase:
+      host: postgres
+      port: 5432
+      database: netbox
+      username: postgres
+      existingSecretName: "netbox"
+      existingSecretKey: "db_password"
+    redis:
+      enabled: true
+      auth:
+        # This is temp because the chart is broken.
+        # Really it can be plain text because.. redis auth is always a pain.
+        # But the next chart release should fix this.
+        password: "temp-12345"
+      image:
+        repository: library/redis
+        tag: "6.2.6"
+    persistence:
+      enabled: true
+      existingClaim: netbox-pvc
+      accessMode: ReadWriteOnce
+    reportsPersistence:
+      enabled: false
+    ingress:
+      enabled: true
+      ingressClassName: "traefik"
+      annotations:
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      hosts:
+        - host: "netbox.${SECRET_DOMAIN}"
+          paths:
+            - path: /
+              pathType: Prefix
+      tls:
+        - hosts:
+            - "netbox.${SECRET_DOMAIN}"
+    init:
+      image:
+        repository: docker.io/library/busybox
+        tag: 1.35.0
+        pullPolicy: IfNotPresent
+    nodeSelector:
+      kubernetes.io/arch: amd64
+    updateStrategy:
+      type: RollingUpdate
+    worker:
+      enabled: true
+      nodeSelector:
+        kubernetes.io/arch: amd64
+      updateStrategy:
+        type: RollingUpdate
+  postRenderers:
+    - kustomize:
+        patchesJson6902:
+          - target:
+              version: v1
+              kind: CronJob
+              name: netbox-housekeeping
+            patch:
+              - op: add
+                path: /spec/jobTemplate/spec/template/spec/nodeSelector
+                value:
+                  kubernetes.io/arch: amd64
