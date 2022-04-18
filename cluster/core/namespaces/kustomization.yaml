@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
 - calico-system.yaml
 - cert-manager.yaml
+- db-system.yaml
 - falco-system.yaml
 - flux-system.yaml
 - ibc.yaml
@@ -12,6 +13,7 @@ resources:
 - rook-ceph.yaml
 - monitoring.yaml
 - media.yaml
+- netops.yaml
 - networking.yaml
 - security.yaml
 - utils.yaml
