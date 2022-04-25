@@ -6,7 +6,7 @@ resources:
 - bazarr
 - calibre
 - filebrowser
-  #- overseerr
+- overseerr
 - plex
 - prowlarr
 - qbittorrent
